@@ -13,6 +13,9 @@ html {
 header {
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 0px;
+  background-color: white;
 }
 
 .header-restaurantName {
@@ -47,8 +50,15 @@ div.scrollmenu {
   scrollbar-width: none;
 }
 
+/* to hide scrollbar while enabling scrolling 
+  for Chrome, Safari, Edge and Opera*/
 .scrollmenu::-webkit-scrollbar {
   display: none;
+}
+/* to hide scrollbar while enabling scrolling 
+  for Firefox*/
+.scrollmenu {
+  scrollbar-width: none;
 }
 
   .scrollitem {
