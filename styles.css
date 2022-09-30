@@ -9,7 +9,6 @@ html {
   font-size: 20px;
 }
 
-
 header {
   display: flex;
   flex-direction: column;
@@ -35,7 +34,7 @@ header {
   top: 36px; */
 }
 
-div.scrollmenu {
+.header-scrollmenu {
   overflow-x: scroll;
   /* overflow-y: hidden; */
   white-space: nowrap;
@@ -52,16 +51,16 @@ div.scrollmenu {
 
 /* to hide scrollbar while enabling scrolling 
   for Chrome, Safari, Edge and Opera*/
-.scrollmenu::-webkit-scrollbar {
+.header-scrollmenu::-webkit-scrollbar {
   display: none;
 }
 /* to hide scrollbar while enabling scrolling 
   for Firefox*/
-.scrollmenu {
+.header-scrollmenu {
   scrollbar-width: none;
 }
 
-  .scrollitem {
+  .header-scrollitem {
     /* display: inline-block; */
     font-size: 1.25rem;
 
