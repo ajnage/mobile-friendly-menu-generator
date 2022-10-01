@@ -84,17 +84,20 @@ header {
 
 .item {
   height:25vw;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   flex-direction: row;
+  border-bottom: 2px solid rgba(119,119,119,0.2);
+  margin-top: 2px;
 }
 
 .item-left {
-  
   width: 75vw;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 2px 2px;
 }
 
 .item-left-name {
@@ -109,7 +112,7 @@ header {
 }
 
 .item-left-desc {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -118,11 +121,11 @@ header {
 }
 
 .item-left-price {
-  font-size: 0.7em;
+  font-size: 0.7rem;
 }
 
 .item-right {
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
   width: 25vw;
 }
 
