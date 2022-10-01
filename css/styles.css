@@ -83,20 +83,22 @@ header {
 }
 
 .item {
-  max-height: 104px;
-  border: 2px solid green;
+  height:25vw;
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
 }
 
 .item-left {
-  height: 100%;
+  
+  width: 75vw;
   border: 2px solid black;
-  margin-right: 104px;
   display: flex;
   flex-direction: column;
 }
 
 .item-left-name {
-  font-size: 0.7em;
+  font-size: 0.7rem;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -107,7 +109,7 @@ header {
 }
 
 .item-left-desc {
-  font-size: 0.7em;
+  font-size: 0.7rem;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -119,6 +121,13 @@ header {
   font-size: 0.7em;
 }
 
+.item-right {
+  border: 2px solid yellow;
+  width: 25vw;
+}
+
 .item-right-pic {
-  height: 100%
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
