@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+}
+
+.header-1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-logo {
+  height: 1.5rem;
+  /* width: 1.5rem; */
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.header-scrollmenu.top {
+  border-top: 0px;
+  box-shadow: none;
+}
+
+.header-restaurantName {
+  font-size: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 5px;
+  /* position: absolute; */
+  /* width: 390px;
+  height: 23px;
+  left: 0px;
+  top: 36px; */
+}
+
+.header-scrollmenu {
+  overflow-x: scroll;
+  /* overflow-y: hidden; */
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  gap: 20px; 
+  padding-left: 5px;
+  margin-top: 0.3rem;
+  box-shadow: 0px 5px 5px grey;
+  border-top: 1px solid grey;
+  scrollbar-width: none;
+}
+
+/* to hide scrollbar while enabling scrolling 
+  for Chrome, Safari, Edge and Opera*/
+.header-scrollmenu::-webkit-scrollbar {
+  display: none;
+}
+/* to hide scrollbar while enabling scrolling 
+  for Firefox*/
+.header-scrollmenu {
+  scrollbar-width: none;
+}
+
+.header-scrollitem {
+  /* display: inline-block; */
+  font-size: 1.25rem;
+
+}
+
+.item {
+  max-height: 104px;
+  border: 2px solid green;
+}
+
+.item-left {
+  height: 100%;
+  border: 2px solid black;
+  margin-right: 104px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-left-name {
+  font-size: 0.7em;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.item-left-desc {
+  font-size: 0.7em;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  color: #777777;
+}
+
+.item-left-price {
+  font-size: 0.7em;
+}
+
+.item-right-pic {
+  height: 100%
+}

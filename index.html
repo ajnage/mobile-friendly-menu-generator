@@ -5,11 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The National - Menu</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css"> 
 </head>
 <body>
     <header>
-        <h1 class="header-restaurantName">National on 10th</h1>
+        <!-- <h1 class="header-restaurantName">National on 10th</h1> -->
+        <div class="header-1">
+            <img class="header-logo" src="assets/logo.png" />
+            <div class="header-scrollmenu top">
+                <div class="header-scrollitem">Food</div>
+                <div class="header-scrollitem">Drinks</div>
+                <div class="header-scrollitem">Daily Specials</div>
+                <div class="header-scrollitem">Happy Hour</div>
+            </div>
+        </div>
         
         <div class="header-scrollmenu">
             <div class="header-scrollitem">Drinks</div>
@@ -23,17 +33,18 @@
         
     </header>
     <main>
-        <div class="frame">
-            <div class="frame-left">
-                <h3>Long Beach Chicken Club</h3>
-                <h5>Achiote chicken, pesto mayo, bacon, lettuce, avocado, tomate, caramelized onion ciabata</h5>
+        <div class="item">
+            <div class="item-left">
+                <div class="item-left-name">Long Beach Chicken Club</div>
+                <div class="item-left-desc">Achiote chicken, pesto mayo, bacon, lettuce, avocado, tomate, caramelized onion ciabata</div>
+                <div class="item-left-price">$10.95</div>
             </div>
-            <div class="frame-right">
-                <img src="./assets/california-club.jpeg" alt="">
+            <div class="item-right">
+                <!-- <img class="item-right-pic" src="./assets/california-club.jpeg" alt=""> -->
             </div>
             
         </div>
-        <div class="frame">
+        <!-- <div class="frame">
             <h3>Long Beach Chicken Club</h3>
             <h5>Achiote chicken, pesto mayo, bacon, lettuce, avocado, tomate, caramelized onion ciabata</h5>
             <img src="./assets/california-club.jpeg" alt="">
@@ -57,7 +68,7 @@
             <h3>Long Beach Chicken Club</h3>
             <h5>Achiote chicken, pesto mayo, bacon, lettuce, avocado, tomate, caramelized onion ciabata</h5>
             <img src="./assets/california-club.jpeg" alt="">
-        </div>
+        </div> -->
     </main>
 </body>
 </html>
