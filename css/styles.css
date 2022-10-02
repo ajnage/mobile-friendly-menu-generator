@@ -82,7 +82,15 @@ header {
 .header-scrollitem {
   /* display: inline-block; */
   font-size: 1.25rem;
+  color: black;
+  text-decoration: none;
+}
 
+:target::before {
+  content: "";
+  display: block;
+  height: 75px; /* fixed header height*/
+  margin: -75px 0 0; /* negative fixed header height */
 }
 
 .item {
