@@ -122,6 +122,8 @@ header {
   align-items: center;
   color: #000000;
   padding: 2px 2px;
+  height: 30%;
+  /* border: 2px green solid; */
 }
 
 .item-left-desc {
@@ -132,11 +134,19 @@ header {
   line-height: 15px;
   color: #777777;
   padding: 2px 2px;
+  height: 40%;
+  white-space: normal;
+  overflow: auto;
+  text-overflow: ellipsis;
+  
+
 }
 
 .item-left-price {
   font-size: 0.7rem;
   padding: 2px 2px;
+  /* border: 2px solid pink; */
+  height: 30%;
 }
 
 .item-right {
@@ -156,6 +166,8 @@ header {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 700;
+  padding-bottom: 5px;
+  padding-left: 2px;
 }
 
 .category-description {
