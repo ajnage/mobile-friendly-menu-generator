@@ -21,7 +21,7 @@ function navHighlighter() {
     // https://newbedev.com/difference-between-getboundingclientrect-top-and-offsettop
     // This allows the use of sections inside a relative parent, which I'm not using here, but needed for a project
     //
-    const sectionTop = (current.getBoundingClientRect().top + window.pageYOffset);
+    const sectionTop = (current.getBoundingClientRect().top + window.pageYOffset) - 100;
     sectionId = current.getAttribute("id");
     /*
     - If our current scroll position enters the space where current section on screen is, add .active class to corresponding navigation link, else remove it
