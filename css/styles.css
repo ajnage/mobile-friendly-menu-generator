@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
 html {
@@ -17,19 +19,64 @@ header {
   margin-bottom: 2px;
 }
 
-.header-1 {
+.header-top {
   display: flex;
   flex-direction: row;
 }
 
-.header-logo {
+.header-top-logo {
   height: 1.5rem;
   /* width: 1.5rem; */
   margin-left: 5px;
   margin-top: 5px;
 }
 
-.header-scrollmenu.top {
+
+
+.header-top-menu, .header-bottom-menu {
+  overflow-x: scroll;
+  /* overflow-y: hidden; */
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  gap: 20px; 
+  padding-left: 5px;
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  height: 30px;
+  box-shadow: 0px 5px 5px grey;
+  border-top: 1px solid grey;
+  scrollbar-width: none;
+}
+
+/* to hide scrollbar while enabling scrolling 
+  for Chrome, Safari, Edge and Opera*/
+.header-top-menu::-webkit-scrollbar, .header-bottom-menu::-webkit-scrollbar {
+  display: none;
+}
+/* to hide scrollbar while enabling scrolling 
+  for Firefox*/
+.header-top-menu, .header-bottom-menu {
+  scrollbar-width: none;
+}
+
+.header-top-menu-item, .header-bottom-menu-item {
+  /* display: inline-block; */
+  font-size: 1.25rem;
+  color: black;
+  text-decoration: none;
+}
+
+/* for setting offset when you browse to certain locations on page use nav bar */
+:target::before {
+  content: "";
+  display: block;
+  height: 75px; /* fixed header height*/
+  margin: -75px 0 0; /* negative fixed header height */
+}
+
+.header-top-menu {
   border-top: 0px;
   box-shadow: none;
 }
@@ -51,46 +98,10 @@ header {
   top: 36px; */
 }
 
-.header-scrollmenu {
-  overflow-x: scroll;
-  /* overflow-y: hidden; */
-  white-space: nowrap;
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-  gap: 20px; 
-  padding-left: 5px;
-  margin-top: 0.3rem;
-  font-size: 1rem;
-  height: 30px;
-  box-shadow: 0px 5px 5px grey;
-  border-top: 1px solid grey;
-  scrollbar-width: none;
-}
-
-/* to hide scrollbar while enabling scrolling 
-  for Chrome, Safari, Edge and Opera*/
-.header-scrollmenu::-webkit-scrollbar {
-  display: none;
-}
-/* to hide scrollbar while enabling scrolling 
-  for Firefox*/
-.header-scrollmenu {
-  scrollbar-width: none;
-}
-
-.header-scrollitem {
-  /* display: inline-block; */
-  font-size: 1.25rem;
-  color: black;
-  text-decoration: none;
-}
-
-:target::before {
-  content: "";
-  display: block;
-  height: 75px; /* fixed header height*/
-  margin: -75px 0 0; /* negative fixed header height */
+.active {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
 }
 
 .item {
