@@ -189,3 +189,11 @@ header {
   font-style: normal;
   font-weight: 400;
 }
+
+/* on index.ejs page */
+
+.video {
+  max-height: 390px;
+  max-width: 844px;
+  /* border: solid gray 2px; */
+}
