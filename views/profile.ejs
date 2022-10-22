@@ -12,6 +12,7 @@
       <div class="mt-5">
         <h2>Add a menu item</h2>
         
+        <!-- headings -->
         <div class="row">
           <div class="col">Sequence</div>
           <div class="col">Name of Food Item</div>
@@ -21,35 +22,51 @@
           <div class="col">Picture</div>
         </div>
         
+        <!-- to show items that have already been added -->
+        
+        
+        <!-- to submit and create a new menu item -->
         <form action="/post/createPost" enctype="multipart/form-data" method="POST" class="row">
           <div class="col">
-              <label for="title" class="form-label"></label>
-              <input type="text" class="form-control" id="title" name="title">
+              <label for="sequence" class="form-label"></label>
+              <input type="number" class="form-control" id="sequence" name="sequence">
           </div>
           <div class="col">
-            <label for="caption" class="form-label"></label>
-            <textarea class="form-control" id="caption" name="caption"></textarea>
+            <label for="nameoffood" class="form-label"></label>
+            <textarea class="form-control" id="nameoffood" name="nameoffood"></textarea>
           </div>
           <div class="col">
-            <label for="caption" class="form-label"></label>
-            <textarea class="form-control" id="caption" name="caption"></textarea>
+            <label for="description" class="form-label"></label>
+            <textarea class="form-control" id="description" name="description"></textarea>
           </div>
           <div class="col">
-            <label for="caption" class="form-label"></label>
-            <textarea class="form-control" id="caption" name="caption"></textarea>
+            <label for="category" class="form-label"></label>
+            <textarea class="form-control" id="category" name="category"></textarea>
           </div>
           <div class="col">
-            <label for="caption" class="form-label"></label>
-            <textarea class="form-control" id="caption" name="caption"></textarea>
+            <label for="price" class="form-label"></label>
+            <input type="number" step="0.01" class="form-control" id="price" name="price"></input>
           </div>
           <div class="col">
-            <label for="imgUpload" class="form-label"></label>
+            <label for="imageUpload" class="form-label"></label>
             <input type="file" class="form-control" id="imageUpload" name="file">
           </div>
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
         </form>
       </div>
-      <div class="col-6">
+
+      <!-- to show what is in the database -->
+      <div class="row">
+        <% for(var i=0; i<posts.length; i++) {%>
+          <div class="col"><%= posts[i].sequence %></div>
+          <div class="col"><%= posts[i].nameoffood %></div>
+          <div class="col"><%= posts[i].description %></div>
+          <div class="col"><%= posts[i].category %></div>
+          <div class="col"><%= posts[i].price %></div>
+          <div class="col"><img class="profile-image" src="<%= posts[i].image%>" alt="menu-item"></div>
+        <% } %>
+      </div>
+      <!-- <div class="col-6">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
@@ -62,7 +79,7 @@
         <div class="row justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
         </div>  
-      </div>  
+      </div>   -->
     </div>
   </div>
 </div>

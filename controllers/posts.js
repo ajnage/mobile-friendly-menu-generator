@@ -1,5 +1,5 @@
 const cloudinary = require("../middleware/cloudinary");
-const Post = require("../models/Post");
+const Post = require("../models/Items");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -30,14 +30,23 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-
+      console.log(req.body)
       await Post.create({
-        title: req.body.title,
+        sequence: req.body.sequence,
+        nameoffood: req.body.nameoffood,
+        description: req.body.description,
+        category: req.body.category,
+        price: req.body.price,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        caption: req.body.caption,
-        likes: 0,
-        user: req.user.id,
+        user: req.user.id
+
+        // title: req.body.title,
+        // image: result.secure_url,
+        // cloudinaryId: result.public_id,
+        // caption: req.body.caption,
+        // likes: 0,
+        // user: req.user.id,
       });
       console.log("Post has been added!");
       res.redirect("/profile");
