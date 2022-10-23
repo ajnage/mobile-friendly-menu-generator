@@ -20,6 +20,8 @@
           <div class="col">Category</div>
           <div class="col">Price</div>
           <div class="col">Picture</div>
+          <div class="col">Edit</div>
+          <div class="col">Delete</div>
         </div>
         
         <!-- to show items that have already been added -->      
@@ -31,9 +33,15 @@
             <div class="col"><%= posts[i].category %></div>
             <div class="col"><%= posts[i].price %></div>
             <div class="col"><img class="profile123-image" src="<%= posts[i].image%>" alt="menu-item"></div>
+            <a class="col" href="/edit/<%= posts[i]._id %>" class="edit">
+            <span class="fas fa-edit"></span>
+            </a>
+            <a class="col" href="/edit/remove/<%= posts[i]._id %>" class="remove">
+            <span class="fas fa-times"></span>
+            </a>
           </div>
         <% } %>
-        </div>
+        
         
         <!-- to submit and create a new menu item -->
         <form action="/post/createPost" enctype="multipart/form-data" method="POST" class="row">
