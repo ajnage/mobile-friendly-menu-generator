@@ -3,9 +3,11 @@
 const express = require('express')
 const router = express.Router()
 const editController = require('../controllers/edit')
+const upload = require("../middleware/multer");
+const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get('/:id', editController.getEdit)
 router.get('/remove/:id', editController.deleteTask)
-router.post('/:id', editController.updateTask)
+router.post('/:id', upload.single("file"), editController.updateTask)
 
 module.exports = router

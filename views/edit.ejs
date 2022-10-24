@@ -1,46 +1,55 @@
-<!DOCTYPE html>
+<%- include('partials/header') -%>
 
-<head>
-    <title>Todo App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style.css">
-</head>
+<h2>Edit Menu Item</h2>
 
-<body>
-    <section class="todo-container">
-        <h2>Edit List Item</h2>
-        <section class="todo">
-            <ul class="todo-list">
-                <% todoTasks.forEach(details=> { %>
-                    <% if (details._id==idTask) { %>
-                        <li class="todo-list-item">
-                            <form action="/edit/<%= details._id %>" method="POST">
-                                <input type="text" value="<%= details.title %>" name="title">
-                                <textarea rows="6" cols="45" name="content"><%= details.content %></textarea>
-                                <button type="submit" class="confirm">Confirm</button>
-                                <a href="/" class="cancel">Cancel</a>
-                            </form>
-                        </li>
-                        <% } else { %>
-                            <li class="todo-list-item">
-                                <div class="todo-list-item-title">
-                                    <%= details.title %>
-                                </div>
-                                <div class="todo-list-item-content">
-                                    <%= details.content %>
-                                </div>
-                                <a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span>
-                                </a>
-                                <a href="/edit/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>
-                                </a>
-                            </li>
-                            <% } %>
-                                <% }) %>
-            </ul>
-        </section>
-    </section>
-</body>
+<section>
+    <!-- headings -->
+    <div class="row">
+        <div class="col">Sequence</div>
+        <div class="col">Name of Food Item</div>
+        <div class="col">Description</div>
+        <div class="col">Category</div>
+        <div class="col">Price</div>
+        <div class="col">Picture</div>
+        <div class="col">Edit</div>
+        <div class="col">Delete</div>
+    </div>
+</section>
+
+
+
+<!-- for editing the item selected -->
+<% Items.forEach(details=> { %>
+    <% if (details._id == idItem) { %>
+        <li class="">
+            <form class="row" action="/edit/<%= details._id %>" method="POST" enctype="multipart/form-data">
+                <input class="col" type="text" value="<%= details.sequence %>" name="sequence">
+                <textarea class="col" name="nameoffood"><%= details.nameoffood %></textarea>
+                <textarea class="col" name="description"><%= details.description %></textarea>
+                <textarea class="col" name="category"><%= details.category %></textarea>
+                <textarea class="col" name="price"><%= details.price %></textarea>
+                <input type="file" class="form-control col" id="imageUpload" name="file">
+                
+                <button type="submit" class="confirm col">Confirm</button>
+                <a href="/" class="cancel col">Cancel</a>
+            </form>
+        </li>
+    <% } else { %>
+        <div class="row">
+            <div class="col"><%= details.sequence %></div>
+            <div class="col"><%= details.nameoffood %></div>
+            <div class="col"><%= details.description %></div>
+            <div class="col"><%= details.category %></div>
+            <div class="col"><%= details.price %></div>
+            <div class="col"><img class="profile123-image" src="<%= details.image%>" alt="menu-item"></div>
+            <a class="col" href="/edit/<%= details._id %>" class="edit">
+            <span class="fas fa-edit"></span>
+            </a>
+            <a class="col" href="/edit/remove/<%= details._id %>" class="remove">
+            <span class="fas fa-times"></span>
+            </a>
+        </div>
+    <% } %>
+<% }) %>
+
+<%- include('partials/footer') -%>

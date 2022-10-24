@@ -1,30 +1,41 @@
-const TodoTask = require('../models/Items')
+const Items = require('../models/Items')
+const cloudinary = require("../middleware/cloudinary"); 
 
 module.exports = {
     getEdit: (req, res) => {
     const id = req.params.id;
-    TodoTask.find({}, (err, tasks) => {
-        res.render("edit.ejs", { todoTasks: tasks, idTask: id });
+    Items.find({}, (err, items) => {
+        res.render("edit.ejs", { Items: items, idItem: id });
     });
 },
     deleteTask: (req, res) => {
         const id = req.params.id;
-        TodoTask.findByIdAndRemove(id, err => {
+        Items.findByIdAndRemove(id, err => {
             if (err) return res.send(500, err);
-            res.redirect("/");
+            res.redirect("/profile");
         });
     },
-    updateTask: (req, res) => {
+    updateTask: async (req, res) => {
         const id = req.params.id;
-        TodoTask.findByIdAndUpdate(
+        const result = await cloudinary.uploader.upload(req.file.path);
+        
+        await Items.findByIdAndUpdate(
             id,
             {
-                // title: req.body.title,
+                sequence: req.body.sequence,
+                nameoffood: req.body.nameoffood,
+                description: req.body.description,
+                category: req.body.category,
+                price: req.body.price,
+                image: result.secure_url,
+                cloudinaryId: result.public_id,
+                user: req.user.id
                 // content: req.body.content
             },
             err => {
                 if (err) return res.status(500).send(err);
-                res.redirect("/");
-            });
+            }
+            );
+        res.redirect("/profile");
     }
 }

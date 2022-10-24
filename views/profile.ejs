@@ -2,13 +2,16 @@
 <div class="container">
   
   <div class="row mt-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
+    <header>
+      <div class="col-6 login">
+        <div>
+            <p><strong>User Name</strong>: <%= user.userName %></p>
+            <p><strong>Email</strong>: <%= user.email %></p>
+            <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+        </div>
       </div>
+    </header>
+    
       <div class="mt-5">
         <h2>Add a menu item</h2>
         
@@ -24,24 +27,25 @@
           <div class="col">Delete</div>
         </div>
         
-        <!-- to show items that have already been added -->      
-        <% for(var i=0; i<posts.length; i++) {%>
-          <div class="row">
-            <div class="col"><%= posts[i].sequence %></div>
-            <div class="col"><%= posts[i].nameoffood %></div>
-            <div class="col"><%= posts[i].description %></div>
-            <div class="col"><%= posts[i].category %></div>
-            <div class="col"><%= posts[i].price %></div>
-            <div class="col"><img class="profile123-image" src="<%= posts[i].image%>" alt="menu-item"></div>
-            <a class="col" href="/edit/<%= posts[i]._id %>" class="edit">
-            <span class="fas fa-edit"></span>
-            </a>
-            <a class="col" href="/edit/remove/<%= posts[i]._id %>" class="remove">
-            <span class="fas fa-times"></span>
-            </a>
-          </div>
-        <% } %>
-        
+        <!-- to show items that have already been added -->
+        <div>
+          <% for(var i=0; i<posts.length; i++) {%>
+            <div class="row">
+              <div class="col"><%= posts[i].sequence %></div>
+              <div class="col"><%= posts[i].nameoffood %></div>
+              <div class="col"><%= posts[i].description %></div>
+              <div class="col"><%= posts[i].category %></div>
+              <div class="col"><%= posts[i].price %></div>
+              <div class="col"><img class="profile123-image" src="<%= posts[i].image%>" alt="menu-item"></div>
+              <a class="col" href="/edit/<%= posts[i]._id %>" class="edit">
+              <span class="fas fa-edit"></span>
+              </a>
+              <a class="col" href="/edit/remove/<%= posts[i]._id %>" class="remove">
+              <span class="fas fa-times"></span>
+              </a>
+            </div>
+          <% } %>
+        </div>      
         
         <!-- to submit and create a new menu item -->
         <form action="/post/createPost" enctype="multipart/form-data" method="POST" class="row">
