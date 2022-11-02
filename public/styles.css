@@ -50,9 +50,14 @@ header {
   scrollbar-width: none;
 }
 
+.header-bottom-menud {
+  overflow-x: scroll;
+  white-space: nowrap
+}
+
 /* to hide scrollbar while enabling scrolling 
   for Chrome, Safari, Edge and Opera*/
-.header-top-menu::-webkit-scrollbar, .header-bottom-menu::-webkit-scrollbar {
+.header-top-menu::-webkit-scrollbar, .header-bottom-menud::-webkit-scrollbar {
   display: none;
 }
 /* to hide scrollbar while enabling scrolling 
@@ -105,10 +110,6 @@ header {
   border-radius: 4px; */
   border-bottom: 3px solid black;
 
-}
-
-.header-spacing {
-  padding: 0px 20px 0px 20px;
 }
 
 .item {
