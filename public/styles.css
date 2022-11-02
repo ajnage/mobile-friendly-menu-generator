@@ -40,7 +40,6 @@ header {
   display: flex;
   flex-direction: row;
   align-items: left;
-  gap: 20px; 
   padding-left: 5px;
   margin-top: 0.3rem;
   font-size: 1rem;
@@ -52,7 +51,10 @@ header {
 
 .header-bottom-menud {
   overflow-x: scroll;
-  white-space: nowrap
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  scrollbar-width: none;
 }
 
 /* to hide scrollbar while enabling scrolling 
