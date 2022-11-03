@@ -11,6 +11,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const editRoutes = require("./routes/edit");
+const categoryRoutes = require("./routes/category")
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -60,6 +61,7 @@ app.use(express.static("assets"));
 app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 app.use("/edit", editRoutes);
+app.use("/category", categoryRoutes)
 
 
 //Server Running

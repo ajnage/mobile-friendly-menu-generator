@@ -31,7 +31,6 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-      console.log(req.body)
       await Post.create({
         sequence: req.body.sequence,
         nameoffood: req.body.nameoffood,

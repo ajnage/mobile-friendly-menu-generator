@@ -204,11 +204,6 @@ header {
   /* border: solid gray 2px; */
 }
 
-/* Formatting for header */
-.login {
-  border: 2px solid black;
-}
-
 /* Formatting on the Profile page where menu info is entered */
 img.profile123-image {
   height: 7vw;
