@@ -220,4 +220,22 @@ img.profile123-image {
 
 .qrImage {
   width: 250px;
+} 
+
+.qrPrintBtn {
+
+  height: 60px;
+  width: 160px;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+
+  
+}
+
+@media print
+{
+    .qrPrintBtn {
+        display: none !important;
+    }
 }
