@@ -31,8 +31,6 @@ header {
   margin-top: 5px;
 }
 
-
-
 .header-top-menu, .header-bottom-menu {
   overflow-x: scroll;
   /* overflow-y: hidden; */
@@ -55,12 +53,12 @@ header {
   scrollbar-width: none;
 }
 
-/* to hide scrollbar while enabling scrolling 
+/* to hide scrollbar while enabling scrolling
   for Chrome, Safari, Edge and Opera*/
 .header-top-menu::-webkit-scrollbar, .header-bottom-menud::-webkit-scrollbar {
   display: none;
 }
-/* to hide scrollbar while enabling scrolling 
+/* to hide scrollbar while enabling scrolling
   for Firefox*/
 .header-top-menu, .header-bottom-menu {
   scrollbar-width: none;
@@ -117,8 +115,7 @@ header {
   /* border: 2px solid blue; */
   display: flex;
   flex-direction: row;
-  
-  
+
 }
 
 .item-left {
@@ -127,7 +124,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+
   border-bottom: 2px solid rgba(119,119,119,0.2);
 }
 
@@ -157,7 +154,6 @@ header {
   white-space: normal;
   overflow: auto;
   text-overflow: ellipsis;
-  
 
 }
 
@@ -210,3 +206,18 @@ img.profile123-image {
   width: 7vw;
 }
 
+.qrImagePage {
+  display: flex;
+  column-gap: 20px;
+  flex-direction: row;
+}
+
+.qrImagePageColumn {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.qrImage {
+  width: 250px;
+}

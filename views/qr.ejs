@@ -5,38 +5,44 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>QR Codes</title>
-
+        <link rel="stylesheet" href="/styles.css" />
     </head>
 
     <body>
 
+        <div class="qrImagePage">
+            <div class="qrImagePageColumn">
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+            </div>
 
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
-        <div class="qrimage"></div>
+            <div class="qrImagePageColumn">
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+            </div>
+
+            <div class="qrImagePageColumn">
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+                <div class="qrimage"></div>
+            </div>
+        </div>
 
         <!-- Retrieves QR Code image to be used in the page. -->
         <script>
             let url = 'https://google.com/';
-            let qrcodeRequest = `https://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=200`;
+            let qrcodeRequest = `https://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=220`;
 
-
-
-
-            for (i=0; i<9; i++) {
+            for (i = 0; i < 12; i++) {
                 let qrImage = new Image();
                 qrImage.src = qrcodeRequest;
                 let qrDOMImage = document.getElementsByClassName('qrimage');
                 qrDOMImage[i].appendChild(qrImage)
-                console.log(qrDOMImage)
-
             }
         </script>
     </body>
