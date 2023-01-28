@@ -1,21 +1,20 @@
 const mongoose = require("mongoose");
 
 const CategorySchema = new mongoose.Schema({
-  sequence: {
-    type: Number,
-    required: true,
-  },
+
+  //category ID is automatically generated
+
   categoryName: {
     type: String,
     require: true,
   },
-  categoryDescription: {
-    type: String,
-    require: true,
+  categorySequence: {
+    type: Number,
+    required: true,
   },
-  user: {
+  restaurantId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Restaurant",
   },
   createdAt: {
     type: Date,

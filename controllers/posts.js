@@ -5,6 +5,7 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
+      console.log(posts)
       let sortedpost = posts.sort((a,b) => (a.sequence > b.sequence ? 1:-1 ))
       res.render("profile.ejs", { posts: sortedpost, user: req.user });
     } catch (err) {
