@@ -221,3 +221,14 @@ img.profile123-image {
 .qrImage {
   width: 250px;
 }
+
+#qrlink {
+  margin-top: 25px;
+}
+
+@media print
+{
+    .qrImagePagePrintButton {
+        display: none !important;
+    }
+}
