@@ -1,5 +1,7 @@
 <%- include('partials/header') -%>
 <div class="container">
+
+
   
   <div class="row mt-5">
     
@@ -78,6 +80,8 @@
       </div>
 
 
+
+
       <!-- <div class="col-6">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
@@ -94,5 +98,16 @@
       </div>   -->
     </div>
   </div>
+  <button id="qrlink" onclick=redirect()>
+    Get Menu QR CODE!
+  </button> 
+  <script>
+    let qrgateway = document.getElementById('qrlink')
+    console.log('here maybe??')
+    const redirect = () => {
+      
+    }
+
+  </script>
 </div>
 <%- include('partials/footer') -%>

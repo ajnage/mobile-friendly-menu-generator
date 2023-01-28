@@ -9,20 +9,35 @@
     </head>
 
     <body>
-        <div id="qrimage"></div>
+
+
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
+        <div class="qrimage"></div>
 
         <!-- Retrieves QR Code image to be used in the page. -->
         <script>
             let url = 'https://google.com/';
-            let qrcodeRequest = `https://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=500`;
+            let qrcodeRequest = `https://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=100`;
 
-            let qrImage = new Image();
-            qrImage.src = qrcodeRequest;
 
-            let qrDOMImage = document.getElementById('qrimage');
-            console.log(qrDOMImage);
-            console.log(qrImage);
-            qrDOMImage.appendChild(qrImage)
+
+
+            for (i=0; i<9; i++) {
+                let qrImage = new Image();
+                qrImage.src = qrcodeRequest;
+                let qrDOMImage = document.getElementsByClassName('qrimage');
+                qrDOMImage[i].appendChild(qrImage)
+                console.log(qrDOMImage)
+
+            }
         </script>
     </body>
 
