@@ -1,31 +1,10 @@
 const mongoose = require("mongoose");
 
 const ItemSchema = new mongoose.Schema({
-  sequence: {
-    type: Number,
-    required: true,
-  },
-  nameoffood: {
-    type: String,
-    require: true,
-  },
-  description: {
-    type: String,
-    require: true,
-  },
-  category: {
-    type: String,
-    require: true,
-  },
-  price: {
-    type: String,
-    require: true,
-  },
-  image: {
-    type: String,
-    require: true,
-  },
-  cloudinaryId: {
+
+  //restaurant id is automatically generated
+
+   restaurantName: {
     type: String,
     require: true,
   },
@@ -39,4 +18,4 @@ const ItemSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Post", ItemSchema);
+module.exports = mongoose.model("Restaurant", ItemSchema);
