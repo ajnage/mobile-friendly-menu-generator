@@ -9,7 +9,7 @@
     </head>
 
     <body>
-
+        <button onClick="printIT()">PRINT</button>
         <div class="qrImagePage">
             <div class="qrImagePageColumn">
                 <div class="qrimage"></div>
@@ -35,6 +35,9 @@
 
         <!-- Retrieves QR Code image to be used in the page. -->
         <script>
+            const printIT = () => {
+                window.print()
+            }
             let url = 'https://google.com/';
             let qrcodeRequest = `https://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=220`;
 
