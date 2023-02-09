@@ -1,22 +1,24 @@
 <%- include('partials/header') -%>
-<div class="container">
+  <div class="container">
 
+    <div class="row mt-5">
 
-  
-  <div class="row mt-5">
-    
       <div class="col-6 login">
         <div>
+          <p><strong>User Name</strong>: <%= user.userName %>
+          </p>
+          <p><strong>Email</strong>: <%= user.email %>
+          </p>
+          <a href="/logout" class="col-3 btn btn-primary">Logout</a>
             <p><strong>User Name</strong>: <%= user.userName %></p>
             <p><strong>Email</strong>: <%= user.email %></p>  
             <a href="/logout" class="col-3 btn btn-primary">Logout</a>
         </div>
       </div>
-    
-    
+
       <div class="mt-5">
         <h2>Add a menu item</h2>
-        
+
         <!-- headings -->
         <div class="row">
           <div class="col">Sequence</div>
@@ -28,32 +30,42 @@
           <div class="col">Edit</div>
           <div class="col">Delete</div>
         </div>
-        
+
         <!-- to show items that have already been added -->
         <div>
           <% for(var i=0; i<posts.length; i++) {%>
             <div class="row">
-              <div class="col"><%= posts[i].sequence %></div>
-              <div class="col"><%= posts[i].nameoffood %></div>
-              <div class="col"><%= posts[i].description %></div>
-              <div class="col"><%= posts[i].category %></div>
-              <div class="col"><%= posts[i].price %></div>
+              <div class="col">
+                <%= posts[i].sequence %>
+              </div>
+              <div class="col">
+                <%= posts[i].nameoffood %>
+              </div>
+              <div class="col">
+                <%= posts[i].description %>
+              </div>
+              <div class="col">
+                <%= posts[i].category %>
+              </div>
+              <div class="col">
+                <%= posts[i].price %>
+              </div>
               <div class="col"><img class="profile123-image" src="<%= posts[i].image%>" alt="menu-item"></div>
               <a class="col" href="/edit/<%= posts[i]._id %>" class="edit">
-              <span class="fas fa-edit"></span>
+                <span class="fas fa-edit"></span>
               </a>
               <a class="col" href="/edit/remove/<%= posts[i]._id %>" class="remove">
-              <span class="fas fa-times"></span>
+                <span class="fas fa-times"></span>
               </a>
             </div>
-          <% } %>
-        </div>      
-        
+            <% } %>
+        </div>
+
         <!-- to submit and create a new menu item -->
         <form action="/post/createPost" enctype="multipart/form-data" method="POST" class="row">
           <div class="col">
-              <label for="sequence" class="form-label"></label>
-              <input type="number" class="form-control" id="sequence" name="sequence">
+            <label for="sequence" class="form-label"></label>
+            <input type="number" class="form-control" id="sequence" name="sequence">
           </div>
           <div class="col">
             <label for="nameoffood" class="form-label"></label>
@@ -78,9 +90,7 @@
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
         </form>
       </div>
-
-
-
+      <button class="btn btn-primary" id="qrlink" onclick="window.location='/qr';">Get Menu QR Code</button>
 
       <!-- <div class="col-6">
         <ul class="row list-unstyled">
@@ -94,20 +104,8 @@
         </ul>
         <div class="row justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
+        </div>
       </div>   -->
     </div>
   </div>
-  <button id="qrlink" onclick=redirect()>
-    Get Menu QR CODE!
-  </button> 
-  <script>
-    let qrgateway = document.getElementById('qrlink')
-    console.log('here maybe??')
-    const redirect = () => {
-
-    }
-
-  </script>
-</div>
-<%- include('partials/footer') -%>
+  <%- include('partials/footer') -%>
