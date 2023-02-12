@@ -2,13 +2,16 @@
   text-align: center;
 }
 
+:root {
+  --accent: coral;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,16 +21,15 @@
   color: white;
 }
 
+
 .App-link {
   color: #61dafb;
 }
 
-.testButton {
-  width: 300px;
-  height: 50px;
-  border-radius: 20px;
-  border: 3px dotted var(--accent);
+.App-intro {
+  color: var(--accent);
 }
+
 
 ::-webkit-scrollbar {
   height: 5px;
@@ -64,21 +66,43 @@
   fill: var(--accent);
 }
 
-.box {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+ul {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background: var(--accent);
+  background-color: antiquewhite;
+}
+
+li {
+  color: var(--background);
+  display: block;
+}
+
+ul,
+li {
+  list-style: none;
   margin: 0;
+  padding: 10px;
+}
+
+.menuContainer {
+  display: flex;
+  padding-right: 80%;
 }
 
 .menu {
-  display: flex;
-  justify-content: center; 
-  background-color: #2d4e90;
-  border-radius: 10% ;
+  height: 10px;
+  background: var(--accent);
+  color: var(--background);
 }
 
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+  height: 60px;
+  width: 200px;
+  border-radius: 8px !important;
+}
 
 
 button {
@@ -129,10 +153,4 @@ input {
 }
 
 
-/* @keyframes App-logo-spin {
-  0%   {background-color:red; left:0px; top:0px;}
-  25%  {background-color:yellow; left:200px; top:0px;}
-  50%  {background-color:blue; left:200px; top:200px;}
-  75%  {background-color:green; left:0px; top:200px;}
-  100% {background-color:red; left:0px; top:0px;}
-} */
+
