@@ -104,7 +104,9 @@ li {
   border-radius: 8px !important;
 }
 
-
+.css-8atqhb {
+  background: beige;
+}
 button {
   background: var(--accent);
   color: var(--background);

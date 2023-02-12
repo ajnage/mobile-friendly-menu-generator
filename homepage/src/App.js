@@ -5,6 +5,8 @@ import { useState } from "react";
 
 import Button from "@mui/material/Button";
 import StickyFooter from "./StickyFooter";
+import SwipeableTemporaryDrawer from "./Drawer";
+import HorizontalNonLinearStepper from "./Stepper";
 
 export function AppButton() {
   return (
@@ -31,6 +33,7 @@ export default function App() {
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
       <div className="App-header">
+        <SwipeableTemporaryDrawer />
         <motion.img
           src={QR}
           className="App-logo"
@@ -50,6 +53,7 @@ export default function App() {
         This menu maker lets restaurant owners save the hassle of creating
         outdated, wasteful, and uninspiring menus
       </p>
+      <HorizontalNonLinearStepper />
       <StickyFooter />
     </div>
   );
