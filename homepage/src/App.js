@@ -6,7 +6,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import StickyFooter from "./StickyFooter";
 
-function AppButton() {
+export function AppButton() {
   return (
     <motion.div
       className="testButton"
