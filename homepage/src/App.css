@@ -22,12 +22,12 @@
 }
 
 
-.App-link {
-  color: #61dafb;
-}
-
 .App-intro {
   color: var(--accent);
+  padding-top: 50px;
+  font-size: xx-large;
+  font-weight: 700;
+
 }
 
 
@@ -64,6 +64,9 @@
 
 .refresh path {
   fill: var(--accent);
+}
+.css-1t6c9ts {
+  margin-left: 200px;
 }
 
 ul {
@@ -102,16 +105,25 @@ li {
   height: 60px;
   width: 200px;
   border-radius: 8px !important;
+  background-color: var(--accent) !important;
 }
 
+
+
 .css-8atqhb {
-  padding-top: 40px ;
+  padding-top: 40px;
+  margin-top: 150px;
   /* padding-left: 10px; */
   background: rgb(255, 152, 114);
   padding-right: 0px !important;
-  margin-left: -6px !important;
-
+  
 }
+
+.MuiBox-root.css-8atqhb {
+  margin-left: 13px !important;
+  width: 99%;
+}
+
 button {
   background: var(--accent);
   color: var(--background);
@@ -160,7 +172,7 @@ input {
 }
 
 .footer {
-  height: 10px;
-  width: 100%;
+  margin-top: 0px !important;
+  min-height: 20vh !important;
 }
 

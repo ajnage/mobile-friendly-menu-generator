@@ -3,9 +3,9 @@ import "./App.css";
 import QR from "./QR.svg";
 import { useState } from "react";
 
+import ResponsiveAppBar from "./AppBarHomepage";
 import Button from "@mui/material/Button";
 import StickyFooter from "./StickyFooter";
-import SwipeableTemporaryDrawer from "./Drawer";
 import HorizontalNonLinearStepper from "./Stepper";
 
 export function AppButton() {
@@ -32,8 +32,9 @@ export default function App() {
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
+      <ResponsiveAppBar />
+
       <div className="App-header">
-        <SwipeableTemporaryDrawer />
         <motion.img
           src={QR}
           className="App-logo"
@@ -50,8 +51,7 @@ export default function App() {
         <AppButton />
       </div>
       <p className="App-intro">
-        This menu maker lets restaurant owners save the hassle of creating
-        outdated, wasteful, and uninspiring menus
+        Our app lets restaurant owners save the hassle of creating menus!
       </p>
       <HorizontalNonLinearStepper />
       <StickyFooter />
