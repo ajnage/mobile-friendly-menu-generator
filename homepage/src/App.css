@@ -62,11 +62,19 @@
   cursor: pointer;
 }
 
+.css-19r6kue-MuiContainer-root {
+  background: var(--accent);
+}
+
 .refresh path {
   fill: var(--accent);
 }
 .css-1t6c9ts {
   margin-left: 200px;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: var(--accent) !important;
+
 }
 
 ul {
