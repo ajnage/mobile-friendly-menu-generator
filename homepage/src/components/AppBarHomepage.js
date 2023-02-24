@@ -41,14 +41,23 @@ function ResponsiveAppBar() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{
+            display: { xs: "none", md: "flex" },
+            mr: 1,
+            ml: 10,
+            pl: 10,
+          }}
+        >
           <Link
             to={`/home`}
             sx={{
               display: { xs: "none", md: "flex" },
-              mr: 1,
-              pl: 1000,
+              mr: 100000,
+              pl: 1,
             }}
+            overflow={"auto"}
           >
             <img
               width={"20%"}
@@ -60,9 +69,9 @@ function ResponsiveAppBar() {
 
           <Box
             sx={{
-              flexGrow: 1,
-              display: { xs: "flex", md: "none" },
+              display: { xs: "flex" },
               outline: 1,
+              ml: -30,
             }}
           >
             <Menu
