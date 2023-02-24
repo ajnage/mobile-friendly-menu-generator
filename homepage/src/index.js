@@ -1,13 +1,54 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import Root from "./routes/root";
+import ErrorPage from "./error-page";
+import SignIn from "./routes/SignIn";
+import Home from "./routes/Home";
+import Pricing from "./routes/Pricing";
+import SupportPage from "./routes/Support";
+import FreeTrialPage from "./routes/FreeTrial";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "sign-in",
+        element: <SignIn />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/support",
+        element: <SupportPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/Free Trial",
+        element: <FreeTrialPage />,
+        errorElement: <ErrorPage />,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

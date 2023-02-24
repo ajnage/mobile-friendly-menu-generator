@@ -13,18 +13,19 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import QR from "../QR.svg";
-import SignIn from "./SignIn";
-
-const pages = ["Sign In", "Pricing", "Support", "Free Trial"];
+import SignIn from "../routes/SignIn";
+import SupportPage from "../routes/Support";
+import { Outlet, Link } from "react-router-dom";
+import { red } from "@mui/material/colors";
+import { color } from "@mui/system";
+import Home from "../routes/Home";
+const pages = ["sign-in", "Pricing", "Support", "Free Trial"];
 const settings = ["Log out", "Dashboard"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  // const handleOpenNavMenu = (event) => {
-  //   setAnchorElNav(event.currentTarget);
-  // };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -37,27 +38,33 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const handleSignInButton = () => {};
-  const handleTrialButton = () => {};
-  const handlePricingButton = () => {};
-  const handleSupportButton = () => {};
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img
-            width={"6%"}
-            height={"auto"}
-            src={QR}
-            alt={"Menu maker app logo"}
+          <Link
+            to={`/home`}
             sx={{
               display: { xs: "none", md: "flex" },
               mr: 1,
-              background: "var(--accent)",
+              pl: 1000,
             }}
-          />
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          >
+            <img
+              width={"20%"}
+              height={"auto"}
+              src={QR}
+              alt={"Menu maker app logo"}
+            />
+          </Link>
+
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              outline: 1,
+            }}
+          >
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -83,7 +90,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -91,7 +97,7 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                <Link to={page}>{page}</Link>
               </Button>
             ))}
           </Box>

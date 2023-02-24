@@ -8,7 +8,7 @@ import ResponsiveAppBar from "../components/AppBarHomepage";
 import Button from "@mui/material/Button";
 import StickyFooter from "../components/StickyFooter";
 import HorizontalNonLinearStepper from "../components/Stepper";
-import SignIn from "../components/SignIn";
+import SignIn from "./SignIn";
 
 const h1style = { color: "white", left: "30px" };
 
@@ -43,7 +43,6 @@ const Home = () => (
       Our app lets restaurant owners save the hassle of creating menus!
     </p>
     <HorizontalNonLinearStepper />
-    <StickyFooter />
   </div>
 );
 
