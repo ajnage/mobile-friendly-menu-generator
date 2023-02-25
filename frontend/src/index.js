@@ -11,8 +11,16 @@ import Home from "./routes/Home";
 import Pricing from "./routes/Pricing";
 import SupportPage from "./routes/Support";
 import FreeTrialPage from "./routes/FreeTrial";
+import MenuBuilder from "./components/MenuBuilder";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const router = createBrowserRouter([
+  {
+    path: "/menu_builder",
+    element: <MenuBuilder />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: "/",
     element: <Root />,
