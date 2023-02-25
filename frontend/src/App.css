@@ -122,8 +122,9 @@ li {
   padding-top: 40px;
   margin-top: 150px;
   /* padding-left: 10px; */
-  background: rgb(255, 152, 114);
   padding-right: 0px !important;
+  background: var(--accent);
+  color: var(--sky) !important;
   
 }
 
@@ -157,30 +158,118 @@ input {
   accent-color: var(--accent);
 }
 
-.controls {
+.supportBody {
+  width: 1200px;
+  margin: auto;
+}
+
+.faq-section {
   display: flex;
   flex-direction: column;
-  padding: 0;
-  padding-bottom: 50px;
   align-items: center;
+  padding: 50px 0;
 }
 
-.item {
-  width: 300px;
-  height: 300px;
+/* Style for the FAQ question container */
+.faq-question {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 70%;
+  margin-bottom: 30px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+/* Style for the FAQ question */
+.faq-question h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Style for the FAQ answer */
+.faq-answer {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #666;
+  line-height: 1.5;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0 20px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #4285f4;
+}
+
+.contact {
+  padding: 50px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.contact form {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  background: var(--accent);
-  color: var(--background);
-  font-size: 240px;
-  line-height: 260px;
-  font-weight: 700;
-  border-radius: 30px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.footer {
-  margin-top: 0px !important;
-  min-height: 20vh !important;
+.contact label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact button {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact button:hover {
+  background-color: #3367d6;
+}
