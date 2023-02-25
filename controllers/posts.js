@@ -5,7 +5,7 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
-      let sortedpost = posts.sort((a,b) => (a.sequence > b.sequence ? 1:-1 ))
+      let sortedpost = posts.sort((a, b) => (a.sequence > b.sequence ? 1 : -1));
       res.render("profile.ejs", { posts: sortedpost, user: req.user });
     } catch (err) {
       console.log(err);
@@ -18,7 +18,7 @@ module.exports = {
   //   } catch (err) {
   //     console.log(err);
   //   }
-  // },
+  //},
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -39,7 +39,7 @@ module.exports = {
         price: req.body.price,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        user: req.user.id
+        user: req.user.id,
 
         // title: req.body.title,
         // image: result.secure_url,
@@ -54,7 +54,7 @@ module.exports = {
       console.log(err);
     }
   },
-  
+
   deletePost: async (req, res) => {
     try {
       // Find post by id
