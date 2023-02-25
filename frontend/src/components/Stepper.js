@@ -5,22 +5,10 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { createTheme } from '@mui/material/styles';
-import { green, purple } from '@mui/material/colors';
-import { ThemeProvider } from "@material-ui/styles";
 
 const steps = ['Make your design', 'Get QR codes', 'Print them'];
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: purple[500],
-    },
-    secondary: {
-      main: green[500],
-    },
-  },
-});
+
 
 export default function HorizontalNonLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -73,7 +61,7 @@ export default function HorizontalNonLinearStepper() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    
       <Box sx={{ width: '100%' }}>
       <Stepper nonLinear activeStep={activeStep}>
         {steps.map((label, index) => (
@@ -130,7 +118,6 @@ export default function HorizontalNonLinearStepper() {
         )}
       </div>
     </Box>
-  </ThemeProvider>
     
   );
 }
