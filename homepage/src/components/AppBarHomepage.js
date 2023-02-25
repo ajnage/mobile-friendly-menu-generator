@@ -51,7 +51,7 @@ function ResponsiveAppBar() {
           }}
         >
           <Link
-            to={`/home`}
+            to={`/`}
             sx={{
               display: { xs: "none", md: "flex" },
               mr: 100000,
