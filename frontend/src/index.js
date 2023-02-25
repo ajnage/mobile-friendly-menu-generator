@@ -11,6 +11,7 @@ import Home from "./routes/Home";
 import Pricing from "./routes/Pricing";
 import SupportPage from "./routes/Support";
 import FreeTrialPage from "./routes/FreeTrial";
+import { AddItem, ListItems, Root as ItemRoot, SingleItem, EditItem } from "./routes/items";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,33 @@ const router = createBrowserRouter([
         element: <FreeTrialPage />,
         errorElement: <ErrorPage />,
       },
+      {
+        path: "/items",
+        element: <ItemRoot />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: "/items",
+            element: <ListItems />,
+            errorElement: <ErrorPage />
+          }, 
+          {
+            path: "/items/add",
+            element: <AddItem />,
+            errorElement: <ErrorPage />
+          },
+          {
+            path: "/items/item/:name",
+            element: <SingleItem />,
+            errorElement: <ErrorPage />
+          },
+          {
+            path: "/items/edit/:name",
+            element: <EditItem />,
+            errorElement: <ErrorPage />
+          }
+        ]
+      }
     ],
   },
 ]);

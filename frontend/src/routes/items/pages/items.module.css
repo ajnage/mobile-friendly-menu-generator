@@ -1,0 +1,12 @@
+.form {
+  background-color: #fff;
+  width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.form .col {
+  display: flex;
+  justify-content: space-between;
+}
