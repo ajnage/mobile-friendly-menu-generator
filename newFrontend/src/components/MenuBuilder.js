@@ -75,27 +75,9 @@ function MenuBuilder() {
                     <SubCategoryCard title="Pasta" image="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg" />
        
                 </Row>
-
             </div>
-
         </ div>
     )
 }
 
 export default MenuBuilder
-
-
-                    {/* <Col
-                        className=''
-                        style={{
-                            backgroundImage: "url(https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80)"
-                            ,height: "25vh"
-                        }}
-                    >   
-                    </Col> */}
-
-
-                    // <div class="parent">
-                    //     <img class="image1" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80" />
-                    //     <img class="image2" src="https://c8.alamy.com/comp/2GRX8GC/chef-avatar-cook-man-working-restaurant-services-profile-user-person-people-icon-vector-illustration-2GRX8GC.jpg" />
-                    // </div>
