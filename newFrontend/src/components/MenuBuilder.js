@@ -1,6 +1,7 @@
 import React from 'react'
 
 import CategoryCards from './CategoryCards';
+import SubCategoryCard from './SubCategoryCard';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -36,7 +37,7 @@ function MenuBuilder() {
                 </div>
             </div>
             
-            <div className='container bg-danger h-100'>
+            <div className='container bg-danger' style={{height: "1500vh"}}>
                 <Row className=''>
                     <h2>Categories</h2>
                 </Row>
@@ -59,104 +60,23 @@ function MenuBuilder() {
                     <h2>Select Menu</h2>
                 </Row>
 
-                <Row lg={5}>
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-                    <Col>
-                        <Card
-                            className=" rounded-5"
-                        >
-                
-                            <Card.Body className=' mx-auto'><h4 className=' fw-bold fs-5'>All Menu</h4></Card.Body>
-
-                        </Card>
-                    </Col>
-
-
-                    
-
-
+                <Row lg={5} className=' px-4'>
+                    <SubCategoryCard title="Burger" image="https://assets.bonappetit.com/photos/57aceacc1b3340441497532d/1:1/w_2560%2Cc_limit/double-rl-ranch-burger.jpg" />
+                    <SubCategoryCard title="Pizza" image="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F07%2F10%2Fpepperoni-pizza-ck-x.jpg&q=60" />
+                    <SubCategoryCard title="Pasta" image="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg" />
+                    <SubCategoryCard title="Burger" image="https://assets.bonappetit.com/photos/57aceacc1b3340441497532d/1:1/w_2560%2Cc_limit/double-rl-ranch-burger.jpg" />
+                    <SubCategoryCard title="Pizza" image="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F07%2F10%2Fpepperoni-pizza-ck-x.jpg&q=60" />
+                    <SubCategoryCard title="Pasta" image="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg" />
+                    <SubCategoryCard title="Burger" image="https://assets.bonappetit.com/photos/57aceacc1b3340441497532d/1:1/w_2560%2Cc_limit/double-rl-ranch-burger.jpg" />
+                    <SubCategoryCard title="Pizza" image="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F07%2F10%2Fpepperoni-pizza-ck-x.jpg&q=60" />
+                    <SubCategoryCard title="Pasta" image="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg" />
+                    <SubCategoryCard title="Burger" image="https://assets.bonappetit.com/photos/57aceacc1b3340441497532d/1:1/w_2560%2Cc_limit/double-rl-ranch-burger.jpg" />
+                    <SubCategoryCard title="Pizza" image="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F07%2F10%2Fpepperoni-pizza-ck-x.jpg&q=60" />
+                    <SubCategoryCard title="Pasta" image="https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg" />
+       
                 </Row>
 
-
-                
-                            
             </div>
-
-
-
-
-
-
-
 
         </ div>
     )
