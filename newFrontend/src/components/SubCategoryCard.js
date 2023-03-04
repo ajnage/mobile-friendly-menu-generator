@@ -12,7 +12,7 @@ function SubCategoryCard(props) {
                 <Card.Img variant="top" src={props.image} alt="Card image" />
                 <Card.Body style={{ height: '40%' }}>
                     <Card.Title>{props.title}</Card.Title>
-                    <Card.Text>This is a sample description for the card.</Card.Text>
+                    <Card.Text>{props.description}</Card.Text>
                 </Card.Body>
             </Card>
         </Col>
