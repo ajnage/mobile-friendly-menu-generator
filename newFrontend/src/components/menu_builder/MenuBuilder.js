@@ -84,7 +84,7 @@ function MenuBuilder() {
                     })}
                 </div>
                 
-                <div className='mt-4 d-flex'>
+                <div className='my-4 d-flex'>
                     <h2 className=' pe-3'>Menu</h2>
                     <InsertSubCategory handelInsertNewSubCategory={handelInsertNewSubCategory} />
                 </div>
