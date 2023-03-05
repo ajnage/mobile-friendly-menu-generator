@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 function EditCategoryForm(props) {
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState(props.title)
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
@@ -73,7 +73,7 @@ function EditCategoryForm(props) {
                 className=' btn btn-dark' 
                 form='editModal'
                 onClick={(e) => {
-                  console.log("hello from when submit edit category:", "Title: ", title, " - ID: ", props.id)
+                  handleClose();
                   e.preventDefault();
                   props.updateCategoryForm(props.id, title);
                 }}
