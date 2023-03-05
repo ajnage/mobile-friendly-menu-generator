@@ -70,7 +70,6 @@ function MenuBuilder() {
     };
 
     const submitCategoryForm = () => {
-        console.log("Category Form Submmitted");
         handelCloseCategoryForm();
 
     }
@@ -81,13 +80,20 @@ function MenuBuilder() {
                 return {...category, title: newTitle}
             }
             return category;
-            
-            
         });
         setCategories(updatedCategories);
     }
 
+    const handelInsertNewCategory = (id, newTitle) => {
+        const newCategory = { id: id, title: newTitle}
+        setCategories([...categories, newCategory])
+    }
 
+    const handleDelete = (categoryId) => {
+        console.log("DELETE");
+        setCategories(categories.filter((category) => category.id !== categoryId));
+    };
+    
     return (
         <div className=' h-100'>
 
@@ -122,29 +128,28 @@ function MenuBuilder() {
                 <div className="d-flex px-4 overflow-auto flex-nowrap w-100 py-3">
                     
                     <Button 
-                        className=' bg-light m-2 rounded-4 d-flex border-0 shadow '
-                        style={{ flex: "0 0 auto", width: "8rem", height: "8rem" }} 
+                        className=' my-auto  border border-2 btn-light'
                         onClick={handleShowCategoryForm}
                         >
-                        <h4 className=' text-center text-black display-1 fw-lighter mx-auto'>+</h4>
+                        +
                     </Button>
-
                     {showCategoryForm && (
                         <InsertCategory 
                             onCancel={handelCloseCategoryForm} 
                             onSubmit={submitCategoryForm} 
-                            showCategoryForm={showCategoryForm} />
+                            showCategoryForm={showCategoryForm}
+                            handelInsertNewCategory={handelInsertNewCategory}
+                            />
                     )}
-
-
-
                     
                     {categories.map( (category) => {
                         return <CategoryCards 
                                     key={category.id}
                                     id={category.id}
                                     title={category.title} 
-                                    updateCategoryForm={updateCategoryForm}/>
+                                    updateCategoryForm={updateCategoryForm}
+                                    handleDelete={handleDelete}
+                                />
                     })}
                 </div>
                 
