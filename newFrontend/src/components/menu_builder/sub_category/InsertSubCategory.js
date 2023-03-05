@@ -26,63 +26,63 @@ function InsertSubCategory(props) {
         setImgURL(e.target.value);
     }
     return (
-        <>
-            <Button 
-                onClick={handleFormShow}
-                className='border border-2 btn-light'
-                >
-                +
+      <>
+        <Button 
+            onClick={handleFormShow}
+            className='border border-2 btn-light'
+            >
+            +
+        </Button>
+
+        <Modal
+          show={showForm}
+          onHide={handleFormClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Edit the Sub-Category</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <Form id="editModal">
+              <Form.Group className="mb-3 d-flex justify-content-start" controlId="formTitle">
+                <Form.Label className='  text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3'>Title</Form.Label>
+                <Form.Control onChange={handelTitleChange} value={title}  type="title" placeholder="title" className=' form-control w-75' />
+              </Form.Group> 
+
+              <Form.Group className="mb-3 d-flex justify-content-start" controlId="formTitle">
+                <Form.Label className=' text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3'>Description</Form.Label>
+                <Form.Control onChange={handelDescriptionChange} value={description} type="text" placeholder="description" className=' form-control w-75' />
+              </Form.Group> 
+
+              <Form.Group className="mb-3 d-flex justify-content-start" controlId="formTitle">
+                <Form.Label className=' text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3'>Img URL</Form.Label>
+                <Form.Control onChange={handelImgURLChange} value={ImgURL} type="url" placeholder="ImgURL" className=' form-control w-75' />
+              </Form.Group> 
+            </Form>
+
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleFormClose}>
+              Close
             </Button>
 
-            <Modal
-        show={showForm}
-        onHide={handleFormClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Edit the Sub-Category</Modal.Title>
-        </Modal.Header>
+            <Button
+              form='editModal'
+              className=' btn btn-primary'
+              onClick={(e) => {
+                e.preventDefault();
+                props.handelInsertNewSubCategory(props.id, title, description, ImgURL)
+              }}
+            >
+              Update
+            </Button>
 
-        <Modal.Body>
-          <Form id="editModal">
-            <Form.Group className="mb-3 d-flex justify-content-start" controlId="formTitle">
-              <Form.Label className='  text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3'>Title</Form.Label>
-              <Form.Control onChange={handelTitleChange} value={title}  type="title" placeholder="title" className=' form-control w-75' />
-            </Form.Group> 
-
-            <Form.Group className="mb-3 d-flex justify-content-start" controlId="formTitle">
-              <Form.Label className=' text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3'>Description</Form.Label>
-              <Form.Control onChange={handelDescriptionChange} value={description} type="text" placeholder="description" className=' form-control w-75' />
-            </Form.Group> 
-
-            <Form.Group className="mb-3 d-flex justify-content-start" controlId="formTitle">
-              <Form.Label className=' text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3'>Img URL</Form.Label>
-              <Form.Control onChange={handelImgURLChange} value={ImgURL} type="url" placeholder="ImgURL" className=' form-control w-75' />
-            </Form.Group> 
-          </Form>
-
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleFormClose}>
-            Close
-          </Button>
-
-          <Button
-            form='editModal'
-            className=' btn btn-primary'
-            onClick={(e) => {
-              e.preventDefault();
-              props.handelInsertNewSubCategory(props.id, title, description, ImgURL)
-            }}
-          >
-            Update
-          </Button>
-
-        </Modal.Footer>
-      </Modal>      
-        </>
+          </Modal.Footer>
+        </Modal>      
+      </>
     )
 }
 

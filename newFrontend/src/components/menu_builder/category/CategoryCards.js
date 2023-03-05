@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/esm/Button';
 import EditCategoryForm from './EditCategoryForm';
 
 function CategoryCards(props) {
