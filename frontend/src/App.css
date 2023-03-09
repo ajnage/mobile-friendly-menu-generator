@@ -62,9 +62,7 @@
   cursor: pointer;
 }
 
-.css-19r6kue-MuiContainer-root {
-  background: var(--accent);
-}
+
 
 .refresh path {
   fill: var(--accent);
@@ -72,10 +70,7 @@
 .css-1t6c9ts {
   margin-left: 200px;
 }
-.css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  background-color: var(--accent) !important;
 
-}
 
 ul {
   padding-top: 100px;
@@ -109,24 +104,14 @@ li {
   color: var(--background);
 }
 
-.css-sghohy-MuiButtonBase-root-MuiButton-root {
+/* .css-sghohy-MuiButtonBase-root-MuiButton-root {
   height: 60px;
   width: 200px;
   border-radius: 8px !important;
   background-color: var(--accent) !important;
-}
+} */
 
 
-
-.css-8atqhb {
-  padding-top: 40px;
-  margin-top: 150px;
-  /* padding-left: 10px; */
-  padding-right: 0px !important;
-  background: var(--accent);
-  color: var(--sky) !important;
-  
-}
 
 .MuiBox-root.css-8atqhb {
   margin-left: 13px !important;

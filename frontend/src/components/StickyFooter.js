@@ -4,6 +4,18 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#00ccff",
+    },
+    secondary: {
+      main: "#FFFFFF",
+    },
+  },
+});
 
 function Copyright() {
   return (
@@ -20,30 +32,33 @@ function Copyright() {
 
 export default function StickyFooter() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }} className="footer"
-    >
+    <ThemeProvider theme={theme}>
       <Box
-        component="footer"
         sx={{
-          py: 3,
-          px: 2,
-          mt: "auto",
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
         }}
+        className="footer"
       >
-        <Container maxWidth="sm">
-          <Typography variant="body1">Say no to old methods</Typography>
-          <Copyright />
-        </Container>
+        <Box
+          component="footer"
+          sx={{
+            py: 3,
+            px: 2,
+            mt: "auto",
+            backgroundColor: (theme) =>
+              theme.palette.mode === "dark"
+                ? theme.palette.grey[200]
+                : theme.palette.grey[800],
+          }}
+        >
+          <Container maxWidth="sm">
+            <Typography variant="body1">Say no to old methods</Typography>
+            <Copyright />
+          </Container>
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }

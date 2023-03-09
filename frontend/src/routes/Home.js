@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import StickyFooter from "../components/StickyFooter";
 import HorizontalNonLinearStepper from "../components/Stepper";
 import SignIn from "./SignIn";
+import { Typography } from "@mui/material";
 
 const h1style = { color: "white", left: "30px" };
 
@@ -36,12 +37,25 @@ const Home = () => (
           ease: [0, 0.71, 0.2, 1.01],
         }}
       />
-      <h1 style={h1style}>Welcome to the menu-maker app!</h1>
+      <Typography
+        variant="h1"
+        sx={{
+          pb: 10,
+        }}
+      >
+        Welcome to the menu-maker app!
+      </Typography>
       <AppButton />
     </div>
-    <p className="App-intro">
+    <Typography
+      variant="h2"
+      sx={{
+        p: 10,
+        pb: 20,
+      }}
+    >
       Our app lets restaurant owners save the hassle of creating menus!
-    </p>
+    </Typography>
     <HorizontalNonLinearStepper />
   </div>
 );

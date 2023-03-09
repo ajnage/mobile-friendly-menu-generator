@@ -12,20 +12,56 @@ import { Outlet, Link } from "react-router-dom";
 import StickyFooter from "../components/StickyFooter";
 import { AppBar } from "@mui/material";
 
-import { createTheme } from "@mui/material/styles";
-import { green, purple } from "@mui/material/colors";
-import { ThemeProvider } from "@material-ui/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: '#00ccff',
     },
     secondary: {
-      main: green[500],
-    },
+      main: '#FFFFFF'
+    }
   },
-});
+  typography: {
+    subtitle1: {
+      fontSize: 12,
+    },
+    body1: {
+      color: '#FFFFFF',
+    },
+    body2: {
+      color: '#FFFFFF',
+    },
+    h1: {
+      color: '#FFFFFF'
+    },
+    h2: {
+      color: '#FFFFFF'
+    },
+    h3: {
+      color: '#FFFFFF'
+    },
+    h4: {
+      color: '#FFFFFF'
+    },
+    h5: {
+      color: '#FFFFFF'
+    },
+    h6: {
+      color: '#FFFFFF'
+    },
+    overline: {
+      color: '#FFFFFF'
+    },
+    caption: {
+      color: '#FFFFFF'
+    },
+    p: {
+      color: '#FFFFFF'
+    }
+  }
+})
 
 export default function Root() {
   return (
