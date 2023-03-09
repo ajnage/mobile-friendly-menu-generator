@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './components/Home';
-import MenuBuilder from './components/MenuBuilder';
+import MenuBuilder from './components/menu_builder/MenuBuilder';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';

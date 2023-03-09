@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header';
-import MenuBuilder from './MenuBuilder';
+import MenuBuilder from './menu_builder/MenuBuilder';
 
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
