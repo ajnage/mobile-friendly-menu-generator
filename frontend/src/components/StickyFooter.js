@@ -37,9 +37,11 @@ export default function StickyFooter() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          minHeight: "100vh",
+          minHeight: "10vh",
+          mb: "100vh",
         }}
         className="footer"
+        bgcolor="primary.dark"
       >
         <Box
           component="footer"

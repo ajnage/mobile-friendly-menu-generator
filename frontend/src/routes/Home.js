@@ -14,50 +14,52 @@ import { Typography } from "@mui/material";
 const h1style = { color: "white", left: "30px" };
 
 const Home = () => (
-  <div className="App">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-
-    <div className="App-header">
-      <motion.img
-        src={QR}
-        className="App-logo"
-        alt="logo"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          duration: 2,
-          delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01],
-        }}
+  <Typography bgcolor="primary.background">
+    <div className="App">
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
+
+      <div className="App-header">
+        <motion.img
+          src={QR}
+          className="App-logo"
+          alt="logo"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 2,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        />
+        <Typography
+          variant="h1"
+          sx={{
+            pb: 10,
+          }}
+        >
+          Welcome to the menu-maker app!
+        </Typography>
+        <AppButton />
+      </div>
       <Typography
-        variant="h1"
+        variant="h2"
         sx={{
-          pb: 10,
+          p: 10,
+          pb: 20,
         }}
       >
-        Welcome to the menu-maker app!
+        Our app lets restaurant owners save the hassle of creating menus!
       </Typography>
-      <AppButton />
+      <HorizontalNonLinearStepper />
     </div>
-    <Typography
-      variant="h2"
-      sx={{
-        p: 10,
-        pb: 20,
-      }}
-    >
-      Our app lets restaurant owners save the hassle of creating menus!
-    </Typography>
-    <HorizontalNonLinearStepper />
-  </div>
+  </Typography>
 );
 
 export default Home;

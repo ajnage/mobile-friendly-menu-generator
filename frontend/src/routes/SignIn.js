@@ -11,9 +11,6 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const theme = createTheme();
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -26,21 +23,20 @@ export default function SignIn() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <Typography bgcolor="primary.grey">
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
+        <CssBaseline bgcolor="primary.main" />
         <Box
           sx={{
-            marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" color="primary.main">
             Sign in
           </Typography>
           <Box
@@ -49,16 +45,20 @@ export default function SignIn() {
             noValidate
             sx={{ mt: 1 }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
+            <Typography variant="h1" color="secondary.main">
+              {" "}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+            </Typography>
+
             <TextField
               margin="normal"
               required
@@ -96,6 +96,6 @@ export default function SignIn() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+    </Typography>
   );
 }

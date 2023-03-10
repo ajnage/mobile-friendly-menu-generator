@@ -1,15 +1,12 @@
 body {
-   background: #191818 !important; 
-  --background: #999 !important;
   margin: 0;
   padding: 0;
-  color: white !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --black: #000000;
   --ash-black: #222;
   /* --white: #fafafa; */
-  --sky: #00ccff;
+  /* --sky: #00ccff;
   --green: #22dddd;
   --blue: #1300ff;
   --dusk: #6600ff;
@@ -17,7 +14,7 @@ body {
   --pink: #c4004f;
   --red: #fe0222;
   --orange: #fd7702;
-  --yellow: #ffbb00;
+  --yellow: #ffbb00; */
 
 }
 

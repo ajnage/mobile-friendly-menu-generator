@@ -17,7 +17,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
+      background: "#191818",
       main: '#00ccff',
+      verydark: '#222',
+      grey: '#808080'
     },
     secondary: {
       main: '#FFFFFF'
@@ -34,6 +37,7 @@ const theme = createTheme({
       color: '#FFFFFF',
     },
     h1: {
+      fontSize: 100,
       color: '#FFFFFF'
     },
     h2: {
@@ -69,6 +73,7 @@ export default function Root() {
       <ThemeProvider theme={theme}>
         {" "}
         <ResponsiveAppBar />
+        
         <div id="detail">
           <Outlet />
         </div>
