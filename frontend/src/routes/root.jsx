@@ -11,6 +11,7 @@ import ErrorPage from "../error-page";
 import { Outlet, Link } from "react-router-dom";
 import StickyFooter from "../components/StickyFooter";
 import { AppBar } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -85,6 +86,7 @@ export default function Root() {
   return (
     <>
       <ThemeProvider theme={theme} >
+        <Typography bgcolor="primary.grey">
         {" "}
         <ResponsiveAppBar />
         
@@ -92,6 +94,7 @@ export default function Root() {
           <Outlet />
         </div>
         <StickyFooter />
+        </Typography>
       </ThemeProvider>
     </>
   );
