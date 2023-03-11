@@ -37,8 +37,7 @@ export default function StickyFooter() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          minHeight: "10vh",
-          mb: "100vh",
+          minHeight: "8vh",
         }}
         className="footer"
         bgcolor="primary.dark"
@@ -48,7 +47,7 @@ export default function StickyFooter() {
           sx={{
             py: 3,
             px: 2,
-            mt: "auto",
+            // mt: "auto",
             backgroundColor: (theme) =>
               theme.palette.mode === "dark"
                 ? theme.palette.grey[200]

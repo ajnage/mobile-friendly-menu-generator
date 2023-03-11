@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  margin-bottom: 0 !important;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -18,6 +19,7 @@ body {
 
 }
 
+
 :root {
   color: var(--sky);
   --primary-color: #333333;
@@ -28,8 +30,8 @@ body {
   --border-color: #999999;
 } 
 
-/* This is to troubleshoot spacing issues */
-/* * {
+/* This is to troubleshoot spacing issues
+* {
   outline: 1px solid red;
 }  */
 

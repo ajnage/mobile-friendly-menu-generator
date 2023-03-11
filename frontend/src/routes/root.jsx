@@ -26,6 +26,20 @@ const theme = createTheme({
       main: '#FFFFFF'
     }
   },
+  components: {
+    MuiContainer: {
+      defaultProps: {
+        mode: 'dark'
+      },
+      styleOverrides: {
+        primary: {
+          root: {
+            backgroundColor: '#808080'
+          }
+        }
+      }
+    },
+  },
   typography: {
     subtitle1: {
       fontSize: 12,
@@ -70,7 +84,7 @@ const theme = createTheme({
 export default function Root() {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme} >
         {" "}
         <ResponsiveAppBar />
         

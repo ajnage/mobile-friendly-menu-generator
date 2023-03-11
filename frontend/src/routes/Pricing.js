@@ -24,8 +24,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link to={`/`} color="inherit">
+        QRMenu
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -38,13 +38,13 @@ const tiers = [
     title: "Free",
     price: "0",
     description: [
-      "10 users included",
-      "2 GB of storage",
+      "1 user",
+      "3 Menu Templates",
       "Help center access",
       "Email support",
     ],
     buttonText: "Sign up for free",
-    buttonVariant: "outlined",
+    buttonVariant: "contained",
   },
   {
     title: "Pro",
@@ -52,7 +52,7 @@ const tiers = [
     price: "15",
     description: [
       "20 users included",
-      "10 GB of storage",
+      "100 Menu Templates",
       "Help center access",
       "Priority email support",
     ],
@@ -64,38 +64,27 @@ const tiers = [
     price: "30",
     description: [
       "50 users included",
-      "30 GB of storage",
+      "Unlimited Menu Templates",
       "Help center access",
       "Phone & email support",
     ],
     buttonText: "Contact us",
-    buttonVariant: "outlined",
+    buttonVariant: "contained",
   },
 ];
 
 const footers = [
   {
     title: "Company",
-    description: ["Team", "History", "Contact us", "Locations"],
+    description: ["Team", "History", "Contact us"],
   },
   {
     title: "Features",
-    description: [
-      "Cool stuff",
-      "Random feature",
-      "Team feature",
-      "Developer stuff",
-      "Another one",
-    ],
+    description: ["QR Codes!", "Future Projects", "Developer stuff"],
   },
   {
     title: "Resources",
-    description: [
-      "Resource",
-      "Resource name",
-      "Another resource",
-      "Final resource",
-    ],
+    description: ["Documentation", "Demo", "Support"],
   },
   {
     title: "Legal",
@@ -106,180 +95,150 @@ const footers = [
 function PricingContent() {
   return (
     <React.Fragment>
-      <GlobalStyles
-        styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
-      />
-      <CssBaseline />
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-      >
-        <Toolbar sx={{ flexWrap: "wrap" }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Company name
+      <Typography bgcolor="primary.grey">
+        <GlobalStyles
+          styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
+        />
+        <CssBaseline />
+        <AppBar
+          position="static"
+          color="default"
+          elevation={0}
+          sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
+        ></AppBar>
+        {/* Hero unit */}
+        <Container
+          disableGutters
+          maxWidth="sm"
+          component="main"
+          sx={{ pt: 8, pb: 6 }}
+        >
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="text.primary"
+            gutterBottom
+          >
+            Pricing
           </Typography>
-          <nav>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Features
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Enterprise
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Support
-            </Link>
-          </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>
-      {/* Hero unit */}
-      <Container
-        disableGutters
-        maxWidth="sm"
-        component="main"
-        sx={{ pt: 8, pb: 6 }}
-      >
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        >
-          Pricing
-        </Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Quickly build an effective pricing table for your potential customers
-          with this layout. It&apos;s built with default MUI components with
-          little customization.
-        </Typography>
-      </Container>
-      {/* End hero unit */}
-      <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid
-              item
-              key={tier.title}
-              xs={12}
-              sm={tier.title === "Enterprise" ? 12 : 6}
-              md={4}
-            >
-              <Card>
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: "center" }}
-                  action={tier.title === "Pro" ? <StarIcon /> : null}
-                  subheaderTypographyProps={{
-                    align: "center",
-                  }}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === "light"
-                        ? theme.palette.grey[200]
-                        : theme.palette.grey[700],
-                  }}
-                />
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "baseline",
-                      mb: 2,
+          <Typography
+            variant="h5"
+            align="center"
+            color="text.primary"
+            component="p"
+          >
+            Purchase the right restaurant builder plan for you!
+          </Typography>
+        </Container>
+        {/* End hero unit */}
+        <Container maxWidth="md" component="main">
+          <Grid
+            container
+            spacing={5}
+            alignItems="flex-end"
+            color="text.primary"
+          >
+            {tiers.map((tier) => (
+              // Enterprise card is full width at sm breakpoint
+              <Grid
+                item
+                key={tier.title}
+                xs={12}
+                sm={tier.title === "Enterprise" ? 12 : 6}
+                md={4}
+              >
+                <Card variant="outlined">
+                  <CardHeader
+                    title={tier.title}
+                    subheader={tier.subheader}
+                    titleTypographyProps={{ align: "center" }}
+                    action={tier.title === "Pro" ? <StarIcon /> : null}
+                    subheaderTypographyProps={{
+                      align: "center",
                     }}
-                  >
-                    <Typography
-                      component="h2"
-                      variant="h3"
-                      color="text.primary"
+                    sx={{
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === "dark"
+                          ? theme.palette.grey[200]
+                          : theme.palette.grey[700],
+                    }}
+                  />
+                  <CardContent>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "baseline",
+                        mb: 2,
+                      }}
                     >
-                      ${tier.price}
-                    </Typography>
-                    <Typography variant="h6" color="text.secondary">
-                      /mo
-                    </Typography>
-                  </Box>
-                  <ul>
-                    {tier.description.map((line) => (
                       <Typography
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        key={line}
+                        component="h2"
+                        variant="h3"
+                        color="text.primary"
                       >
-                        {line}
+                        ${tier.price}
                       </Typography>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant}>
-                    {tier.buttonText}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-      {/* Footer */}
-      <Container
-        maxWidth="md"
-        component="footer"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
-        }}
-      >
-        <Grid container spacing={4} justifyContent="space-evenly">
-          {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="text.primary" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-      {/* End footer */}
+                      <Typography variant="h6" color="text.secondary">
+                        /mo
+                      </Typography>
+                    </Box>
+                    <ul>
+                      {tier.description.map((line) => (
+                        <Typography
+                          component="li"
+                          variant=""
+                          align="center"
+                          key={line}
+                        >
+                          {line}
+                        </Typography>
+                      ))}
+                    </ul>
+                  </CardContent>
+                  <CardActions>
+                    <Button fullWidth variant={tier.buttonVariant}>
+                      {tier.buttonText}
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        {/* Footer */}
+        <Container
+          maxWidth="md"
+          component="footer"
+          sx={{
+            borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+            mt: 8,
+            py: [3, 6],
+          }}
+        >
+          <Grid container spacing={4} justifyContent="space-evenly">
+            {footers.map((footer) => (
+              <Grid item xs={6} sm={3} key={footer.title}>
+                <Typography variant="h6" color="text.primary" gutterBottom>
+                  {footer.title}
+                </Typography>
+                <ul>
+                  {footer.description.map((item) => (
+                    <li key={item}>
+                      <Link href="#" variant="subtitle1" color="text.secondary">
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Grid>
+            ))}
+          </Grid>
+          <Copyright sx={{ mt: 5 }} />
+        </Container>
+        {/* End footer */}
+      </Typography>
     </React.Fragment>
   );
 }
