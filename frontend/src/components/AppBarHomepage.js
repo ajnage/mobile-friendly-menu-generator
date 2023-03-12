@@ -54,7 +54,6 @@ function ResponsiveAppBar() {
             to={`/`}
             sx={{
               display: { xs: "none", md: "flex" },
-              mr: 100000,
               pl: 1,
             }}
             overflow={"auto"}

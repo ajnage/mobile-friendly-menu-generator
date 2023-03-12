@@ -12,8 +12,8 @@ import Pricing from "./routes/Pricing";
 import SupportPage from "./routes/Support";
 import FreeTrialPage from "./routes/FreeTrial";
 import MenuBuilder from "./components/MenuBuilder";
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.js';
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 
 const router = createBrowserRouter([
   {
