@@ -3,11 +3,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
-
+import menuexampleinpng from "../menuexampleinpng.png";
 import { Description, Support } from "@mui/icons-material";
 import ErrorPage from "../error-page";
 import { Outlet, Link } from "react-router-dom";
-import { Card, CardHeader, CardMedia, Container, Paper, CardContent } from "@mui/material";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  Container,
+  Paper,
+  CardContent,
+} from "@mui/material";
 import { Box } from "@mui/material";
 import { display } from "@mui/system";
 import Button from "@mui/material/Button";
@@ -35,7 +42,12 @@ export default function FreeTrialPage() {
   return (
     <React.Fragment>
       <Container
-        sx={{ bgcolor: "primary.grey", height: "100vh", width: "100" }}
+        sx={{
+          bgcolor: "primary.grey",
+          height: "100vh",
+          width: "100",
+          mb: -80,
+        }}
       >
         {" "}
         <Typography
@@ -94,17 +106,39 @@ export default function FreeTrialPage() {
           display: "flex",
         }}
       >
-        <Typography variant="h1">
-          <CardHeader> Give our app a try!</CardHeader>
-        </Typography>
-        <CardMedia></CardMedia>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            ml: 20,
+            pl: 10,
+          }}
+        >
+          <Typography variant="h1" sx={{ pb: 10 }}>
+            Give our App a Try
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{
+              width: "80%",
+              height: "8vh",
+              bgcolor: "primary.grey",
+              color: "secondary.main",
+            }}
+          >
+            Take Me To IT!
+          </Button>
+        </Box>
+        <CardMedia
+          component="img"
+          src={menuexampleinpng}
+          alt="Menu Example"
+          height="90%"
+        />{" "}
         <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
-        </Typography>
-      </CardContent>
+          <Typography variant="body2" color="text.secondary"></Typography>
+        </CardContent>
       </Card>
     </React.Fragment>
   );

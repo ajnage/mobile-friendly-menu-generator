@@ -5,6 +5,7 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  color: white !important;
 }
 
 .App-header {
@@ -17,7 +18,6 @@
   color: white;
 }
 
-
 .App-intro {
   color: var(--accent);
   padding-top: 50px;
@@ -25,7 +25,6 @@
   font-weight: 700;
 
 }
-
 
 ::-webkit-scrollbar {
   height: 5px;
@@ -58,15 +57,13 @@
   cursor: pointer;
 }
 
-
-
 .refresh path {
   fill: var(--accent);
 }
+
 .css-1t6c9ts {
   margin-left: 200px;
 }
-
 
 ul {
   padding-top: 100px;
@@ -106,8 +103,6 @@ li {
   border-radius: 8px !important;
   background-color: var(--accent) !important;
 }
-
-
 
 .MuiBox-root.css-8atqhb {
   margin-left: 13px !important;
@@ -180,6 +175,7 @@ input {
   color: #666;
   line-height: 1.5;
 }
+
 nav ul {
   display: flex;
   flex-direction: row;
@@ -253,4 +249,8 @@ nav a:hover {
 
 .contact button:hover {
   background-color: #3367d6;
+}
+
+.text-link {
+  text-decoration: none;
 }

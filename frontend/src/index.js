@@ -14,6 +14,7 @@ import FreeTrialPage from "./routes/FreeTrial";
 import MenuBuilder from "./components/MenuBuilder";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
+import Dashboard from "./routes/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
       {
         path: "/Free Trial",
         element: <FreeTrialPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/Dashboard",
+        element: <Dashboard />,
         errorElement: <ErrorPage />,
       },
     ],

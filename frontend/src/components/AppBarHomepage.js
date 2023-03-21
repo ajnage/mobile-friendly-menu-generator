@@ -19,6 +19,7 @@ import { Outlet, Link } from "react-router-dom";
 import { red } from "@mui/material/colors";
 import { color } from "@mui/system";
 import Home from "../routes/Home";
+import Dashboard from "../routes/Dashboard";
 const pages = ["sign-in", "Pricing", "Support", "Free Trial"];
 const settings = ["Log out", "Dashboard"];
 
@@ -105,7 +106,9 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link to={page}>{page}</Link>
+                <Link to={page} className="text-link">
+                  {page}
+                </Link>
               </Button>
             ))}
           </Box>
@@ -123,7 +126,7 @@ function ResponsiveAppBar() {
                 vertical: "top",
                 horizontal: "right",
               }}
-              keepMounted
+              // keepMounted
               transformOrigin={{
                 vertical: "top",
                 horizontal: "right",
@@ -132,8 +135,21 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                  sx={{
+                    bgcolor: "primary.verydark",
+                    p: 2,
+                    px: 3,
+                    mt: -1,
+                    mb: -1,
+                  }}
+                >
+                  <Link to={setting} className="text-link">
+                    {" "}
+                    <Typography textAlign="center">{setting}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
