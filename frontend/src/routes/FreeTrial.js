@@ -46,7 +46,7 @@ export default function FreeTrialPage() {
           bgcolor: "primary.grey",
           height: "100vh",
           width: "100",
-          mb: -80,
+          
         }}
       >
         {" "}
