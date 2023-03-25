@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
@@ -13,6 +14,10 @@ import StarIcon from "@mui/icons-material/StarBorder";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { Statistics } from "./DashboardStats";
+import BarChart from "./DashboardChart";
+import { CategoryScale } from "chart.js";
+import "chart.js/auto";
 
 // BIG IMPORTANT PRIORITY ===>
 // Figure out how to use chartjs
@@ -25,50 +30,26 @@ import { Line } from "react-chartjs-2";
 
 import Container from "@mui/material/Container";
 
-const statistics = [
-  {
-    title: "Clicks",
-    amount: [10, 12],
-    description: "Number of clicks on website and mobile app",
-    date: "2022-03-21",
-    percentageChange: 0.2,
-    type: "traffic",
-  },
-  {
-    title: "Menus",
-    amount: [1, 2],
-    description: "Number of menus viewed on website and mobile app",
-    date: "2022-03-21",
-    percentageChange: -0.1,
-    type: "engagement",
-  },
-  {
-    title: "Orders",
-    amount: [5, 7],
-    description: "Number of orders placed on website and mobile app",
-    date: "2022-03-21",
-    percentageChange: 0.1,
-    type: "sales",
-  },
-  {
-    title: "Reservations",
-    amount: [2, 3],
-    description: "Number of reservations made on website and mobile app",
-    date: "2022-03-21",
-    percentageChange: 0.05,
-    type: "sales",
-  },
-  {
-    title: "Reviews",
-    amount: [4, 6],
-    description: "Number of reviews left on website and mobile app",
-    date: "2022-03-21",
-    percentageChange: 0.3,
-    type: "engagement",
-  },
-];
-
 const Dashboard = () => {
+  const [chartData, setChartData] = useState({
+    labels: Statistics.map((data) => data.year),
+    datasets: [
+      {
+        label: "Users Gained ",
+        data: Statistics.map((data) => data.userGain),
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+          "#ecf0f1",
+          "#50AF95",
+          "#f3ba2f",
+          "#2a71d0",
+        ],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  });
+
   // Here the user variable is just the username of the restaurant owner, currently it is
   // set to 'owner' before someone signs in!
   const user = `Owner`;
@@ -84,38 +65,38 @@ const Dashboard = () => {
         {" "}
         {user}'s Dashboard
       </Typography>
+      <Typography variant="h3" align="center">
+        General Statistics
+      </Typography>
       <Paper
         elevation={20}
         sx={{
-          height: "40vh",
-          display: "grid",
-          gridTemplateColumns: "2fr 15fr 15fr 5fr",
+          height: "80vh",
+          width: "45vw",
+          display: "flex",
+          flexDirection: "row",
+          flexGrow: "4",
+          flexWrap: "wrap",
           pl: "1vw",
+          pr: "1vw",
+          justifyContent: "space-between",
+          alignSelf: "center",
+          bgcolor: "primary.verydark",
         }}
       >
-        <Typography variant="h3" sx={{ color: "primary.verydark", mr: "1" }}>
-          General Statistics
-        </Typography>
-        {statistics.map((stat) => {
+        {Statistics.map((stat) => {
           return (
             <Paper
               elevation={10}
               sx={{
-                width: "30vw",
+                width: "20vw",
                 height: "15vh",
-                px: "8",
                 mt: "10vh",
                 display: "flex",
                 justifyContent: "center",
               }}
             >
-              {" "}
-              <Typography variant="h6" color="primary.verydark">
-                {stat.title}
-              </Typography>{" "}
-              <Card sx={{ minWidth: "10vw" }}>
-                <Line data={statistics.amount} />
-              </Card>
+              <BarChart chartData={chartData} />{" "}
             </Paper>
           );
         })}
