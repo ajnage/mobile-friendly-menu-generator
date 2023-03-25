@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState,  useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
@@ -14,10 +14,11 @@ import StarIcon from "@mui/icons-material/StarBorder";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import { Statistics } from "./DashboardStats";
+
 import BarChart from "./DashboardChart";
 import { CategoryScale } from "chart.js";
 import "chart.js/auto";
+import axios from "axios";
 
 // BIG IMPORTANT PRIORITY ===>
 // Figure out how to use chartjs
@@ -27,16 +28,25 @@ import "chart.js/auto";
 // <===
 
 import { Line } from "react-chartjs-2";
-
 import Container from "@mui/material/Container";
 
+// Use axios to fetch the statistics from server
+// instead of using the array from dashboardstats.js
+
 const Dashboard = () => {
+  const [dashboardStatistics, setDashboardStatistics] = useState([]);
+  useEffect(() => {
+    axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
+      setDashboardStatistics(data?.data);
+    });
+  }, []);
+
   const [chartData, setChartData] = useState({
-    labels: Statistics.map((data) => data.year),
+    labels: dashboardStatistics.map((data) => data.year),
     datasets: [
       {
         label: "Users Gained ",
-        data: Statistics.map((data) => data.userGain),
+        data: dashboardStatistics.map((data) => data.userGain),
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",
@@ -54,7 +64,7 @@ const Dashboard = () => {
   // set to 'owner' before someone signs in!
   const user = `Owner`;
   return (
-    <Container sx={{ bgcolor: "grey", width: "100vw", height: "100vh" }}>
+    <Container sx={{ bgcolor: "grey", width: "100vw", height: "auto" }}>
       <Typography
         variant="h1"
         align="center"
@@ -65,14 +75,14 @@ const Dashboard = () => {
         {" "}
         {user}'s Dashboard
       </Typography>
-      <Typography variant="h3" align="center">
+      <Typography variant="h3" align="center" sx={{mt: '-20'}}>
         General Statistics
       </Typography>
       <Paper
         elevation={20}
         sx={{
-          height: "80vh",
-          width: "45vw",
+          height: "100vh",
+          width: "60vw",
           display: "flex",
           flexDirection: "row",
           flexGrow: "4",
@@ -82,20 +92,26 @@ const Dashboard = () => {
           justifyContent: "space-between",
           alignSelf: "center",
           bgcolor: "primary.verydark",
+          overflow: "hidden",
+          m: '0 auto',
+          mb: '100px'
         }}
       >
-        {Statistics.map((stat) => {
+        {dashboardStatistics.map((stat) => {
           return (
-            <Paper
+            <Paper 
               elevation={10}
               sx={{
                 width: "20vw",
-                height: "15vh",
-                mt: "10vh",
+                height: "20vh",
+                mt: "12vh", 
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "space-between",
+
               }}
             >
+              {console.log(stat.title)}
+              <Typography variant="h5" sx={{mb: '100px', color: 'primary.verydark'}}>{stat.title}</Typography>
               <BarChart chartData={chartData} />{" "}
             </Paper>
           );

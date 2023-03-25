@@ -24,10 +24,10 @@ body {
   --accent: #00ccff;
 } 
 
-/* This is to troubleshoot spacing issues
-* {
+/* This is to troubleshoot spacing issues */
+/* * {
   outline: 1px solid red;
-}  */
+}   */
 
 * {
   font-family: system-ui, -apple-system !important;

@@ -8,7 +8,7 @@ export const Statistics = [
     percentageChange: 0.2,
     type: "traffic",
     year: 2016,
-    userGain: 80000,
+    userGain: 90000,
     userLost: 823,
   },
   {
@@ -30,7 +30,7 @@ export const Statistics = [
     userLost: 555,
     title: "Orders",
     amount: [5, 7],
-    description: "Number of orders placed on website and mobile app",
+    description: "Number of orders placed on web  site and mobile app",
     date: "2022-03-21",
     percentageChange: 0.1,
     type: "sales",
@@ -72,3 +72,64 @@ export const Statistics = [
     type: "sales",
   },
 ];
+
+
+export const ClickStats = [
+  {
+    id: 1,
+    title: "Clicks",
+    amount: [10, 12],
+    description: "Number of clicks on website and mobile app",
+    date: "2022-03-21",
+    percentageChange: 0.2,
+    type: "traffic",
+
+  }]
+
+
+//   {
+//     id: 2,
+//     title: "Menus",
+//     amount: [1, 2],
+//     description: "Number of menus viewed on website and mobile app",
+//     date: "2022-03-21",
+//     percentageChange: -0.1,
+//     type: "engagement",
+//   },
+//   {
+//     id: 3,
+//     title: "Orders",
+//     amount: [5, 7],
+//     description: "Number of orders placed on website and mobile app",
+//     date: "2022-03-21",
+//     percentageChange: 0.1,
+//     type: "sales",
+//   },
+//   {
+//     id: 4,
+//     title: "Reservations",
+//     amount: [2, 3],
+//     description: "Number of reservations made on website and mobile app",
+//     date: "2022-03-21",
+//     percentageChange: 0.05,
+//     type: "sales",
+//   },
+//   {
+//     id: 5,
+//     title: "Reviews",
+//     amount: [4, 6],
+//     description: "Number of reviews left on website and mobile app",
+//     date: "2022-03-21",
+//     percentageChange: 0.3,
+//     type: "engagement",
+//   },
+//   {
+//     id: 6,
+//     title: "Affiliate Points",
+//     amount: [5, 9],
+//     description: "Number of affiliate points you have earned",
+//     date: "2022-05-31",
+//     percentageChange: 0.3,
+//     type: "sales",
+//   },
+// ];
