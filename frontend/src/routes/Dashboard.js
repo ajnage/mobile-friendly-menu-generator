@@ -27,7 +27,7 @@ import axios from "axios";
 // From the array 'statistics'
 // <===
 
-import { Line } from "react-chartjs-2";
+import {   } from "react-chartjs-2";
 import Container from "@mui/material/Container";
 
 // Use axios to fetch the statistics from server
