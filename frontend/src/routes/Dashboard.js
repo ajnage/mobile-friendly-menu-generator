@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState,  useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
@@ -75,7 +75,7 @@ const Dashboard = () => {
         {" "}
         {user}'s Dashboard
       </Typography>
-      <Typography variant="h3" align="center" sx={{mt: '-20'}}>
+      <Typography variant="h3" align="center" sx={{ mt: "-20" }}>
         General Statistics
       </Typography>
       <Paper
@@ -93,25 +93,29 @@ const Dashboard = () => {
           alignSelf: "center",
           bgcolor: "primary.verydark",
           overflow: "hidden",
-          m: '0 auto',
-          mb: '100px'
+          m: "0 auto",
+          mb: "100px",
         }}
       >
         {dashboardStatistics.map((stat) => {
           return (
-            <Paper 
+            <Paper
               elevation={10}
               sx={{
                 width: "20vw",
                 height: "20vh",
-                mt: "12vh", 
+                mt: "12vh",
                 display: "flex",
                 justifyContent: "space-between",
-
               }}
             >
               {console.log(stat.title)}
-              <Typography variant="h5" sx={{mb: '100px', color: 'primary.verydark'}}>{stat.title}</Typography>
+              <Typography
+                variant="h5"
+                sx={{ mb: "100px", color: "primary.verydark" }}
+              >
+                {stat.title}
+              </Typography>
               <BarChart chartData={chartData} />{" "}
             </Paper>
           );
