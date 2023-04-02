@@ -30,7 +30,7 @@ import axios from "axios";
 import { Line } from "react-chartjs-2";
 import Container from "@mui/material/Container";
 
-// Use axios to fetch the statistics from server
+// Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
