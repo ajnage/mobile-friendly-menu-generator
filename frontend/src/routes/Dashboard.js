@@ -31,7 +31,7 @@ import {   } from "react-chartjs-2";
 import Container from "@mui/material/Container";
 import { Statistics } from "./DashboardStats";
 
-// Use axios to fetch the statistics from server
+// Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
