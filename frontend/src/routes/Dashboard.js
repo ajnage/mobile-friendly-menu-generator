@@ -29,24 +29,26 @@ import axios from "axios";
 
 import {   } from "react-chartjs-2";
 import Container from "@mui/material/Container";
+import { Statistics } from "./DashboardStats";
 
 // Use axios to fetch the statistics from server
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
-  const [dashboardStatistics, setDashboardStatistics] = useState([]);
-  useEffect(() => {
-    axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
-      setDashboardStatistics(data?.data);
-    });
-  }, []);
+  // const [dashboardStatistics, setDashboardStatistics] = useState([]);
+  // useEffect(() => {
+  //   axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
+  //     setDashboardStatistics(data?.data);
+  //   });
+  // }, []);
 
   const [chartData, setChartData] = useState({
-    labels: dashboardStatistics.map((data) => data.year),
+    labels: Statistics.map((data) => data.year),
     datasets: [
       {
         label: "Users Gained ",
-        data: dashboardStatistics.map((data) => data.userGain),
+        // data: dashboardStatistics.map((data) => data.userGain),
+        data: Statistics.map((data) => data.userGain),
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",
@@ -97,13 +99,13 @@ const Dashboard = () => {
           mb: '100px'
         }}
       >
-        {dashboardStatistics.map((stat) => {
+        {Statistics.map((stat) => {
           return (
             <Paper 
               elevation={10}
               sx={{
-                width: "20vw",
-                height: "20vh",
+                width: "fit",
+                height: "fit",
                 mt: "12vh", 
                 display: "flex",
                 justifyContent: "space-between",
