@@ -1,10 +1,8 @@
-import { Bar } from "react-chartjs-2";
-import { useState,  useEffect } from "react";
+import { Bar, Line } from "react-chartjs-2";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Statistics } from "./DashboardStats";
 
-
-export const BarChart = ({ chartData }) => {
+export const LineChart = ({ chartData }) => {
   // const [dashboardStatistics, setDashboardStatistics] = useState([]);
 
   // useEffect(() => {
@@ -13,19 +11,18 @@ export const BarChart = ({ chartData }) => {
   //   });
   // }, []);
 
-
   return (
     <div className="chart-container">
       {/* <h2 style={{ textAlign: "center" }}> {dashboardStatistics.title}</h2> */}
-      <h2 style={{ textAlign: "center" }}> {Statistics.title}</h2>
-      <Bar
+      <h2 style={{ textAlign: "center" }}> {chartData.title}</h2>
+      <Line
         data={chartData}
         options={{
           plugins: {
             title: {
               display: true,
               // text: dashboardStatistics.title,
-              text: Statistics.title,
+              text: chartData.title,
             },
             legend: {
               display: true,
@@ -36,4 +33,3 @@ export const BarChart = ({ chartData }) => {
     </div>
   );
 };
-export default BarChart;

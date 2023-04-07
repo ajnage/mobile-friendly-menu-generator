@@ -15,7 +15,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
-import BarChart from "./DashboardChart";
+import { ClickStats, OrderStats, RevenueStats } from "./DashboardStats";
+import { BarChart } from "../components/Charts/BarChart";
+import { LineChart } from "../components/Charts/LineChart";
+
 import { CategoryScale } from "chart.js";
 import "chart.js/auto";
 import axios from "axios";
@@ -34,25 +37,54 @@ import Container from "@mui/material/Container";
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
-  const [dashboardStatistics, setDashboardStatistics] = useState([]);
-  useEffect(() => {
-    axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
-      setDashboardStatistics(data?.data);
-    });
-  }, []);
+  // const [dashboardStatistics, setDashboardStatistics] = useState([]);
+  // useEffect(() => {
+  //   axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
+  //     setDashboardStatistics(data?.data);
+  //   });
+  // }, []);
 
-  const [chartData, setChartData] = useState({
-    labels: dashboardStatistics.map((data) => data.year),
+  const [RevenueChartData, setRevenueChartData] = useState({
+    labels: RevenueStats.map((data) => data.month),
     datasets: [
       {
-        label: "Users Gained ",
-        data: dashboardStatistics.map((data) => data.userGain),
+        label: "Revenue",
+        data: RevenueStats.map((data) => data.revenue),
+        title: RevenueStats.title,
+        backgroundColor: ["#00ccff"],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  });
+  const [orderChartData, setOrderChartData] = useState({
+    labels: OrderStats.map((data) => data.month),
+    datasets: [
+      {
+        label: "Revenue",
+        data: RevenueStats.map((data) => data.revenue),
+        title: RevenueStats.title,
+        backgroundColor: ["#00ccff"],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  });
+
+  const [clickChartData, setClickChartData] = useState({
+    labels: ClickStats.map((data) => data.month),
+    datasets: [
+      {
+        label: "Clicks",
+        data: ClickStats.map((data) => data.clicks),
+        title: ClickStats.title,
         backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
+          "#00ccff",
+          "teal",
+          "white",
+          "black",
+          "grey",
+          "darkgrey",
         ],
         borderColor: "black",
         borderWidth: 2,
@@ -81,7 +113,7 @@ const Dashboard = () => {
       <Paper
         elevation={20}
         sx={{
-          height: "100vh",
+          height: "60vh",
           width: "60vw",
           display: "flex",
           flexDirection: "row",
@@ -89,37 +121,56 @@ const Dashboard = () => {
           flexWrap: "wrap",
           pl: "1vw",
           pr: "1vw",
+          ml: "-7.5vw",
           justifyContent: "space-between",
           alignSelf: "center",
           bgcolor: "primary.verydark",
           overflow: "hidden",
-          m: "0 auto",
           mb: "100px",
         }}
       >
-        {dashboardStatistics.map((stat) => {
-          return (
-            <Paper
-              elevation={10}
-              sx={{
-                width: "20vw",
-                height: "20vh",
-                mt: "12vh",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              {console.log(stat.title)}
-              <Typography
-                variant="h5"
-                sx={{ mb: "100px", color: "primary.verydark" }}
-              >
-                {stat.title}
-              </Typography>
-              <BarChart chartData={chartData} />{" "}
-            </Paper>
-          );
-        })}
+        <Paper
+          elevation={10}
+          sx={{
+            width: "auto",
+            height: "15vh",
+            mt: "12vh",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{ mb: "10px", color: "primary.verydark" }}
+          ></Typography>
+          <BarChart chartData={RevenueChartData} />{" "}
+        </Paper>
+      </Paper>
+      <Paper
+        elevation={20}
+        align="center"
+        sx={{
+          height: "30vh",
+          width: "60vw",
+          display: "flex",
+          flexDirection: "row",
+          flexGrow: "4",
+          flexWrap: "wrap",
+          pl: "1vw",
+          pr: "1vw",
+          ml: "-7.5vw",
+          bgcolor: "primary.verydark",
+          overflow: "hidden",
+          mb: "100px",
+        }}
+      >
+        <Typography variant="h3" align="center" sx={{ mt: "-20" }}>
+          {" "}
+          Extra{" "}
+        </Typography>
+        <Box sx={{ pl: 30 }} width={"40vw"}>
+          <LineChart chartData={clickChartData} />
+        </Box>
       </Paper>
     </Container>
   );
