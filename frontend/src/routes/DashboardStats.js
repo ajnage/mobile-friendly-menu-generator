@@ -8,37 +8,37 @@ export const OrderStats = [
   {
     id: 1,
     month: "Jan",
-    orders: 1200,
+    orders: 30,
     description: "Orders for January",
   },
   {
     id: 2,
     month: "Feb",
-    orders: 1300,
+    orders: 340,
     description: "Orders for February",
   },
   {
     id: 3,
     month: "Mar",
-    orders: 2800,
+    orders: 182,
     description: "Orders for March",
   },
   {
     id: 4,
     month: "Apr",
-    orders: 1100,
+    orders: 84,
     description: "Orders for April",
   },
   {
     id: 5,
     month: "May",
-    orders: 4300,
+    orders: 903,
     description: "Orders for May",
   },
   {
     id: 6,
     month: "June",
-    orders: 4000,
+    orders: 567,
     description: "Orders for June",
   },
 ];

@@ -61,9 +61,9 @@ const Dashboard = () => {
     labels: OrderStats.map((data) => data.month),
     datasets: [
       {
-        label: "Revenue",
-        data: RevenueStats.map((data) => data.revenue),
-        title: RevenueStats.title,
+        label: "Orders",
+        data: OrderStats.map((data) => data.orders),
+        title: OrderStats.title,
         backgroundColor: ["#00ccff"],
         borderColor: "black",
         borderWidth: 2,
@@ -107,14 +107,14 @@ const Dashboard = () => {
         {" "}
         {user}'s Dashboard
       </Typography>
-      <Typography variant="h3" align="center" sx={{ mt: "-20" }}>
+      <Typography variant="h3" align="center" sx={{ mb: "10vh"}}>
         General Statistics
       </Typography>
       <Paper
         elevation={20}
         sx={{
           height: "60vh",
-          width: "60vw",
+          width: "auto",
           display: "flex",
           flexDirection: "row",
           flexGrow: "4",
@@ -129,21 +129,12 @@ const Dashboard = () => {
           mb: "100px",
         }}
       >
-        <Paper
-          elevation={10}
-          sx={{
-            width: "auto",
-            height: "15vh",
-            mt: "12vh",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{ mb: "10px", color: "primary.verydark" }}
-          ></Typography>
+        <Paper elevation={10} sx={{ height: "30vh", mt: "12vh", ml: "7vw" }}>
           <BarChart chartData={RevenueChartData} />{" "}
+        </Paper>
+
+        <Paper elevation={10} sx={{ height: "30vh", mt: "12vh", mr: "7vw" }}>
+          <BarChart chartData={orderChartData} />{" "}
         </Paper>
       </Paper>
       <Paper
@@ -151,7 +142,7 @@ const Dashboard = () => {
         align="center"
         sx={{
           height: "30vh",
-          width: "60vw",
+          width: "auto",
           display: "flex",
           flexDirection: "row",
           flexGrow: "4",
@@ -168,9 +159,9 @@ const Dashboard = () => {
           {" "}
           Extra{" "}
         </Typography>
-        <Box sx={{ pl: 30 }} width={"40vw"}>
+        <Paper sx={{ my: 10, align: 'center' }} width={"40vw"}>
           <LineChart chartData={clickChartData} />
-        </Box>
+        </Paper>
       </Paper>
     </Container>
   );
