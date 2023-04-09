@@ -44,6 +44,8 @@ const Dashboard = () => {
   //   });
   // }, []);
 
+  const [menusLeft, setMenusLeft] = useState(50);
+
   const [RevenueChartData, setRevenueChartData] = useState({
     labels: RevenueStats.map((data) => data.month),
     datasets: [
@@ -51,7 +53,7 @@ const Dashboard = () => {
         label: "Revenue",
         data: RevenueStats.map((data) => data.revenue),
         title: RevenueStats.title,
-        backgroundColor: ["#00ccff"],
+        backgroundColor: ["#7a2c2c"],
         borderColor: "black",
         borderWidth: 2,
       },
@@ -64,7 +66,7 @@ const Dashboard = () => {
         label: "Orders",
         data: OrderStats.map((data) => data.orders),
         title: OrderStats.title,
-        backgroundColor: ["#00ccff"],
+        backgroundColor: ["#7a2c2c"],
         borderColor: "black",
         borderWidth: 2,
       },
@@ -79,7 +81,7 @@ const Dashboard = () => {
         data: ClickStats.map((data) => data.clicks),
         title: ClickStats.title,
         backgroundColor: [
-          "#00ccff",
+          "#7a2c2c",
           "teal",
           "white",
           "black",
@@ -107,13 +109,13 @@ const Dashboard = () => {
         {" "}
         {user}'s Dashboard
       </Typography>
-      <Typography variant="h3" align="center" sx={{ mb: "10vh"}}>
+      <Typography variant="h3" align="center" sx={{ mb: "10vh" }}>
         General Statistics
       </Typography>
       <Paper
         elevation={20}
         sx={{
-          height: "60vh",
+          height: "45vh",
           width: "auto",
           display: "flex",
           flexDirection: "row",
@@ -129,12 +131,42 @@ const Dashboard = () => {
           mb: "100px",
         }}
       >
-        <Paper elevation={10} sx={{ height: "30vh", mt: "12vh", ml: "7vw" }}>
+        <Paper elevation={10} sx={{ height: "20vh", mt: "12vh", ml: "7vw" }}>
           <BarChart chartData={RevenueChartData} />{" "}
         </Paper>
 
-        <Paper elevation={10} sx={{ height: "30vh", mt: "12vh", mr: "7vw" }}>
+        <Paper elevation={10} sx={{ height: "20vh", mt: "12vh" }}>
           <BarChart chartData={orderChartData} />{" "}
+        </Paper>
+
+        <Paper
+          elevation={10}
+          sx={{ height: "20vh", mt: "12vh", mr: "7vw", width: "12vw" }}
+        >
+          <Typography
+            variant="h5"
+            align="center"
+            sx={{ m: "10", color: "primary.verydark" }}
+          >
+            Menus left
+          </Typography>
+          <Typography
+            variant="h1"
+            fontWeight={"bold"}
+            align="center"
+            sx={{ m: "10", color: "primary.verydark" }}
+          >
+            {menusLeft}{" "}
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{ mt: "2vh" }}
+            onClick={() => {
+              setMenusLeft(menusLeft - 1);
+            }}
+          >
+            Make Menu
+          </Button>
         </Paper>
       </Paper>
       <Paper
@@ -144,8 +176,9 @@ const Dashboard = () => {
           height: "30vh",
           width: "auto",
           display: "flex",
-          flexDirection: "row",
-          flexGrow: "4",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignContent: "space-around",
           flexWrap: "wrap",
           pl: "1vw",
           pr: "1vw",
@@ -155,12 +188,23 @@ const Dashboard = () => {
           mb: "100px",
         }}
       >
-        <Typography variant="h3" align="center" sx={{ mt: "-20" }}>
+        <Typography variant="h3" sx={{ mt: "-20" }}>
           {" "}
           Extra{" "}
         </Typography>
-        <Paper sx={{ my: 10, align: 'center' }} width={"40vw"}>
-          <LineChart chartData={clickChartData} />
+        <Paper
+          sx={{
+            my: 10,
+            align: "center",
+            position: "relative",
+            height: "20vh",
+            width: "20vw",
+          }}
+        >
+          <LineChart
+            chartData={clickChartData}
+            options={{ maintainAspectRatio: false }}
+          />
         </Paper>
       </Paper>
     </Container>

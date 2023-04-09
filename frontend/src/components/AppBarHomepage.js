@@ -94,21 +94,34 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" sx={{ color: "white" }}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  mx: 8,
+                  display: "block",
+                }}
+                // I couldn't change the link text to be permantly white with sx, so I added inline style
+                style={{ color: "white" }}
+                to={page}
+                className="text-link"
+                component={Link}
               >
-                <Link to={page} className="text-link">
-                  {page}
-                </Link>
+                {page}
               </Button>
             ))}
           </Box>

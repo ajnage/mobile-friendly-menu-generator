@@ -46,7 +46,6 @@ export default function FreeTrialPage() {
           bgcolor: "primary.grey",
           height: "100vh",
           width: "100",
-          
         }}
       >
         {" "}
@@ -100,7 +99,7 @@ export default function FreeTrialPage() {
           mb: 40,
           height: "100vh",
           ml: "0.3vw",
-          background: "linear-gradient(45deg, #00ccff 30%, #222 90%)",
+          background: "linear-gradient(45deg, #7a2c2c 30%, #222 90%)",
           width: "99vw",
           minWidth: "99vw",
           display: "flex",

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import "../charcoalbg.jpg";
 import "../App.css";
 import QR from "../QR.svg";
 import { useState } from "react";
@@ -14,7 +15,7 @@ import { Typography } from "@mui/material";
 const h1style = { color: "white", left: "30px" };
 
 const Home = () => (
-  <Typography bgcolor="primary.background">
+  <Typography bgcolor={"primary.verydark"}>
     <div className="App">
       <link
         rel="stylesheet"
