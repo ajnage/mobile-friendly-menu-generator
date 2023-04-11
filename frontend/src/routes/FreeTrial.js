@@ -55,6 +55,7 @@ export default function FreeTrialPage() {
           align="center"
           color="text.primary"
           gutterBottom
+          fontWeight={"bold"}
         >
           Free Trial
         </Typography>

@@ -20,6 +20,7 @@ export default function SupportPage() {
           color="text.primary"
           gutterBottom
           sx={{ pt: 5, pb: 5 }}
+          fontWeight={"bold"}
         >
           Support
         </Typography>

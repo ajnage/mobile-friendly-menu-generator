@@ -15,7 +15,7 @@ import { Typography } from "@mui/material";
 const h1style = { color: "white", left: "30px" };
 
 const Home = () => (
-  <Typography bgcolor={"primary.verydark"}>
+  <Typography bgcolor={"primary.verydark"} sx={{ pb: "10vh" }}>
     <div className="App">
       <link
         rel="stylesheet"
@@ -44,6 +44,7 @@ const Home = () => (
           sx={{
             pb: 10,
           }}
+          fontWeight={"bold"}
         >
           Welcome to the menu-maker app!
         </Typography>
@@ -54,6 +55,7 @@ const Home = () => (
         sx={{
           p: 10,
           pb: 20,
+          fontWeight: 500,
         }}
       >
         Our app lets restaurant owners save the hassle of creating menus!

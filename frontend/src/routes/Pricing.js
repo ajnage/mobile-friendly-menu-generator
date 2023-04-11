@@ -95,9 +95,10 @@ const footers = [
 function PricingContent() {
   return (
     <React.Fragment>
-      <Container sx={{ bgcolor: "grey", width: "100vw", height: "auto" }}>
+      <Container
+        sx={{ bgcolor: "primary.grey", width: "auto", height: "auto" }}
+      >
         <Typography bgcolor="primary.grey">
-          <CssBaseline />
           <AppBar
             position="static"
             color="default"
@@ -118,6 +119,7 @@ function PricingContent() {
               variant="h2"
               align="center"
               color="text.primary"
+              fontWeight={"bold"}
               gutterBottom
             >
               Pricing

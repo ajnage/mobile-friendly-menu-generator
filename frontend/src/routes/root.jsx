@@ -23,7 +23,8 @@ const theme = createTheme({
       // 00ccff
       main: '#7a2c2c',
       verydark: '#222',
-      grey: '#808080'
+      // grey: '#808080'
+      grey: '#575757'
     },
     secondary: {
       main: '#FFFFFF'

@@ -98,13 +98,14 @@ const Dashboard = () => {
   // set to 'owner' before someone signs in!
   const user = `Owner`;
   return (
-    <Container sx={{ bgcolor: "grey", width: "100vw", height: "auto" }}>
+    <Container sx={{ bgcolor: "primary.grey", width: "100vw", height: "auto" }}>
       <Typography
         variant="h1"
         align="center"
         color="text.primary"
         gutterBottom
         sx={{ pt: 5, pb: 5 }}
+        fontWeight={"bold"}
       >
         {" "}
         {user}'s Dashboard
@@ -160,10 +161,12 @@ const Dashboard = () => {
           </Typography>
           <Button
             variant="contained"
-            sx={{ mt: "2vh" }}
+            sx={{ mt: "2vh", display: "center" }}
             onClick={() => {
               setMenusLeft(menusLeft - 1);
             }}
+            component={Link}
+            to={"../menu_builder"}
           >
             Make Menu
           </Button>

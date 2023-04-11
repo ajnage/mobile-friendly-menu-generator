@@ -31,7 +31,7 @@ export default function SignIn() {
           maxWidth="xs"
           sx={{ pb: 20, pt: 10, height: "100vh" }}
         >
-          <CssBaseline bgcolor="primary.main" />
+          <CssBaseline bgcolor="secondary.main" />
           <GlobalStyles
             styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
           />
@@ -42,10 +42,10 @@ export default function SignIn() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5" color="primary.main">
+            <Typography component="h1" variant="h5" color="secondary.main">
               Sign in
             </Typography>
             <Box
@@ -65,6 +65,9 @@ export default function SignIn() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  sx={{
+                    color: "#ffffff",
+                  }}
                 />
               </Typography>
 
@@ -79,7 +82,7 @@ export default function SignIn() {
                 autoComplete="current-password"
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="remember" color="secondary" />}
                 label="Remember me"
               />
               <Button
@@ -92,12 +95,20 @@ export default function SignIn() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link
+                    href="#"
+                    variant="body2"
+                    sx={{ color: "secondary.main" }}
+                  >
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link
+                    href="#"
+                    variant="body2"
+                    sx={{ color: "secondary.main" }}
+                  >
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
