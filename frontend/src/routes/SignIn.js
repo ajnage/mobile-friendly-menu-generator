@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import GlobalStyles from "@mui/material/GlobalStyles";
+import "../App.css";
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -22,6 +23,11 @@ export default function SignIn() {
       password: data.get("password"),
     });
   };
+  const styles = (theme) => ({
+    multilineColor: {
+      color: "red",
+    },
+  });
 
   return (
     <React.Fragment>
@@ -33,7 +39,10 @@ export default function SignIn() {
         >
           <CssBaseline bgcolor="secondary.main" />
           <GlobalStyles
-            styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
+            styles={{
+              ul: { margin: 0, padding: 0, listStyle: "none" },
+              TextField: { color: "white" },
+            }}
           />
           <Box
             sx={{
@@ -42,7 +51,7 @@ export default function SignIn() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" color="secondary.main">
@@ -66,7 +75,7 @@ export default function SignIn() {
                   autoComplete="email"
                   autoFocus
                   sx={{
-                    color: "#ffffff",
+                    color: "secondary.main",
                   }}
                 />
               </Typography>
@@ -80,6 +89,9 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                sx={{
+                  color: "secondary.main",
+                }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="secondary" />}

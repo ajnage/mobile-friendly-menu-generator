@@ -31,7 +31,9 @@
     "stylis": "4.0.13",
     "stylis-plugin-rtl": "2.1.1",
     "web-vitals": "2.1.4",
-    "yup": "0.32.11"
+    "yup": "0.32.11",
+    "jquery": "^3.6.3",
+    "popper.js": "^1.16.1"
   },
   "scripts": {
     "start": "react-scripts start",
