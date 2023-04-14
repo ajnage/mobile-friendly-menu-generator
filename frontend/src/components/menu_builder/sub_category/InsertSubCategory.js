@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { subCategoriesData } from "../dummyData";
 
 function InsertSubCategory(props) {
   const [showForm, setShowForm] = useState(false);
@@ -13,15 +14,15 @@ function InsertSubCategory(props) {
   const handleFormClose = () => setShowForm(false);
   const handleFormShow = () => setShowForm(true);
 
-  const handelTitleChange = (e) => {
+  const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
 
-  const handelDescriptionChange = (e) => {
+  const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
   };
 
-  const handelImgURLChange = (e) => {
+  const handleImgURLChange = (e) => {
     setImgURL(e.target.value);
   };
   return (
@@ -50,7 +51,7 @@ function InsertSubCategory(props) {
                 Title
               </Form.Label>
               <Form.Control
-                onChange={handelTitleChange}
+                onChange={handleTitleChange}
                 value={title}
                 type="title"
                 placeholder="title"
@@ -66,7 +67,7 @@ function InsertSubCategory(props) {
                 Description
               </Form.Label>
               <Form.Control
-                onChange={handelDescriptionChange}
+                onChange={handleDescriptionChange}
                 value={description}
                 type="text"
                 placeholder="description"
@@ -82,7 +83,7 @@ function InsertSubCategory(props) {
                 Img URL
               </Form.Label>
               <Form.Control
-                onChange={handelImgURLChange}
+                onChange={handleImgURLChange}
                 value={ImgURL}
                 type="url"
                 placeholder="ImgURL"
@@ -102,12 +103,7 @@ function InsertSubCategory(props) {
             className=" btn btn-primary"
             onClick={(e) => {
               e.preventDefault();
-              props.handelInsertNewSubCategory(
-                props.id,
-                title,
-                description,
-                ImgURL
-              );
+              props.handleInsertNewSubCategory(title, description, ImgURL);
             }}
           >
             Update

@@ -13,7 +13,7 @@ export const categoriesData = [
   },
   {
     id: 4,
-    title: "Trats",
+    title: "Treats",
   },
 ];
 

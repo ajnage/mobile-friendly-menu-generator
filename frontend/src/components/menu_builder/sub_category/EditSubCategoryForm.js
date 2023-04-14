@@ -3,8 +3,9 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-function EditSubCategoryForm() {
+function EditSubCategoryForm(props) {
   const [showForm, setShowForm] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
@@ -13,15 +14,15 @@ function EditSubCategoryForm() {
   const handleFormClose = () => setShowForm(false);
   const handleFormShow = () => setShowForm(true);
 
-  const handelTitleChange = (e) => {
+  const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
 
-  const handelDescriptionChange = (e) => {
+  const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
   };
 
-  const handelImgURLChange = (e) => {
+  const handleImgURLChange = (e) => {
     setImgURL(e.target.value);
   };
 
@@ -33,7 +34,7 @@ function EditSubCategoryForm() {
           className="m-0 text-danger"
           style={{ cursor: "pointer" }}
         >
-          edit
+          Edit
         </a>
       </div>
 
@@ -57,7 +58,7 @@ function EditSubCategoryForm() {
                 Title
               </Form.Label>
               <Form.Control
-                onChange={handelTitleChange}
+                onChange={handleTitleChange}
                 value={title}
                 type="title"
                 placeholder="title"
@@ -67,13 +68,13 @@ function EditSubCategoryForm() {
 
             <Form.Group
               className="mb-3 d-flex justify-content-start"
-              controlId="formTitle"
+              controlId="formDescription"
             >
               <Form.Label className=" text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3">
                 Description
               </Form.Label>
               <Form.Control
-                onChange={handelDescriptionChange}
+                onChange={handleDescriptionChange}
                 value={description}
                 type="text"
                 placeholder="description"
@@ -83,13 +84,13 @@ function EditSubCategoryForm() {
 
             <Form.Group
               className="mb-3 d-flex justify-content-start"
-              controlId="formTitle"
+              controlId="formImg"
             >
               <Form.Label className=" text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3">
                 Img URL
               </Form.Label>
               <Form.Control
-                onChange={handelImgURLChange}
+                onChange={handleImgURLChange}
                 value={image}
                 type="url"
                 placeholder="ImgURL"
@@ -110,6 +111,7 @@ function EditSubCategoryForm() {
             onClick={(e) => {
               e.preventDefault();
               props.updateSubCategoryForm(props.id, title, description, image);
+              console.log(`Props.id = ${props.id}`);
               handleFormClose();
             }}
           >
