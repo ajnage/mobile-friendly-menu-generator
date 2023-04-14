@@ -15,6 +15,7 @@ import MenuBuilder from "./components/MenuBuilder";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import Dashboard from "./routes/Dashboard";
+import QRCodePage from "./routes/qr";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
       {
         path: "/Dashboard",
         element: <Dashboard />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/qr",
+        element: <QRCodePage />,
         errorElement: <ErrorPage />,
       },
     ],
