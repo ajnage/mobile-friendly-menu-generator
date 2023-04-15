@@ -69,7 +69,7 @@ function InsertCategory(props) {
 
           <Button
             className=" btn btn-dark"
-            form="editModal"
+            form="  Modal"
             onClick={(e) => {
               handleFormClose();
               e.preventDefault();

@@ -16,6 +16,7 @@ export function AppButton() {
           borderRadius: "30px",
           fontWeight: "bold",
           fontSize: "20px",
+          mb: "10vh",
         }}
       >
         Check it out!

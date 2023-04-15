@@ -1,55 +1,56 @@
 import React, { useEffect } from "react";
+import { Paper, Container, Box, Button } from "@mui/material";
 
 const QRCodePage = () => {
   useEffect(() => {
     const printIT = () => {
       window.print();
     };
-    let url = "https://mobilemenugenerator.netlify.app/";
-    let qrcodeRequest = `https://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=220`;
-
-    for (let i = 0; i < 12; i++) {
-      let qrImage = new Image();
-      qrImage.src = qrcodeRequest;
-      let qrDOMImage = document.getElementsByClassName("qrimage");
-      qrDOMImage[i].appendChild(qrImage);
-    }
   }, []);
+  let url = "https://mobilemenugenerator.netlify.app/";
+  let qrcodeRequest = `https://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=220`;
+  const qrArr = [];
+  for (let i = 0; i < 20; i++) {
+    let qrImage = new Image();
+    qrImage.src = qrcodeRequest;
+    qrArr.push(
+      <Box className="qrimage" key={i}>
+        <img src={qrImage.src} alt={`QR Code ${i}`} />
+      </Box>
+    );
+  }
 
   return (
-    <div>
-      <button onClick={() => window.print()} className="qrImagePagePrintButton">
-        PRINT QR CODES!
-      </button>
-      <button
+    <Container sx={{ height: "100vh" }}>
+      <Button
         onClick={() => window.print()}
-        className="btn btn-primary qrPrintBtn"
+        className="qrImagePagePrintButton"
+        sx={{ my: "3vh", height: "10vh", fontSize: "25px" }}
+        variant="contained"
       >
-        PRINT
-      </button>
-      <div className="qrImagePage">
-        <div className="qrImagePageColumn">
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-        </div>
+        PRINT QR CODES!
+      </Button>
 
-        <div className="qrImagePageColumn">
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-        </div>
-
-        <div className="qrImagePageColumn">
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-          <div className="qrimage"></div>
-        </div>
-      </div>
-    </div>
+      <Paper
+        className="qrImagePage"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignItems: "space-around",
+          }}
+        >
+          {qrArr}
+        </Box>
+      </Paper>
+    </Container>
   );
 };
 

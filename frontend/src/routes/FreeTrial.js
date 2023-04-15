@@ -18,6 +18,7 @@ import {
 import { Box } from "@mui/material";
 import { display } from "@mui/system";
 import Button from "@mui/material/Button";
+import { AppButton } from "../components/AppButton";
 
 const features = [
   {
@@ -75,7 +76,7 @@ export default function FreeTrialPage() {
                 m: 1,
                 display: "grid",
                 bgcolor: "primary.background",
-                width: 350,
+                width: 250,
               }}
             >
               <Box sx={{ m: 1 }}>
@@ -118,7 +119,7 @@ export default function FreeTrialPage() {
           <Typography variant="h1" sx={{ pb: 10 }}>
             Give our App a Try
           </Typography>
-          <Button
+          {/* <Button
             variant="contained"
             sx={{
               width: "80%",
@@ -128,13 +129,14 @@ export default function FreeTrialPage() {
             }}
           >
             Take Me To IT!
-          </Button>
+          </Button> */}
+          <AppButton variant="outlined"> </AppButton>
         </Box>
         <CardMedia
           component="img"
           src={menuexampleinpng}
           alt="Menu Example"
-          height="90%"
+          height="70%"
         />{" "}
         <CardContent>
           <Typography variant="body2" color="text.secondary"></Typography>

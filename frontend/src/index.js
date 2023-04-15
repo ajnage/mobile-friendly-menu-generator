@@ -16,6 +16,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import Dashboard from "./routes/Dashboard";
 import QRCodePage from "./routes/qr";
+import LogOutPage from "./routes/LogOut";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
       {
         path: "/qr",
         element: <QRCodePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/log out",
+        element: <LogOutPage />,
         errorElement: <ErrorPage />,
       },
     ],

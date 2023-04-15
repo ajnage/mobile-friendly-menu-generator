@@ -14,6 +14,8 @@ import { Typography } from "@mui/material";
 
 const h1style = { color: "white", left: "30px" };
 
+// Add light background, dark text
+
 const Home = () => (
   <Typography bgcolor={"primary.verydark"} sx={{ pb: "10vh" }}>
     <div className="App">
@@ -48,18 +50,19 @@ const Home = () => (
         >
           Welcome to the menu-maker app!
         </Typography>
+        <Typography
+          variant="h2"
+          sx={{
+            p: 10,
+            pb: 20,
+            fontWeight: 500,
+          }}
+        >
+          Our app lets restaurant owners save the hassle of creating menus!
+        </Typography>
         <AppButton />
       </div>
-      <Typography
-        variant="h2"
-        sx={{
-          p: 10,
-          pb: 20,
-          fontWeight: 500,
-        }}
-      >
-        Our app lets restaurant owners save the hassle of creating menus!
-      </Typography>
+
       <HorizontalNonLinearStepper />
     </div>
   </Typography>
