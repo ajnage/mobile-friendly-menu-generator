@@ -11,6 +11,7 @@ import StickyFooter from "../components/StickyFooter";
 import HorizontalNonLinearStepper from "../components/Stepper";
 import SignIn from "./SignIn";
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const h1style = { color: "white", left: "30px" };
 
@@ -60,7 +61,7 @@ const Home = () => (
         >
           Our app lets restaurant owners save the hassle of creating menus!
         </Typography>
-        <AppButton />
+        <AppButton destination={"../menu_builder"}/>
       </div>
 
       <HorizontalNonLinearStepper />

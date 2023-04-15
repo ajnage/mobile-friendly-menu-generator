@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
-export function AppButton() {
+export function AppButton( {destination} ) {
   return (
     <motion.div
       className="testButton"
@@ -18,6 +19,8 @@ export function AppButton() {
           fontSize: "20px",
           mb: "10vh",
         }}
+        component={Link}
+        to={destination}
       >
         Check it out!
       </Button>
