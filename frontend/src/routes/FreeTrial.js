@@ -74,9 +74,10 @@ export default function FreeTrialPage() {
               sx={{
                 p: 3,
                 m: 1,
+                mt: "4vh",
                 display: "grid",
                 bgcolor: "primary.background",
-                width: 250,
+                width: 400,
               }}
             >
               <Box sx={{ m: 1 }}>
@@ -130,7 +131,9 @@ export default function FreeTrialPage() {
           >
             Take Me To IT!
           </Button> */}
-          <AppButton variant="outlined"> </AppButton>
+          <AppButton variant="outlined" destination={"../menu_builder"}>
+            {" "}
+          </AppButton>
         </Box>
         <CardMedia
           component="img"
