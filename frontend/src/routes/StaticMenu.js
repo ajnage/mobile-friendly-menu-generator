@@ -23,6 +23,8 @@ import {
 
 import Row from "react-bootstrap/Row";
 
+// Look into local storage to get updated data otherwise it needs to be fetched from backend
+
 export default function StaticMenuPage() {
   return (
     <Box className=" h-100">
