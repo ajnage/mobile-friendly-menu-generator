@@ -8,6 +8,7 @@ import ErrorPage from "../error-page";
 import { Outlet, Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/system";
+import { Box, Button } from "@mui/material";
 
 export default function SupportPage() {
   return (
@@ -20,6 +21,7 @@ export default function SupportPage() {
           color="text.primary"
           gutterBottom
           sx={{ pt: 5, pb: 5 }}
+          fontWeight={"bold"}
         >
           Support
         </Typography>
@@ -60,7 +62,7 @@ export default function SupportPage() {
           </div>
         </section>
         <Container sx={{ width: "70%" }}>
-          <section className="contact">
+          <Box className="contact">
             <h2>Contact Us</h2>
             <form action="submit-form.php" method="POST">
               <label htmlFor="name">Name:</label>
@@ -75,9 +77,16 @@ export default function SupportPage() {
               <label htmlFor="message">Message:</label>
               <textarea className="message" name="message" required></textarea>
 
-              <button type="submit">Send</button>
+              {/* editing the sx prop didn't work for some reason, added inline style instead */}
+              <Button
+                variant="contained"
+                sx={{ color: "primary.main" }}
+                style={{ backgroundColor: "#7a2c2c" }}
+              >
+                Send
+              </Button>
             </form>
-          </section>
+          </Box>
         </Container>
       </Container>
     </Typography>
