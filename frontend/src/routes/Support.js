@@ -18,7 +18,7 @@ export default function SupportPage() {
           component="h1"
           variant="h2"
           align="center"
-          color="text.primary"
+          color="primary.white"
           gutterBottom
           sx={{ pt: 5, pb: 5 }}
           fontWeight={"bold"}

@@ -15,8 +15,6 @@ import { Typography } from "@mui/material";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
-
-
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -24,99 +22,109 @@ const theme = createTheme({
     primary: {
       background: "#191818",
       // 00ccff
-      main: '#7a2c2c',
-      verydark: '#222',
+      main: "#7a2c2c",
+      verydark: "#222",
       // grey: '#808080'
-      grey: '#575757'
+      grey: "#575757",
     },
     secondary: {
-      main: '#FFFFFF'
+      main: "#FFFFFF",
     },
     action: {
-      active: 'rgb(200,0,0)',
+      active: "rgb(200,0,0)",
       activeOpacity: 1,
-      hover: 'rgb(200,0,0)',
+      hover: "rgb(200,0,0)",
       hoverOpacity: 0.7,
-      focus: 'rgb(200,0,0)',
+      focus: "rgb(200,0,0)",
       focusOpacity: 1,
-      selected: 'rgb(200,0,0)',
-      selectedOpacity: 1
+      selected: "rgb(200,0,0)",
+      selectedOpacity: 1,
     },
   },
   components: {
     MuiContainer: {
       defaultProps: {
-        mode: 'dark'
+        mode: "dark",
       },
       styleOverrides: {
         primary: {
           root: {
-            backgroundColor: '#808080'
-          }
-          
-        }
-      }
-    },
-    button: {    
-      '&:hover': {
-          background: 'none',
+            backgroundColor: "#808080",
+          },
+        },
       },
-  
-  },
+    },
+    button: {
+      "&:hover": {
+        background: "none",
+      },
+
+      TextField: {
+        defaultProps: {
+          color: "secondary.main",
+        },
+        styleOverrides: {
+          primary: {
+            root: {
+              color: "secondary.main",
+            },
+          },
+        },
+      },
+    },
   },
   typography: {
     subtitle1: {
       fontSize: 12,
     },
     body1: {
-      color: '#FFFFFF',
+      color: "#FFFFFF",
     },
     body2: {
-      color: '#FFFFFF',
+      color: "#FFFFFF",
     },
     h1: {
       fontSize: 100,
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     h2: {
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     h3: {
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     h4: {
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     h5: {
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     h6: {
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     overline: {
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     caption: {
-      color: '#FFFFFF'
+      color: "#FFFFFF",
     },
     p: {
-      color: '#FFFFFF'
-    }
-  }
-})
+      color: "#FFFFFF",
+    },
+  },
+});
 
 export default function Root() {
   return (
     <>
-      <ThemeProvider theme={theme} >
+      <ThemeProvider theme={theme}>
         <Typography bgcolor="primary.grey">
-        {" "}
-        <ResponsiveAppBar />
-        
-        <div id="detail">
-          <Outlet />
-        </div>
-        <StickyFooter />
+          {" "}
+          <ResponsiveAppBar />
+          <div id="detail">
+            <Outlet />
+          </div>
+          <StickyFooter />
         </Typography>
       </ThemeProvider>
     </>

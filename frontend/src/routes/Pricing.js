@@ -19,7 +19,7 @@ function Copyright(props) {
   return (
     <Typography
       variant="body2"
-      color="text.primary"
+      color="primary.white"
       align="center"
       {...props}
     >
@@ -118,7 +118,7 @@ function PricingContent() {
               component="h1"
               variant="h2"
               align="center"
-              color="text.secondary"
+              color="primary.white"
               fontWeight={"bold"}
               gutterBottom
             >
@@ -127,7 +127,7 @@ function PricingContent() {
             <Typography
               variant="h5"
               align="center"
-              color="text.primary"
+              color="primary.white"
               component="p"
             >
               Purchase the right restaurant builder plan for you!
@@ -139,7 +139,7 @@ function PricingContent() {
               container
               spacing={5}
               alignItems="flex-end"
-              color="text.primary"
+              color="primary.white"
             >
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
@@ -178,7 +178,7 @@ function PricingContent() {
                         <Typography
                           component="h2"
                           variant="h3"
-                          color="text.primary"
+                          color="text.secondary"
                         >
                           ${tier.price}
                         </Typography>
@@ -222,7 +222,7 @@ function PricingContent() {
             <Grid container spacing={4} justifyContent="space-evenly">
               {footers.map((footer) => (
                 <Grid item xs={6} sm={3} key={footer.title}>
-                  <Typography variant="h6" color="text.primary" gutterBottom>
+                  <Typography variant="h6" color="primary.white" gutterBottom>
                     {footer.title}
                   </Typography>
                   <ul>

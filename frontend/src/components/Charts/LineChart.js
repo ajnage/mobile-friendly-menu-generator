@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const LineChart = ({ chartData }) => {
-  // const [dashboardStatistics, setDashboardStatistics] = useState([]);
+  const [dashboardStatistics, setDashboardStatistics] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
-  //     setDashboardStatistics(data?.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
+      setDashboardStatistics(data?.data);
+    });
+  }, []);
 
   return (
     <div className="chart-container">
@@ -21,8 +21,8 @@ export const LineChart = ({ chartData }) => {
           plugins: {
             title: {
               display: true,
-              // text: dashboardStatistics.title,
-              text: chartData.title,
+              text: dashboardStatistics.title,
+              // text: chartData.title,
             },
             legend: {
               display: true,
