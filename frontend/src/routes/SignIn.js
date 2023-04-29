@@ -63,11 +63,11 @@ export default function SignIn() {
               noValidate
               sx={{ mt: 1 }}
             >
-              <Typography variant="h1" color="secondary.main">
+              <Typography variant="h1" sx={{color:'white'}}>
                 {" "}
                 <TextField
                   margin="normal"
-                  required
+                  required  
                   fullWidth
                   id="email"
                   label="Email Address"
@@ -75,8 +75,9 @@ export default function SignIn() {
                   autoComplete="email"
                   autoFocus
                   sx={{
-                    color: "secondary.main",
+                    color: "primary.white",  
                   }}
+                  
                 />
               </Typography>
 

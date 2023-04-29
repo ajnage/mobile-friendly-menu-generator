@@ -4,13 +4,13 @@ import axios from "axios";
 import { Statistics } from "../../routes/DashboardStats";
 
 export const BarChart = ({ chartData }) => {
-  // const [dashboardStatistics, setDashboardStatistics] = useState([]);
+  const [dashboardStatistics, setDashboardStatistics] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
-  //     setDashboardStatistics(data?.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
+      setDashboardStatistics(data?.data);
+    });
+  }, []);
 
   return (
     <div className="chart-container">
@@ -22,7 +22,7 @@ export const BarChart = ({ chartData }) => {
           plugins: {
             title: {
               display: true,
-              // text: dashboardStatistics.title,
+              text: dashboardStatistics.title,
             },
             legend: {
               display: true,

@@ -37,12 +37,12 @@ import Container from "@mui/material/Container";
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
-  // const [dashboardStatistics, setDashboardStatistics] = useState([]);
-  // useEffect(() => {
-  //   axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
-  //     setDashboardStatistics(data?.data);
-  //   });
-  // }, []);
+  const [dashboardStatistics, setDashboardStatistics] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/v1/restaurant/644d76314121eb4890601f2c").then((data) => {
+      setDashboardStatistics(data?.data);
+    });
+  }, []);
 
   const [menusLeft, setMenusLeft] = useState(50);
 
@@ -102,7 +102,7 @@ const Dashboard = () => {
       <Typography
         variant="h1"
         align="center"
-        color="text.primary"
+        color="primary.white"
         gutterBottom
         sx={{ pt: 5, pb: 5 }}
         fontWeight={"bold"}
