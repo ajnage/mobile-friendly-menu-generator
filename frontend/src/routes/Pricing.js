@@ -19,7 +19,7 @@ function Copyright(props) {
   return (
     <Typography
       variant="body2"
-      color="text.secondary"
+      color="text.primary"
       align="center"
       {...props}
     >
@@ -118,7 +118,7 @@ function PricingContent() {
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
+              color="text.secondary"
               fontWeight={"bold"}
               gutterBottom
             >
