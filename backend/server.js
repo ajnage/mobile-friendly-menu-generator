@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -28,7 +29,7 @@ connectDB();
 
 //Static Folder
 app.use(express.static('public'));
-
+app.use(cors());
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
