@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import GlobalStyles from "@mui/material/GlobalStyles";
+import "../App.css";
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -22,6 +23,11 @@ export default function SignIn() {
       password: data.get("password"),
     });
   };
+  const styles = (theme) => ({
+    multilineColor: {
+      color: "red",
+    },
+  });
 
   return (
     <React.Fragment>
@@ -31,9 +37,12 @@ export default function SignIn() {
           maxWidth="xs"
           sx={{ pb: 20, pt: 10, height: "100vh" }}
         >
-          <CssBaseline bgcolor="primary.main" />
+          <CssBaseline bgcolor="secondary.main" />
           <GlobalStyles
-            styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
+            styles={{
+              ul: { margin: 0, padding: 0, listStyle: "none" },
+              TextField: { color: "white" },
+            }}
           />
           <Box
             sx={{
@@ -45,7 +54,7 @@ export default function SignIn() {
             <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5" color="primary.main">
+            <Typography component="h1" variant="h5" color="secondary.main">
               Sign in
             </Typography>
             <Box
@@ -65,6 +74,9 @@ export default function SignIn() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  sx={{
+                    color: "secondary.main",
+                  }}
                 />
               </Typography>
 
@@ -77,9 +89,12 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                sx={{
+                  color: "secondary.main",
+                }}
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="remember" color="secondary" />}
                 label="Remember me"
               />
               <Button
@@ -92,12 +107,20 @@ export default function SignIn() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link
+                    href="#"
+                    variant="body2"
+                    sx={{ color: "secondary.main" }}
+                  >
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link
+                    href="#"
+                    variant="body2"
+                    sx={{ color: "secondary.main" }}
+                  >
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

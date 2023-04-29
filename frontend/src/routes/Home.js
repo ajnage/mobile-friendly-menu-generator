@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import "../charcoalbg.jpg";
 import "../App.css";
 import QR from "../QR.svg";
 import { useState } from "react";
@@ -10,11 +11,14 @@ import StickyFooter from "../components/StickyFooter";
 import HorizontalNonLinearStepper from "../components/Stepper";
 import SignIn from "./SignIn";
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const h1style = { color: "white", left: "30px" };
 
+// Add light background, dark text
+
 const Home = () => (
-  <Typography bgcolor="primary.background">
+  <Typography bgcolor={"primary.verydark"} sx={{ pb: "10vh" }}>
     <div className="App">
       <link
         rel="stylesheet"
@@ -43,20 +47,23 @@ const Home = () => (
           sx={{
             pb: 10,
           }}
+          fontWeight={"bold"}
         >
           Welcome to the menu-maker app!
         </Typography>
-        <AppButton />
+        <Typography
+          variant="h2"
+          sx={{
+            p: 10,
+            pb: 20,
+            fontWeight: 500,
+          }}
+        >
+          Our app lets restaurant owners save the hassle of creating menus!
+        </Typography>
+        <AppButton destination={"../menu_builder"}/>
       </div>
-      <Typography
-        variant="h2"
-        sx={{
-          p: 10,
-          pb: 20,
-        }}
-      >
-        Our app lets restaurant owners save the hassle of creating menus!
-      </Typography>
+
       <HorizontalNonLinearStepper />
     </div>
   </Typography>
