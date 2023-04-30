@@ -12,6 +12,10 @@ import { Outlet, Link } from "react-router-dom";
 import StickyFooter from "../components/StickyFooter";
 import { AppBar } from "@mui/material";
 import { Typography } from "@mui/material";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+
+
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -19,13 +23,25 @@ const theme = createTheme({
   palette: {
     primary: {
       background: "#191818",
-      main: '#00ccff',
+      // 00ccff
+      main: '#7a2c2c',
       verydark: '#222',
-      grey: '#808080'
+      // grey: '#808080'
+      grey: '#575757'
     },
     secondary: {
       main: '#FFFFFF'
-    }
+    },
+    action: {
+      active: 'rgb(200,0,0)',
+      activeOpacity: 1,
+      hover: 'rgb(200,0,0)',
+      hoverOpacity: 0.7,
+      focus: 'rgb(200,0,0)',
+      focusOpacity: 1,
+      selected: 'rgb(200,0,0)',
+      selectedOpacity: 1
+    },
   },
   components: {
     MuiContainer: {
@@ -37,9 +53,16 @@ const theme = createTheme({
           root: {
             backgroundColor: '#808080'
           }
+          
         }
       }
     },
+    button: {    
+      '&:hover': {
+          background: 'none',
+      },
+  
+  },
   },
   typography: {
     subtitle1: {

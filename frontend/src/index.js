@@ -15,6 +15,9 @@ import MenuBuilder from "./components/MenuBuilder";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import Dashboard from "./routes/Dashboard";
+import QRCodePage from "./routes/qr";
+import LogOutPage from "./routes/LogOut";
+import StaticMenuPage from "./routes/StaticMenu";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +59,21 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         errorElement: <ErrorPage />,
       },
+      {
+        path: "/qr",
+        element: <QRCodePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/log out",
+        element: <LogOutPage />,
+        errorElement: <ErrorPage />,
+      },
     ],
+  },
+  {
+    path: "/static",
+    element: <StaticMenuPage />,
   },
 ]);
 

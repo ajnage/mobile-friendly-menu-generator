@@ -18,6 +18,7 @@ import {
 import { Box } from "@mui/material";
 import { display } from "@mui/system";
 import Button from "@mui/material/Button";
+import { AppButton } from "../components/AppButton";
 
 const features = [
   {
@@ -46,7 +47,6 @@ export default function FreeTrialPage() {
           bgcolor: "primary.grey",
           height: "100vh",
           width: "100",
-          mb: -80,
         }}
       >
         {" "}
@@ -56,6 +56,7 @@ export default function FreeTrialPage() {
           align="center"
           color="text.primary"
           gutterBottom
+          fontWeight={"bold"}
         >
           Free Trial
         </Typography>
@@ -73,9 +74,10 @@ export default function FreeTrialPage() {
               sx={{
                 p: 3,
                 m: 1,
+                mt: "4vh",
                 display: "grid",
                 bgcolor: "primary.background",
-                width: 350,
+                width: 400,
               }}
             >
               <Box sx={{ m: 1 }}>
@@ -100,7 +102,7 @@ export default function FreeTrialPage() {
           mb: 40,
           height: "100vh",
           ml: "0.3vw",
-          background: "linear-gradient(45deg, #00ccff 30%, #222 90%)",
+          background: "linear-gradient(45deg, #7a2c2c 30%, #222 90%)",
           width: "99vw",
           minWidth: "99vw",
           display: "flex",
@@ -118,7 +120,7 @@ export default function FreeTrialPage() {
           <Typography variant="h1" sx={{ pb: 10 }}>
             Give our App a Try
           </Typography>
-          <Button
+          {/* <Button
             variant="contained"
             sx={{
               width: "80%",
@@ -128,13 +130,16 @@ export default function FreeTrialPage() {
             }}
           >
             Take Me To IT!
-          </Button>
+          </Button> */}
+          <AppButton variant="outlined" destination={"../menu_builder"}>
+            {" "}
+          </AppButton>
         </Box>
         <CardMedia
           component="img"
           src={menuexampleinpng}
           alt="Menu Example"
-          height="90%"
+          height="70%"
         />{" "}
         <CardContent>
           <Typography variant="body2" color="text.secondary"></Typography>

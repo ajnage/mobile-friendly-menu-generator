@@ -73,7 +73,11 @@ function InsertCategory(props) {
             onClick={(e) => {
               handleFormClose();
               e.preventDefault();
+<<<<<<< HEAD
               props.handelInsertNewCategory(props.id, title);
+=======
+              props.handleInsertNewCategory(props.id, title);
+>>>>>>> 4c5510ec50236e9b5328f7783f704df14d5e3762
             }}
           >
             Insert
