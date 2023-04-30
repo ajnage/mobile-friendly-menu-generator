@@ -40,12 +40,12 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="dynamic">
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
           sx={{
-            display: { xs: "none", md: "flex" },
+            display: { xs: "grid", md: "flex" },
             mr: 1,
             ml: 10,
             pl: 10,
@@ -54,7 +54,7 @@ function ResponsiveAppBar() {
           <Link
             to={`/`}
             sx={{
-              display: { xs: "none", md: "flex" },
+              display: { xs: "flex", md: "flex" },
               pl: 1,
             }}
             overflow={"auto"}
