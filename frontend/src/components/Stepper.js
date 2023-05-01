@@ -79,7 +79,7 @@ export default function HorizontalNonLinearStepper() {
       }}
     >
       {/* <ThemeProvider theme={theme}> */}
-      <Stepper nonLinear activeStep={activeStep}>
+      <Stepper nonLinear activeStep={activeStep} sx={{ mr : 0 }}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="#FFFFFF" onClick={handleStep(index)}>
@@ -124,14 +124,14 @@ export default function HorizontalNonLinearStepper() {
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                sx={{ mr: 1, color: "secondary.main" }}
+                sx={{  color: "secondary.main" }}
               >
                 Back
               </Button>
               <Box sx={{ flex: "1 1 auto" }} />
               <Button
                 onClick={handleNext}
-                sx={{ mr: 1, color: "secondary.main" }}
+                sx={{  color: "secondary.main" }}
               >
                 Next
               </Button>
