@@ -46,6 +46,9 @@ const Home = () => (
           variant="h1"
           sx={{
             pb: 10,
+            xs: {
+              variant: "h2"
+            }
           }}
           fontWeight={"bold"}
         >
@@ -61,7 +64,7 @@ const Home = () => (
         >
           Our app lets restaurant owners save the hassle of creating menus!
         </Typography>
-        <AppButton destination={"../menu_builder"}/>
+        <AppButton destination={"../menu_builder"} />
       </div>
 
       <HorizontalNonLinearStepper />
