@@ -1,38 +1,40 @@
 const mongoose = require("mongoose");
 
-const ItemSchema = new mongoose.Schema({
-  sequence: {
+const restaurantSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  desc: {
+    type: String,
+    required: true,
+  },
+  price: {
     type: Number,
     required: true,
   },
-  name: {
-    type: String,
-    require: true,
-  },
-  description: {
-    type: String,
-    require: true,
-  },
-  price: {
-    type: String,
-    require: true,
-  },
   image: {
     type: String,
-    require: true,
+    required: true,
   },
-  cloudinaryId: {
+  catagory: {
     type: String,
-    require: true,
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+    enum: [
+      "starters",
+      "shareables",
+      "vegetarian",
+      "vegan",
+      "halal",
+      "kosher",
+      "seafood",
+      "bbq",
+      "burgers",
+      "drinks",
+      "more",
+      "desserts",
+    ],
+    required: true,
   },
 });
 
-module.exports = ItemSchema;
+module.exports = mongoose.model("Item", restaurantSchema);
