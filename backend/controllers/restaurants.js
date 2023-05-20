@@ -1,6 +1,17 @@
 const Restaurant = require("../models/restaurant");
 
 module.exports = {
+  getRestaurantbyId: async (req, res) => {
+    try {
+      const restaurant = await Restaurant.findById(req.params.restaurantId);
+
+      if (!restaurant) return res.status(404).send("restaurant not found");
+
+      res.status(200).send(restaurant);
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getRestaurants: async (req, res) => {
     try {
       const allRestaurants = await Restaurant.find();
