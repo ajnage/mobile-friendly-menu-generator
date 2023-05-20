@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const cors = require("cors");
 const restaurantsRoutes = require("./routes/restaurants");
 const itemsRoutes = require("./routes/items");
+const mainRoutes = require("./routes/main");
+const orderStatsRoutes = require("./routes/orderStats");
+const revenueStatsRoutes = require("./routes/revenueStats");
+const clickStatsRoutes = require("./routes/clickStats");
 
 // Using our .env file
 require("dotenv").config({ path: "./config/.env" });
@@ -24,8 +27,12 @@ app.use(express.json());
 app.use(logger("dev"));
 
 // Server routes
+app.use("/api/", mainRoutes);
 app.use("/api/restaurants/", restaurantsRoutes);
 app.use("/api/items/", itemsRoutes);
+app.use("/api/order-stats/", orderStatsRoutes);
+app.use("/api/revenue-stats/", revenueStatsRoutes);
+app.use("/api/click-stats/", clickStatsRoutes);
 
 // Server
 app.listen(process.env.PORT, () => {
