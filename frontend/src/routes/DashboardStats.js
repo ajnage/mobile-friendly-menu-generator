@@ -120,3 +120,8 @@ export const ClickStats = [
     description: "Orders for June",
   },
 ];
+
+// Restaurant
+//   id
+//   clickStats
+//   

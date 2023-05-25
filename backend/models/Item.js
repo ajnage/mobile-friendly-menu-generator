@@ -17,7 +17,7 @@ const restaurantSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  catagory: {
+  category: {
     type: String,
     enum: [
       "starters",

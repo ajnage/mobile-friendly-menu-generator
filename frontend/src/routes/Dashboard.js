@@ -37,15 +37,28 @@ import Container from "@mui/material/Container";
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
-  const [dashboardStatistics, setDashboardStatistics] = useState([]);
-  useEffect(() => {
-    axios.get("http://localhost:8000/api/v1/restaurant/644d76314121eb4890601f2c").then((data) => {
-      setDashboardStatistics(data?.data);
-    });
-  }, []);
+  // const [dashboardStatistics, setDashboardStatistics] = useState([]);
+  // useEffect(() => {
+  //   axios.get("http://localhost:3434/api/restaurants").then((data) => {
+  //     setDashboardStatistics(data?.data);
+  //     console.log(data)
+  //   });
+  // }, []);
 
   const [menusLeft, setMenusLeft] = useState(50);
 
+  axios.get('http://localhost:3434/api/restaurants')
+    .then(function (response) {
+      // handle success
+      console.log(response.data[1].restaurantName);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
   const [RevenueChartData, setRevenueChartData] = useState({
     labels: RevenueStats.map((data) => data.month),
     datasets: [
