@@ -32,7 +32,14 @@ import axios from "axios";
 
 import { Line } from "react-chartjs-2";
 import Container from "@mui/material/Container";
-import { getRestaurantbyId, getRestaurants } from "../axios/API";
+import {
+  getRestaurantbyId,
+  getRestaurants,
+  getRevenuebyId,
+  getClicksbyId,
+  getOrdersbyId,
+} from "../axios/API";
+import { data } from "jquery";
 
 // Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
@@ -43,6 +50,8 @@ const Dashboard = () => {
   const [RevenueStats, setRevenueStats] = useState([]);
   const [OrderStats, setOrderStats] = useState([]);
   const [ClickStats, setClickStats] = useState([]);
+
+  const restaurantId = "646eb3a8b30795e61bc2a0de";
 
   useEffect(() => {
     getRestaurants()
@@ -60,19 +69,58 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3434/api/revenue-stats/646eb3a8b30795e61bc2a0de")
+    getRevenuebyId(restaurantId)
       .then(function (response) {
         // handle success
-        console.log("2 revenue: ", response.data[2].revenue);
-        console.log("Response data.length: ", response.data.length);
-        const revenues = response.data.map(({ revenue }) => revenue);
-        console.log("Revenues: ", revenues);
-        const upToDateData = response.data.length - 1;
-        setRevenueStats(
-          RevenueStats.concat(response.data[upToDateData].revenue)
-        );
-        console.log("Revenue Stats: ", RevenueStats);
+        const filteredResponse = response.data.map((revenue) => ({
+          month: revenue.month,
+          revenue: revenue.revenue,
+          description: revenue.description,
+        }));
+        setRevenueStats(filteredResponse);
+        console.log("revenue stats", RevenueStats);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
+  useEffect(() => {
+    getOrdersbyId(restaurantId)
+      .then(function (response) {
+        // handle success
+        const filteredResponse = response.data.map((orders) => ({
+          month: orders.month,
+          orders: orders.orders,
+          description: orders.description,
+        }));
+        setOrderStats(filteredResponse);
+        console.log("order stats", filteredResponse);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
+  useEffect(() => {
+    getClicksbyId(restaurantId)
+      .then(function (response) {
+        // handle success
+        const filteredResponse = response.data.map((clicks) => ({
+          month: clicks.month,
+          clicks: clicks.clicks,
+          description: clicks.description,
+        }));
+        setRevenueStats(filteredResponse);
+        console.log("Click stats", filteredResponse);
       })
       .catch(function (error) {
         // handle error
@@ -84,12 +132,11 @@ const Dashboard = () => {
   }, []);
 
   const [RevenueChartData, setRevenueChartData] = useState({
-    labels: RevenueStats.map((data) => data.revenue),
+    labels: RevenueStats.map((data) => data.month),
     datasets: [
       {
         label: "Revenue",
         data: RevenueStats.map((data) => data.revenue),
-        title: RevenueStats.title,
         backgroundColor: ["#7a2c2c"],
         borderColor: "black",
         borderWidth: 2,
