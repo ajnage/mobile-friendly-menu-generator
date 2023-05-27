@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { subCategoriesData } from "../dummyData";
 
 function InsertSubCategory(props) {
-  const [showForm, setShowForm] = useState(false);
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [ImgURL, setImgURL] = useState("");
-
-  const handleFormClose = () => setShowForm(false);
-  const handleFormShow = () => setShowForm(true);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -27,18 +21,14 @@ function InsertSubCategory(props) {
   };
   return (
     <>
-      <Button onClick={handleFormShow} className="border border-2 btn-light">
-        +
-      </Button>
-
       <Modal
-        show={showForm}
-        onHide={handleFormClose}
+        show={props.showForm}
+        onHide={props.handleFormClose}
         backdrop="static"
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Edit the Sub-Category</Modal.Title>
+          <Modal.Title>Add a new Product</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -94,7 +84,7 @@ function InsertSubCategory(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleFormClose}>
+          <Button variant="secondary" onClick={props.handleFormClose}>
             Close
           </Button>
 
