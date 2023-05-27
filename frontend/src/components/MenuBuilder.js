@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CategoryCards from "./menu_builder/category/CategoryCards";
 import InsertCategory from "./menu_builder/category/InsertCategoryForm";
@@ -7,7 +7,7 @@ import InsertSubCategory from "./menu_builder/sub_category/InsertSubCategory";
 import SubCategoryCard from "./menu_builder/sub_category/SubCategoryCard";
 
 import Row from "react-bootstrap/Row";
-
+import axios from "axios";
 import { categoriesData, subCategoriesData } from "./menu_builder/dummyData";
 
 function MenuBuilder() {
@@ -23,6 +23,21 @@ function MenuBuilder() {
     });
     setCategories(updatedCategories);
   };
+
+  /*useEffect(() => {
+    updateCategoryForm()
+      .then(function (response) {
+        // handle success
+        console.log(response.data[1].restaurantName);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);*/
 
   // If I remove the 'id' from the props, the new category doesn't have a title
   const handleInsertNewCategory = (id, newTitle) => {

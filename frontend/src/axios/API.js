@@ -11,5 +11,5 @@ const API = axios.create({
 // REST API
 export const getRestaurants = () => API.get("/restaurants");
 export const getRestaurantbyId = (id) => API.get(`/restaurants/${id}`);
-
-//
+export const getItems = () => API.get("/items");
+export const updateCategoryForm = () =>API.get("/items/${category}");
