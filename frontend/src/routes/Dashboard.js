@@ -37,16 +37,15 @@ import Container from "@mui/material/Container";
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
-
   const [menusLeft, setMenusLeft] = useState(50);
 
-  const [RevenueStats, setRevenueStats] = useState([])
-  const [OrderStats, setOrderStats] = useState([])
-  const [ClickStats, setClickStats] = useState([])
-
+  const [RevenueStats, setRevenueStats] = useState([]);
+  const [OrderStats, setOrderStats] = useState([]);
+  const [ClickStats, setClickStats] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3434/api/restaurants')
+    axios
+      .get("http://localhost:3434/api/restaurants")
       .then(function (response) {
         // handle success
         console.log(response.data[1].restaurantName);
@@ -61,13 +60,19 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    axios.get('http://localhost:3434/api/revenue-stats/646eb3a8b30795e61bc2a0de')
+    axios
+      .get("http://localhost:3434/api/revenue-stats/646eb3a8b30795e61bc2a0de")
       .then(function (response) {
         // handle success
-        console.log(response.data[2].revenue);
-        const upToDateData = response.data.length - 1
-        setRevenueStats(RevenueStats.concat(response.data[upToDateData].revenue))
-        console.log('Revenue Stats: ', RevenueStats)
+        console.log("2 revenue: ", response.data[2].revenue);
+        console.log("Response data.length: ", response.data.length);
+        const revenues = response.data.map(({ revenue }) => revenue);
+        console.log("Revenues: ", revenues);
+        const upToDateData = response.data.length - 1;
+        setRevenueStats(
+          RevenueStats.concat(response.data[upToDateData].revenue)
+        );
+        console.log("Revenue Stats: ", RevenueStats);
       })
       .catch(function (error) {
         // handle error
@@ -77,8 +82,6 @@ const Dashboard = () => {
         // always executed
       });
   }, []);
-
-
 
   const [RevenueChartData, setRevenueChartData] = useState({
     labels: RevenueStats.map((data) => data.revenue),

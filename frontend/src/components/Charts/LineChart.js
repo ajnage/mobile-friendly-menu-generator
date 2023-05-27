@@ -6,9 +6,11 @@ export const LineChart = ({ chartData }) => {
   const [dashboardStatistics, setDashboardStatistics] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3434/api/order-stats/644e0c012321ce82bf9b167a").then((data) => {
-      setDashboardStatistics(data?.data[0]);
-    });
+    axios
+      .get("http://localhost:3434/api/order-stats/644e0c012321ce82bf9b167a")
+      .then((data) => {
+        setDashboardStatistics(data?.data[0]);
+      });
   }, []);
 
   return (
