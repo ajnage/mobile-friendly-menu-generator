@@ -32,6 +32,7 @@ import axios from "axios";
 
 import { Line } from "react-chartjs-2";
 import Container from "@mui/material/Container";
+import { getRestaurantbyId, getRestaurants } from "../axios/API";
 
 // Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
@@ -44,8 +45,7 @@ const Dashboard = () => {
   const [ClickStats, setClickStats] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3434/api/restaurants")
+    getRestaurants()
       .then(function (response) {
         // handle success
         console.log(response.data[1].restaurantName);
@@ -179,7 +179,12 @@ const Dashboard = () => {
 
         <Paper
           elevation={10}
-          sx={{ height: "20vh", mt: "12vh", mr: "7vw", width: "12vw" }}
+          sx={{
+            height: "20vh",
+            mt: "12vh",
+            mr: "7vw",
+            width: "12vw",
+          }}
         >
           <Typography
             variant="h5"
