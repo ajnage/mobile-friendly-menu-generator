@@ -68,6 +68,7 @@ const Dashboard = () => {
       });
   }, []);
 
+  // Get Revenue Statistics
   useEffect(() => {
     getRevenuebyId(restaurantId)
       .then(function (response) {
@@ -78,7 +79,6 @@ const Dashboard = () => {
           description: revenue.description,
         }));
         setRevenueStats(filteredResponse);
-        console.log("revenue stats", RevenueStats);
       })
       .catch(function (error) {
         // handle error
@@ -89,6 +89,7 @@ const Dashboard = () => {
       });
   }, []);
 
+  // Get Order Statistics
   useEffect(() => {
     getOrdersbyId(restaurantId)
       .then(function (response) {
@@ -98,8 +99,8 @@ const Dashboard = () => {
           orders: orders.orders,
           description: orders.description,
         }));
+
         setOrderStats(filteredResponse);
-        console.log("order stats", filteredResponse);
       })
       .catch(function (error) {
         // handle error
@@ -110,6 +111,7 @@ const Dashboard = () => {
       });
   }, []);
 
+  // Get Click Statistics
   useEffect(() => {
     getClicksbyId(restaurantId)
       .then(function (response) {
@@ -119,8 +121,7 @@ const Dashboard = () => {
           clicks: clicks.clicks,
           description: clicks.description,
         }));
-        setRevenueStats(filteredResponse);
-        console.log("Click stats", filteredResponse);
+        setClickStats(filteredResponse);
       })
       .catch(function (error) {
         // handle error
@@ -132,24 +133,28 @@ const Dashboard = () => {
   }, []);
 
   const [RevenueChartData, setRevenueChartData] = useState({
-    labels: RevenueStats.map((data) => data.month),
+    labels: RevenueStats.map(({ month }) => month),
     datasets: [
       {
         label: "Revenue",
-        data: RevenueStats.map((data) => data.revenue),
+        data: RevenueStats.map(({ data }) => data),
         backgroundColor: ["#7a2c2c"],
         borderColor: "black",
         borderWidth: 2,
       },
     ],
   });
+
+  console.log("Revenue Stats:", RevenueStats);
+
+  console.log("Revenue Chart Data:", RevenueChartData);
+
   const [orderChartData, setOrderChartData] = useState({
     labels: OrderStats.map((data) => data.month),
     datasets: [
       {
         label: "Orders",
         data: OrderStats.map((data) => data.orders),
-        title: OrderStats.title,
         backgroundColor: ["#7a2c2c"],
         borderColor: "black",
         borderWidth: 2,
@@ -163,7 +168,6 @@ const Dashboard = () => {
       {
         label: "Clicks",
         data: ClickStats.map((data) => data.clicks),
-        title: ClickStats.title,
         backgroundColor: [
           "#7a2c2c",
           "teal",
