@@ -15,4 +15,4 @@ export const getRevenuebyId = (id) => API.get(`/revenue-stats/${id}`);
 export const getOrdersbyId = (id) => API.get(`/order-stats/${id}`);
 export const getClicksbyId = (id) => API.get(`/click-stats/${id}`);
 export const getItems = () => API.get(`/items`);
-export const updateCategoryForm = () => API.get(`/items/${category}`);
+export const updateCategoryForm = (category) => API.get(`/items/${category}`);
