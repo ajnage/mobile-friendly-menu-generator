@@ -5,11 +5,11 @@ import axios from "axios";
 export const LineChart = ({ chartData }) => {
   const [dashboardStatistics, setDashboardStatistics] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
-  //     setDashboardStatistics(data?.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("http://localhost:3434/api/order-stats/644e0c012321ce82bf9b167a").then((data) => {
+      setDashboardStatistics(data?.data[0]);
+    });
+  }, []);
 
   return (
     <div className="chart-container">

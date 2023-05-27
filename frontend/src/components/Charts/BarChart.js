@@ -6,16 +6,16 @@ import { Statistics } from "../../routes/DashboardStats";
 export const BarChart = ({ chartData }) => {
   const [dashboardStatistics, setDashboardStatistics] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get("http://10.44.22.181:2121/api/v1/dasboardStats/").then((data) => {
-  //     setDashboardStatistics(data?.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("http://localhost:3434/api/restaurants").then((data) => {
+      setDashboardStatistics(data?.data[0]);
+    });
+  }, []);
 
   return (
     <div className="chart-container">
       {/* <h2 style={{ textAlign: "center" }}> {dashboardStatistics.title}</h2> */}
-      <h2 style={{ textAlign: "center" }}> {chartData.title}</h2>
+      <h2 style={{ textAlign: "center" }}> {dashboardStatistics.title}</h2>
       <Bar
         data={chartData}
         options={{

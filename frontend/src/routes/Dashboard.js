@@ -15,7 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
-import { ClickStats, OrderStats, RevenueStats } from "./DashboardStats";
+// import { ClickStats, OrderStats, RevenueStats } from "./DashboardStats";
 import { BarChart } from "../components/Charts/BarChart";
 import { LineChart } from "../components/Charts/LineChart";
 
@@ -37,17 +37,51 @@ import Container from "@mui/material/Container";
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
-  const [dashboardStatistics, setDashboardStatistics] = useState([]);
-  useEffect(() => {
-    axios.get("http://localhost:8000/api/v1/restaurant/644d76314121eb4890601f2c").then((data) => {
-      setDashboardStatistics(data?.data);
-    });
-  }, []);
 
   const [menusLeft, setMenusLeft] = useState(50);
 
+  const [RevenueStats, setRevenueStats] = useState([])
+  const [OrderStats, setOrderStats] = useState([])
+  const [ClickStats, setClickStats] = useState([])
+
+
+  useEffect(() => {
+    axios.get('http://localhost:3434/api/restaurants')
+      .then(function (response) {
+        // handle success
+        console.log(response.data[1].restaurantName);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get('http://localhost:3434/api/revenue-stats/646eb3a8b30795e61bc2a0de')
+      .then(function (response) {
+        // handle success
+        console.log(response.data[2].revenue);
+        const upToDateData = response.data.length - 1
+        setRevenueStats(RevenueStats.concat(response.data[upToDateData].revenue))
+        console.log('Revenue Stats: ', RevenueStats)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, []);
+
+
+
   const [RevenueChartData, setRevenueChartData] = useState({
-    labels: RevenueStats.map((data) => data.month),
+    labels: RevenueStats.map((data) => data.revenue),
     datasets: [
       {
         label: "Revenue",
