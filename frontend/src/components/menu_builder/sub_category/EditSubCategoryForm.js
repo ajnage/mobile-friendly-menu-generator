@@ -4,15 +4,9 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 function EditSubCategoryForm(props) {
-  const [showForm, setShowForm] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [image, setImgURL] = useState(props.image);
-
-  const handleFormClose = () => setShowForm(false);
-  const handleFormShow = () => setShowForm(true);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -28,24 +22,14 @@ function EditSubCategoryForm(props) {
 
   return (
     <>
-      <div className=" d-flex justify-content-center">
-        <a
-          onClick={handleFormShow}
-          className="m-0 text-danger"
-          style={{ cursor: "pointer" }}
-        >
-          Edit
-        </a>
-      </div>
-
       <Modal
-        show={showForm}
-        onHide={handleFormClose}
+        show={props.showForm}
+        onHide={props.handleFormClose}
         backdrop="static"
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Edit the Sub-Category</Modal.Title>
+          <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -101,10 +85,9 @@ function EditSubCategoryForm(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleFormClose}>
+          <Button variant="secondary" onClick={props.handleFormClose}>
             Close
           </Button>
-
           <Button
             form="editModal"
             className=" btn btn-primary"
@@ -112,7 +95,7 @@ function EditSubCategoryForm(props) {
               e.preventDefault();
               props.updateSubCategoryForm(props.id, title, description, image);
               console.log(`Props.id = ${props.id}`);
-              handleFormClose();
+              props.handleFormClose();
             }}
           >
             Update

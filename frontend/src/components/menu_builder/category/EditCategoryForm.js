@@ -5,10 +5,6 @@ import Form from "react-bootstrap/Form";
 
 function EditCategoryForm(props) {
   const [title, setTitle] = useState(props.title);
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -16,28 +12,14 @@ function EditCategoryForm(props) {
 
   return (
     <>
-      <div className=" mx-2 d-flex justify-content-center">
-        {/* <Button onClick={handleShow} className=" btn btn-danger ">
-            Edit
-            </Button> */}
-
-        <a
-          onClick={handleShow}
-          className=" text-danger text-decoration-none"
-          style={{ cursor: "pointer" }}
-        >
-          edit
-        </a>
-      </div>
-
       <Modal
-        show={show}
-        onHide={handleClose}
+        show={props.show}
+        onHide={props.handleClose}
         backdrop="static"
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Edit Category</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -59,11 +41,7 @@ function EditCategoryForm(props) {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer className=" d-flex justify-content-between">
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-
+        <Modal.Footer className="d-flex flex-row">
           <Button
             className="btn btn-danger"
             onClick={() => {
@@ -72,17 +50,22 @@ function EditCategoryForm(props) {
           >
             Delete
           </Button>
-
           <Button
             className=" btn btn-dark"
             form="editModal"
             onClick={(e) => {
-              handleClose();
+              props.handleClose();
               e.preventDefault();
               props.updateCategoryForm(props.id, title);
             }}
           >
             Update
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={props.handleClose}
+          >
+            Close
           </Button>
         </Modal.Footer>
       </Modal>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import CategoryCards from "./menu_builder/category/CategoryCards";
-import InsertCategory from "./menu_builder/category/InsertCategoryForm";
+import AddCategoryCard from './menu_builder/category/AddCategoryCard'
 import Header from "./menu_builder/Header";
 import InsertSubCategory from "./menu_builder/sub_category/InsertSubCategory";
 import SubCategoryCard from "./menu_builder/sub_category/SubCategoryCard";
+import AddSubCategoryCard from './menu_builder/sub_category/AddSubCategoryCard'
 
 import Row from "react-bootstrap/Row";
 import axios from "axios";
@@ -93,7 +94,7 @@ function MenuBuilder() {
       <div className="container mb-5 mt-3">
         <div className="mt-4 d-flex">
           <h2 className=" pe-3">Categories</h2>
-          <InsertCategory handleInsertNewCategory={handleInsertNewCategory} />
+
         </div>
 
         <div className="d-flex px-4 overflow-auto flex-nowrap w-100 py-3">
@@ -108,6 +109,7 @@ function MenuBuilder() {
               />
             );
           })}
+          <AddCategoryCard handleInsertNewCategory={handleInsertNewCategory} />
         </div>
 
         <div className="my-4 d-flex">
@@ -117,7 +119,7 @@ function MenuBuilder() {
           />
         </div>
 
-        <Row lg={5} md={2} sm={2} className=" px-4">
+        <Row lg={5} md={2} sm={2} className=" px-4 d-flex" style={{ display: 'flex', alignItems: 'stretch' }}>
           {subCategories.map((subCategory) => {
             return (
               <SubCategoryCard
@@ -127,10 +129,10 @@ function MenuBuilder() {
                 description={subCategory.description}
                 image={subCategory.image}
                 updateSubCategoryForm={updateSubCategoryForm}
-                s
               />
             );
           })}
+          <AddSubCategoryCard handleInsertNewSubCategory={handleInsertNewSubCategory}/>
         </Row>
       </div>
     </div>
