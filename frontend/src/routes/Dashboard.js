@@ -132,24 +132,24 @@ const Dashboard = () => {
       });
   }, []);
 
-  const [RevenueChartData, setRevenueChartData] = useState({
+  const RevenueChartData = {
     labels: RevenueStats.map(({ month }) => month),
     datasets: [
       {
         label: "Revenue",
-        data: RevenueStats.map(({ data }) => data),
+        data: RevenueStats.map(({ revenue }) => revenue),
         backgroundColor: ["#7a2c2c"],
         borderColor: "black",
         borderWidth: 2,
       },
     ],
-  });
+  };
 
   console.log("Revenue Stats:", RevenueStats);
 
   console.log("Revenue Chart Data:", RevenueChartData);
 
-  const [orderChartData, setOrderChartData] = useState({
+  const orderChartData = {
     labels: OrderStats.map((data) => data.month),
     datasets: [
       {
@@ -160,9 +160,9 @@ const Dashboard = () => {
         borderWidth: 2,
       },
     ],
-  });
+  };
 
-  const [clickChartData, setClickChartData] = useState({
+  const clickChartData = {
     labels: ClickStats.map((data) => data.month),
     datasets: [
       {
@@ -180,7 +180,7 @@ const Dashboard = () => {
         borderWidth: 2,
       },
     ],
-  });
+  };
 
   // Here the user variable is just the username of the restaurant owner, currently it is
   // set to 'owner' before someone signs in!
