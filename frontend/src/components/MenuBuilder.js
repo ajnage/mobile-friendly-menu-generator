@@ -10,6 +10,7 @@ import AddSubCategoryCard from './menu_builder/sub_category/AddSubCategoryCard'
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { categoriesData, subCategoriesData } from "./menu_builder/dummyData";
+import { Button } from "@mui/material";
 
 function MenuBuilder() {
   const [categories, setCategories] = useState(categoriesData);
@@ -25,20 +26,24 @@ function MenuBuilder() {
     setCategories(updatedCategories);
   };
 
-  /*useEffect(() => {
-    updateCategoryForm()
-      .then(function (response) {
-        // handle success
-        console.log(response.data[1].restaurantName);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
-  }, []);*/
+  // useEffect(() => {
+  //   updateCategoryForm()
+  //     .then(function (response) {
+  //       // handle success
+  //       console.log(response.data[1].restaurantName);
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error);
+  //     })
+  //     .finally(function () {
+  //       // always executed
+  //     });
+  // }, []);
+  const saveData = () => {
+    console.log('This should save data (placeholder)')
+  }
+
 
   // If I remove the 'id' from the props, the new category doesn't have a title
   const handleInsertNewCategory = (id, newTitle) => {
@@ -132,9 +137,19 @@ function MenuBuilder() {
               />
             );
           })}
-          <AddSubCategoryCard handleInsertNewSubCategory={handleInsertNewSubCategory}/>
+          <AddSubCategoryCard handleInsertNewSubCategory={handleInsertNewSubCategory} />
         </Row>
+
       </div>
+      {/* This should save to to the server the new menu*/}
+      <Button variant="contained"
+        sx={{
+          width: "10vw",
+          height: "4vh",
+          mt: "5vh",
+          ml: '45vw'
+        }}
+        onClick={saveData}>Save</Button>
     </div>
   );
 }
