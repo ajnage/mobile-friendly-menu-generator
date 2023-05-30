@@ -23,22 +23,33 @@ import {
 } from "../components/menu_builder/dummyData";
 
 import Row from "react-bootstrap/Row";
+import {
+  getItems
+} from "../axios/API";
 
 
 
 // Look into local storage to get updated data otherwise it needs to be fetched from backend
 
 export default function StaticMenuPage() {
-  const url = "http://localhost:3434/api/items/"
   const [data, setData] = useState([])
-  const fetchInfo = () => {
-    return axios.get(url)
-      .then((response) => setData(response.data));
-  }
 
   useEffect(() => {
-    fetchInfo();
+    getItems()
+      .then(function (response) {
+        // handle success
+        console.log('Here is the response data', response.data);
+        setData(response.data)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
   }, [])
+
   return (
     <Box className=" h-100">
       <Header />
