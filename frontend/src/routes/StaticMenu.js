@@ -39,7 +39,12 @@ export default function StaticMenuPage() {
       .then(function (response) {
         // handle success
         console.log('Here is the response data', response.data);
+        const prices = response.data.map(({ price }) =>
+          price
+        )
+        console.log('Prices: ', prices)
         setData(response.data)
+        // console.log('data state.price: ', data[1].price)
       })
       .catch(function (error) {
         // handle error
@@ -56,12 +61,6 @@ export default function StaticMenuPage() {
       <Box className="container mb-5 mt-3">
         <Box className="mt-4 d-flex">
           <h2 className=" pe-3">Categories</h2>
-        </Box>
-        <Box>
-          <Typography variant="h1">Testing</Typography>
-          {data.map((dataObj) => {
-            return <Typography variant="h1" sx={{ color: 'primary.main' }}> Here are the categories {dataObj.name}</Typography>
-          })}
         </Box>
 
         <Box className="d-flex px-4 overflow-auto flex-nowrap w-100 py-3">
@@ -81,14 +80,15 @@ export default function StaticMenuPage() {
         </Box>
 
         <Row lg={5} md={2} sm={2} className=" px-4">
-          {subCategoriesData.map((subCategory) => {
+          {data.map((dataObj) => {
             return (
               <StaticSubCategoryCards
-                key={subCategory.id}
-                id={subCategory.id}
-                title={subCategory.title}
-                description={subCategory.description}
-                image={subCategory.image}
+                key={dataObj.id}
+                id={dataObj.id}
+                title={dataObj.name}
+                description={dataObj.desc}
+                image={dataObj.image}
+                price={dataObj.price}
               />
             );
           })}

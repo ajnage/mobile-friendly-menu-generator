@@ -21,7 +21,7 @@ function StaticSubCategoryCards(props) {
         )
         console.log('Prices: ', prices)
         setData(response.data)
-        console.log('data state.price: ', data[1].price)
+        // console.log('data state.price: ', data[1].price)
       })
       .catch(function (error) {
         // handle error
@@ -41,7 +41,7 @@ function StaticSubCategoryCards(props) {
             <Card.Title className=" text-center fs-4">{props.title}</Card.Title>
 
             <Card.Text className=" text-center">
-              <p className=" fw-bold fst-normal">{data.price}</p>
+              <p className=" fw-bold fst-normal">{props.price}$</p>
 
               <p className=" text-secondary small">{props.description}</p>
             </Card.Text>
