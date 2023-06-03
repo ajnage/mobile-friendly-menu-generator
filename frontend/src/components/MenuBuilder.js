@@ -9,12 +9,40 @@ import AddSubCategoryCard from './menu_builder/sub_category/AddSubCategoryCard'
 
 import Row from "react-bootstrap/Row";
 import axios from "axios";
-import { categoriesData, subCategoriesData } from "./menu_builder/dummyData";
+import { categoriesData } from "./menu_builder/dummyData";
 import { Button } from "@mui/material";
+
+import {
+  getItems,
+  postItems
+} from "../axios/API";
+
 
 function MenuBuilder() {
   const [categories, setCategories] = useState(categoriesData);
-  const [subCategories, SetSubCategories] = useState(subCategoriesData);
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    getItems()
+      .then(function (response) {
+        // handle success
+        console.log('Here is the response data', response.data);
+        const prices = response.data.map(({ price }) =>
+          price
+        )
+        console.log('Prices: ', prices)
+        setData(response.data)
+        // console.log('data state.price: ', data[1].price)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, [])
 
   const updateCategoryForm = (id, newTitle) => {
     const updatedCategories = categories.map((category) => {
@@ -26,22 +54,11 @@ function MenuBuilder() {
     setCategories(updatedCategories);
   };
 
-  // useEffect(() => {
-  //   updateCategoryForm()
-  //     .then(function (response) {
-  //       // handle success
-  //       console.log(response.data[1].restaurantName);
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error);
-  //     })
-  //     .finally(function () {
-  //       // always executed
-  //     });
-  // }, []);
   const saveData = () => {
     console.log('This should save data (placeholder)')
+    console.log('Data:', data.price)
+    postItems(data, { category: data.category, image: data.image, price: data.price, desc: data.desc })
+    console.log('works? nah')
   }
 
 
@@ -63,33 +80,35 @@ function MenuBuilder() {
     setCategories(newCategory);
   };
 
-  const updateSubCategoryForm = (id, newTitle, newDescription, newImgURL) => {
-    const updatedSubCategory = subCategories.map((subCategory) => {
+  const updateSubCategoryForm = (id, newTitle, newDescription, newPrice, newImgURL) => {
+    const updatedSubCategory = data.map((subCategory) => {
       if (id === subCategory.id) {
         console.log("updateSubCategoryForm");
         return {
           ...subCategory,
-          title: newTitle,
-          description: newDescription,
+          name: newTitle,
+          desc: newDescription,
+          price: newPrice,
           image: newImgURL,
         };
       }
       return subCategory;
     });
-    SetSubCategories(updatedSubCategory);
+    setData(updatedSubCategory);
   };
 
-  const handleInsertNewSubCategory = (newTitle, newDescription, newImgURL) => {
+  const handleInsertNewSubCategory = (newTitle, newDescription, newPrice, newImgURL) => {
     console.log("handleInsertNewSubCategory");
     const newSubCategory = {
-      id: subCategories.length + 1,
-      title: newTitle,
-      description: newDescription,
+      id: data.length + 1,
+      name: newTitle,
+      desc: newDescription,
+      price: newPrice,
       image: newImgURL,
     };
-    console.log(subCategories);
+    console.log(data);
     console.log(newSubCategory);
-    SetSubCategories([...subCategories, newSubCategory]);
+    setData([...data, newSubCategory]);
   };
 
   return (
@@ -125,14 +144,14 @@ function MenuBuilder() {
         </div>
 
         <Row lg={5} md={2} sm={2} className=" px-4 d-flex" style={{ display: 'flex', alignItems: 'stretch' }}>
-          {subCategories.map((subCategory) => {
+          {data.map((dataObj) => {
             return (
               <SubCategoryCard
-                key={subCategory.id}
-                id={subCategory.id}
-                title={subCategory.title}
-                description={subCategory.description}
-                image={subCategory.image}
+                key={dataObj.id}
+                id={dataObj.id}
+                title={dataObj.name}
+                description={dataObj.desc}
+                image={dataObj.image}
                 updateSubCategoryForm={updateSubCategoryForm}
               />
             );

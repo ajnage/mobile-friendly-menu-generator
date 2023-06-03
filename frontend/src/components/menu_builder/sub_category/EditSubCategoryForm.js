@@ -7,6 +7,7 @@ function EditSubCategoryForm(props) {
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [image, setImgURL] = useState(props.image);
+  const [price, setPrice] = useState(props.price)
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -18,6 +19,10 @@ function EditSubCategoryForm(props) {
 
   const handleImgURLChange = (e) => {
     setImgURL(e.target.value);
+  };
+
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
   };
 
   return (
@@ -65,7 +70,21 @@ function EditSubCategoryForm(props) {
                 className=" form-control w-75"
               />
             </Form.Group>
-
+            <Form.Group
+              className="mb-3 d-flex justify-content-start"
+              controlId="formImg"
+            >
+              <Form.Label className=" text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3">
+                Price
+              </Form.Label>
+              <Form.Control
+                onChange={handlePriceChange}
+                value={price}
+                type="text"
+                placeholder="'10'"
+                className=" form-control w-75"
+              />
+            </Form.Group>
             <Form.Group
               className="mb-3 d-flex justify-content-start"
               controlId="formImg"
@@ -93,7 +112,7 @@ function EditSubCategoryForm(props) {
             className=" btn btn-primary"
             onClick={(e) => {
               e.preventDefault();
-              props.updateSubCategoryForm(props.id, title, description, image);
+              props.updateSubCategoryForm(props.id, { title, description, price, image });
               console.log(`Props.id = ${props.id}`);
               props.handleFormClose();
             }}

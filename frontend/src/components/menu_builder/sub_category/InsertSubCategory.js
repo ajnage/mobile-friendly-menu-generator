@@ -7,6 +7,7 @@ function InsertSubCategory(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [ImgURL, setImgURL] = useState("");
+  const [price, setPrice] = useState("");
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -18,6 +19,10 @@ function InsertSubCategory(props) {
 
   const handleImgURLChange = (e) => {
     setImgURL(e.target.value);
+  };
+
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
   };
   return (
     <>
@@ -61,6 +66,21 @@ function InsertSubCategory(props) {
                 value={description}
                 type="text"
                 placeholder="description"
+                className=" form-control w-75"
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3 d-flex justify-content-start"
+              controlId="formTitle"
+            >
+              <Form.Label className=" text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3">
+                Price
+              </Form.Label>
+              <Form.Control
+                onChange={handlePriceChange}
+                value={price}
+                type="url"
+                placeholder="'10'"
                 className=" form-control w-75"
               />
             </Form.Group>
