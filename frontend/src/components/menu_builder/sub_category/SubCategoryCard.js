@@ -19,24 +19,24 @@ function SubCategoryCard(props) {
             <Card.Title className=" text-center fs-4">{props.title}</Card.Title>
 
             <Card.Text className=" text-center">
-              <p className=" fw-bold fst-normal">$5,00</p>
-              
+              <p className=" fw-bold fst-normal">{props.price}$</p>
+
               <p className="text-secondary small">{props.description}</p>
             </Card.Text>
           </Card.Body>
         </Card>
       </Col>
-      
+
       <EditSubCategoryForm
-                title={props.title}
-                id={props.id}
-                image={props.image}
-                description={props.description}
-                updateSubCategoryForm={props.updateSubCategoryForm}
-                handleDelete={props.handleDelete}
-                showForm={showForm}
-                handleFormClose={handleFormClose}
-              />
+        title={props.title}
+        id={props.id}
+        image={props.image}
+        description={props.description}
+        updateSubCategoryForm={props.updateSubCategoryForm}
+        handleDelete={props.handleDelete}
+        showForm={showForm}
+        handleFormClose={handleFormClose}
+      />
     </div>
   );
 }

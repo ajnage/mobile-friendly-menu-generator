@@ -15,5 +15,5 @@ export const getRevenuebyId = (id) => API.get(`/revenue-stats/${id}`);
 export const getOrdersbyId = (id) => API.get(`/order-stats/${id}`);
 export const getClicksbyId = (id) => API.get(`/click-stats/${id}`);
 export const getItems = () => API.get(`/items`);
-export const postItems = () => API.post(`/items/create-item`)
+export const postItems = (data) => API.post(`/items/create-item`, { name: data.name, desc: data.desc, price: data.price, image: data.image, category: data.category })
 export const updateCategoryForm = (category) => API.get(`/items/${category}`);

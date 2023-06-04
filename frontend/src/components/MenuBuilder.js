@@ -20,8 +20,8 @@ import {
 
 function MenuBuilder() {
   const [categories, setCategories] = useState(categoriesData);
-
-  const [data, setData] = useState([])
+  const [subCategories, setSubCategories] = useState([])
+  const [oldSubCats, setOldSubCats] = useState([])
 
   useEffect(() => {
     getItems()
@@ -32,7 +32,8 @@ function MenuBuilder() {
           price
         )
         console.log('Prices: ', prices)
-        setData(response.data)
+        setOldSubCats(response.data)
+        setSubCategories(response.data)
         // console.log('data state.price: ', data[1].price)
       })
       .catch(function (error) {
@@ -55,9 +56,24 @@ function MenuBuilder() {
   };
 
   const saveData = () => {
-    console.log('This should save data (placeholder)')
-    console.log('Data:', data.price)
-    postItems(data, { category: data.category, image: data.image, price: data.price, desc: data.desc })
+    // A comparer used to determine if two entries are equal.
+    const isSameItem = (subCategories, oldSubCats) => subCategories.name === oldSubCats.name && subCategories.desc === oldSubCats.desc && subCategories.price === oldSubCats.price && subCategories.image === oldSubCats.image && subCategories.category === oldSubCats.category;
+
+    // Get items that only occur in the left array,
+    // using the compareFunction to determine equality.
+    const onlyInLeft = (left, right, compareFunction) =>
+      left.filter(leftValue =>
+        !right.some(rightValue =>
+          compareFunction(leftValue, rightValue)));
+
+    const onlyInNew = onlyInLeft(subCategories, oldSubCats, isSameItem);
+
+    const result = [...onlyInNew];
+
+    console.log('This should save data (placeholder)', result[0].category)
+
+    postItems({ category: 'vegetarian', image: result[0].image, price: result[0].price, desc: result[0].desc, name: result[0].name })
+
     console.log('works? nah')
   }
 
@@ -80,9 +96,9 @@ function MenuBuilder() {
     setCategories(newCategory);
   };
 
-  const updateSubCategoryForm = (id, newTitle, newDescription, newPrice, newImgURL) => {
-    const updatedSubCategory = data.map((subCategory) => {
-      if (id === subCategory.id) {
+  const updateSubCategoryForm = (newTitle, newDescription, newPrice, newImgURL) => {
+    const updatedSubCategory = subCategories.map((subCategory) => {
+      if (newTitle === subCategories.name) {
         console.log("updateSubCategoryForm");
         return {
           ...subCategory,
@@ -94,21 +110,22 @@ function MenuBuilder() {
       }
       return subCategory;
     });
-    setData(updatedSubCategory);
+    setSubCategories(updatedSubCategory);
+    console.log('subCategories after updating a subcategory: ', subCategories)
   };
 
   const handleInsertNewSubCategory = (newTitle, newDescription, newPrice, newImgURL) => {
     console.log("handleInsertNewSubCategory");
     const newSubCategory = {
-      id: data.length + 1,
+      id: subCategories.length + 1,
       name: newTitle,
       desc: newDescription,
       price: newPrice,
       image: newImgURL,
     };
-    console.log(data);
     console.log(newSubCategory);
-    setData([...data, newSubCategory]);
+    setSubCategories([...subCategories, newSubCategory]);
+    console.log('subCategories after making a subcategory: ', subCategories)
   };
 
   return (
@@ -144,13 +161,14 @@ function MenuBuilder() {
         </div>
 
         <Row lg={5} md={2} sm={2} className=" px-4 d-flex" style={{ display: 'flex', alignItems: 'stretch' }}>
-          {data.map((dataObj) => {
+          {subCategories.map((dataObj) => {
             return (
               <SubCategoryCard
                 key={dataObj.id}
                 id={dataObj.id}
                 title={dataObj.name}
                 description={dataObj.desc}
+                price={dataObj.price}
                 image={dataObj.image}
                 updateSubCategoryForm={updateSubCategoryForm}
               />

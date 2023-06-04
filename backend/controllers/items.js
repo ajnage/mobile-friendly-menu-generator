@@ -41,7 +41,7 @@ module.exports = {
   },
   getCategories: async (req, res) => {
     try {
-      const category=req.params.category
+      const category = req.params.category
       const allItemsInCategory = await Item.find({category: category});
       res.status(200).send(allItemsInCategory);
     } catch (err) {

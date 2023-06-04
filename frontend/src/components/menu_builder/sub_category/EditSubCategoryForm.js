@@ -72,7 +72,7 @@ function EditSubCategoryForm(props) {
             </Form.Group>
             <Form.Group
               className="mb-3 d-flex justify-content-start"
-              controlId="formImg"
+              controlId="formPrice"
             >
               <Form.Label className=" text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3">
                 Price
@@ -112,7 +112,7 @@ function EditSubCategoryForm(props) {
             className=" btn btn-primary"
             onClick={(e) => {
               e.preventDefault();
-              props.updateSubCategoryForm(props.id, { title, description, price, image });
+              props.updateSubCategoryForm(props.title, props.description, props.price, props.image);
               console.log(`Props.id = ${props.id}`);
               props.handleFormClose();
             }}
