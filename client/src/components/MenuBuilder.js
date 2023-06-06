@@ -1,18 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CategoryCards from "./menu_builder/category/CategoryCards";
-import InsertCategory from "./menu_builder/category/InsertCategoryForm";
+import AddCategoryCard from './menu_builder/category/AddCategoryCard'
 import Header from "./menu_builder/Header";
 import InsertSubCategory from "./menu_builder/sub_category/InsertSubCategory";
 import SubCategoryCard from "./menu_builder/sub_category/SubCategoryCard";
+import AddSubCategoryCard from './menu_builder/sub_category/AddSubCategoryCard'
 
 import Row from "react-bootstrap/Row";
+import axios from "axios";
+import { categoriesData } from "./menu_builder/dummyData";
+import { Button } from "@mui/material";
 
-import { categoriesData, subCategoriesData } from "./menu_builder/dummyData";
+import {
+  getItems,
+  postItems
+} from "../axios/API";
+
 
 function MenuBuilder() {
   const [categories, setCategories] = useState(categoriesData);
-  const [subCategories, SetSubCategories] = useState(subCategoriesData);
+  const [subCategories, setSubCategories] = useState([])
+  const [oldSubCats, setOldSubCats] = useState([])
+
+  useEffect(() => {
+    getItems()
+      .then(function (response) {
+        // handle success
+        console.log('Here is the response data', response.data);
+        const prices = response.data.map(({ price }) =>
+          price
+        )
+        console.log('Prices: ', prices)
+        setOldSubCats(response.data)
+        setSubCategories(response.data)
+        // console.log('data state.price: ', data[1].price)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, [])
 
   const updateCategoryForm = (id, newTitle) => {
     const updatedCategories = categories.map((category) => {
@@ -23,6 +54,28 @@ function MenuBuilder() {
     });
     setCategories(updatedCategories);
   };
+
+  const saveData = () => {
+    // A comparer used to determine if two entries are equal.
+    const isSameItem = (subCategories, oldSubCats) => subCategories.name === oldSubCats.name && subCategories.desc === oldSubCats.desc && subCategories.price === oldSubCats.price && subCategories.image === oldSubCats.image && subCategories.category === oldSubCats.category;
+
+    // Get items that only occur in the left array,
+    // using the compareFunction to determine equality.
+    const onlyInLeft = (newvals, old, compareFunction) =>
+      old.filter(newvals =>
+        !newvals.some(newvals =>
+          compareFunction(old, newvals)));
+
+    const onlyInNew = onlyInLeft(subCategories, oldSubCats, isSameItem);
+
+    const changesToSubCats = [...onlyInNew];
+
+    console.log('This should save data (placeholder)', changesToSubCats[0].category)
+
+    postItems({ category: 'vegetarian', image: changesToSubCats[0].image, price: changesToSubCats[0].price, desc: changesToSubCats[0].desc, name: changesToSubCats[0].name })
+
+  }
+
 
   // If I remove the 'id' from the props, the new category doesn't have a title
   const handleInsertNewCategory = (id, newTitle) => {
@@ -42,33 +95,36 @@ function MenuBuilder() {
     setCategories(newCategory);
   };
 
-  const updateSubCategoryForm = (id, newTitle, newDescription, newImgURL) => {
+  const updateSubCategoryForm = (newTitle, newDescription, newPrice, newImgURL) => {
     const updatedSubCategory = subCategories.map((subCategory) => {
-      if (id === subCategory.id) {
+      if (newTitle === subCategories.name) {
         console.log("updateSubCategoryForm");
         return {
           ...subCategory,
-          title: newTitle,
-          description: newDescription,
+          name: newTitle,
+          desc: newDescription,
+          price: newPrice,
           image: newImgURL,
         };
       }
       return subCategory;
     });
-    SetSubCategories(updatedSubCategory);
+    setSubCategories(updatedSubCategory);
+    console.log('subCategories after updating a subcategory: ', subCategories)
   };
 
-  const handleInsertNewSubCategory = (newTitle, newDescription, newImgURL) => {
+  const handleInsertNewSubCategory = (newTitle, newDescription, newPrice, newImgURL) => {
     console.log("handleInsertNewSubCategory");
     const newSubCategory = {
       id: subCategories.length + 1,
-      title: newTitle,
-      description: newDescription,
+      name: newTitle,
+      desc: newDescription,
+      price: newPrice,
       image: newImgURL,
     };
-    console.log(subCategories);
     console.log(newSubCategory);
-    SetSubCategories([...subCategories, newSubCategory]);
+    setSubCategories([...subCategories, newSubCategory]);
+    console.log('subCategories after making a subcategory: ', subCategories)
   };
 
   return (
@@ -78,7 +134,7 @@ function MenuBuilder() {
       <div className="container mb-5 mt-3">
         <div className="mt-4 d-flex">
           <h2 className=" pe-3">Categories</h2>
-          <InsertCategory handleInsertNewCategory={handleInsertNewCategory} />
+
         </div>
 
         <div className="d-flex px-4 overflow-auto flex-nowrap w-100 py-3">
@@ -93,6 +149,7 @@ function MenuBuilder() {
               />
             );
           })}
+          <AddCategoryCard handleInsertNewCategory={handleInsertNewCategory} />
         </div>
 
         <div className="my-4 d-flex">
@@ -102,22 +159,33 @@ function MenuBuilder() {
           />
         </div>
 
-        <Row lg={5} md={2} sm={2} className=" px-4">
-          {subCategories.map((subCategory) => {
+        <Row lg={5} md={2} sm={2} className=" px-4 d-flex" style={{ display: 'flex', alignItems: 'stretch' }}>
+          {subCategories.map((dataObj) => {
             return (
               <SubCategoryCard
-                key={subCategory.id}
-                id={subCategory.id}
-                title={subCategory.title}
-                description={subCategory.description}
-                image={subCategory.image}
+                key={dataObj.id}
+                id={dataObj.id}
+                title={dataObj.name}
+                description={dataObj.desc}
+                price={dataObj.price}
+                image={dataObj.image}
                 updateSubCategoryForm={updateSubCategoryForm}
-                s
               />
             );
           })}
+          <AddSubCategoryCard handleInsertNewSubCategory={handleInsertNewSubCategory} />
         </Row>
+
       </div>
+      {/* This should save to to the server the new menu*/}
+      <Button variant="contained"
+        sx={{
+          width: "10vw",
+          height: "4vh",
+          mt: "5vh",
+          ml: '45vw'
+        }}
+        onClick={saveData}>Save</Button>
     </div>
   );
 }

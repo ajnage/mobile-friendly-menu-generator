@@ -124,4 +124,4 @@ export const ClickStats = [
 // Restaurant
 //   id
 //   clickStats
-//   
+//
