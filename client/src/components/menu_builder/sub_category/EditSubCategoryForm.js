@@ -4,15 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 function EditSubCategoryForm(props) {
-	const [showForm, setShowForm] = useState(false);
-	// const [showEdit, setShowEdit] = useState(false);
-
 	const [title, setTitle] = useState(props.title);
 	const [description, setDescription] = useState(props.description);
 	const [image, setImgURL] = useState(props.image);
-
-	const handleFormClose = () => setShowForm(false);
-	const handleFormShow = () => setShowForm(true);
+	const [price, setPrice] = useState(props.price)
 
 	const handleTitleChange = (e) => {
 		setTitle(e.target.value);
@@ -26,26 +21,20 @@ function EditSubCategoryForm(props) {
 		setImgURL(e.target.value);
 	};
 
+	const handlePriceChange = (e) => {
+		setPrice(e.target.value);
+	};
+
 	return (
 		<>
-			<div className=" d-flex justify-content-center">
-				<p
-					onClick={handleFormShow}
-					className="m-0 text-danger"
-					style={{ cursor: "pointer" }}
-				>
-					Edit
-				</p>
-			</div>
-
 			<Modal
-				show={showForm}
-				onHide={handleFormClose}
+				show={props.showForm}
+				onHide={props.handleFormClose}
 				backdrop="static"
 				keyboard={false}
 			>
 				<Modal.Header closeButton>
-					<Modal.Title>Edit the Sub-Category</Modal.Title>
+					<Modal.Title>Edit Product</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
@@ -81,7 +70,21 @@ function EditSubCategoryForm(props) {
 								className=" form-control w-75"
 							/>
 						</Form.Group>
-
+						<Form.Group
+							className="mb-3 d-flex justify-content-start"
+							controlId="formPrice"
+						>
+							<Form.Label className=" text-start text-nowrap text-secondary col-2 my-auto fw-bold  me-3">
+								Price
+							</Form.Label>
+							<Form.Control
+								onChange={handlePriceChange}
+								value={price}
+								type="text"
+								placeholder="'10'"
+								className=" form-control w-75"
+							/>
+						</Form.Group>
 						<Form.Group
 							className="mb-3 d-flex justify-content-start"
 							controlId="formImg"
@@ -101,23 +104,17 @@ function EditSubCategoryForm(props) {
 				</Modal.Body>
 
 				<Modal.Footer>
-					<Button variant="secondary" onClick={handleFormClose}>
+					<Button variant="secondary" onClick={props.handleFormClose}>
 						Close
 					</Button>
-
 					<Button
 						form="editModal"
 						className=" btn btn-primary"
 						onClick={(e) => {
 							e.preventDefault();
-							props.updateSubCategoryForm(
-								props.id,
-								title,
-								description,
-								image
-							);
+							props.updateSubCategoryForm(props.title, props.description, props.price, props.image);
 							console.log(`Props.id = ${props.id}`);
-							handleFormClose();
+							props.handleFormClose();
 						}}
 					>
 						Update

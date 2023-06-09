@@ -61,19 +61,20 @@ function MenuBuilder() {
 
     // Get items that only occur in the left array,
     // using the compareFunction to determine equality.
-    const onlyInLeft = (newvals, old, compareFunction) =>
-      old.filter(newvals =>
-        !newvals.some(newvals =>
-          compareFunction(old, newvals)));
+    const onlyInLeft = (left, right, compareFunction) =>
+      left.filter(leftValue =>
+        !right.some(rightValue =>
+          compareFunction(leftValue, rightValue)));
 
     const onlyInNew = onlyInLeft(subCategories, oldSubCats, isSameItem);
 
-    const changesToSubCats = [...onlyInNew];
+    const result = [...onlyInNew];
 
-    console.log('This should save data (placeholder)', changesToSubCats[0].category)
+    console.log('This should save data (placeholder)', result[0].category)
 
-    postItems({ category: 'vegetarian', image: changesToSubCats[0].image, price: changesToSubCats[0].price, desc: changesToSubCats[0].desc, name: changesToSubCats[0].name })
+    postItems({ category: 'vegetarian', image: result[0].image, price: result[0].price, desc: result[0].desc, name: result[0].name })
 
+    console.log('works? nah')
   }
 
 

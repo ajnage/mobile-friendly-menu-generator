@@ -31,4 +31,3 @@ function CategoryCards(props) {
 }
 
 export default CategoryCards
-

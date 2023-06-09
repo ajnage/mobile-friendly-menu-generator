@@ -6,41 +6,30 @@ import Form from "react-bootstrap/Form";
 
 function InsertCategory(props) {
 	const [title, setTitle] = useState("");
-	const [showForm, setShowForm] = useState(false);
 
-	const handleFormClose = () => setShowForm(false);
-	// const handleFormShow = () => setShowForm(true);
+
+
 
 	const handleTitleChange = (e) => {
 		setTitle(e.target.value);
 	};
 
-	const handleShowCategoryForm = () => {
-		setShowForm(true);
-	};
 
-	// const handleSubmit = (e) => {
-	//   props.onSubmit(title);
-	// };
+	const handleSubmit = (e) => {
+		props.onSubmit(title);
+	};
 
 	return (
 		<>
-			<Button
-				className="border border-2 btn-light"
-				onClick={handleShowCategoryForm}
-			>
-				+
-			</Button>
-
 			<Modal
 				backdrop="static"
 				keyboard={false}
 				className=""
-				show={showForm}
-				onHide={handleFormClose}
+				show={props.showForm}
+				onHide={props.handleFormClose}
 			>
 				<Modal.Header closeButton>
-					<Modal.Title>Modal title</Modal.Title>
+					<Modal.Title>Add new category</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
@@ -63,20 +52,17 @@ function InsertCategory(props) {
 					</Form>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="secondary" onClick={handleFormClose}>
+					<Button variant="secondary" onClick={props.handleFormClose}>
 						Close
 					</Button>
 
 					<Button
 						className=" btn btn-dark"
-						form="  Modal"
+						form="Modal"
 						onClick={(e) => {
-							handleFormClose();
+							props.handleFormClose();
 							e.preventDefault();
-							props.handleInsertNewCategory(
-								props.id,
-								title
-							);
+							props.handleInsertNewCategory(props.id, title);
 						}}
 					>
 						Insert
