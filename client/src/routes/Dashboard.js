@@ -1,40 +1,23 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-// import AppBar from "@mui/material/AppBar";
-// import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-// import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
-// import CardContent from "@mui/material/CardContent";
-// import CardHeader from "@mui/material/CardHeader";
-// import Grid from "@mui/material/Grid";
-// import StarIcon from "@mui/icons-material/StarBorder";
-// import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-
-// import { ClickStats, OrderStats, RevenueStats } from "./DashboardStats";
 import { BarChart } from "../components/Charts/BarChart";
 import { LineChart } from "../components/Charts/LineChart";
-
-// import { CategoryScale } from "chart.js";
 import "chart.js/auto";
-
-// BIG IMPORTANT PRIORITY ===>
-// Figure out how to use chartjs
-// Read documentation from them https://www.chartjs.org/docs/latest/getting-started/integration.html
-// I left off there, but the goal is to manage to put in charts describing different statistics
-// From the array 'statistics'
-// <===
-
-// import { Line } from "react-chartjs-2";
 import Container from "@mui/material/Container";
-import { getRestaurantbyId, getRestaurants } from "../axios/API";
-
 import { useAuth0 } from "@auth0/auth0-react";
+import {
+	getRestaurantbyId,
+	getRestaurants,
+	getRevenuebyId,
+	getClicksbyId,
+	getOrdersbyId,
+} from "../axios/API";
 console.log(process.env.REACT_APP_AUTH0_DOMAIN);
+
 // Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
 
@@ -46,6 +29,8 @@ const Dashboard = () => {
 	const [ClickStats, setClickStats] = useState([]);
 	const { user } = useAuth0();
 	const email = user && user.email;
+
+	const restaurantId = "646eb3a8b30795e61bc2a0de";
 
 	useEffect(() => {
 		getRestaurants({ email })
@@ -89,40 +74,106 @@ const Dashboard = () => {
 			});
 	});
 
-	const [RevenueChartData, setRevenueChartData] = useState({
-		labels: RevenueStats.map((data) => data.revenue),
+	// Get Revenue Statistics
+	useEffect(() => {
+		getRevenuebyId(restaurantId)
+			.then(function (response) {
+				// handle success
+				const filteredResponse = response.data.map((revenue) => ({
+					month: revenue.month,
+					revenue: revenue.revenue,
+					description: revenue.description,
+				}));
+				setRevenueStats(filteredResponse);
+			})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			})
+			.finally(function () {
+				// always executed
+			});
+	}, []);
+
+	// Get Order Statistics
+	useEffect(() => {
+		getOrdersbyId(restaurantId)
+			.then(function (response) {
+				// handle success
+				const filteredResponse = response.data.map((orders) => ({
+					month: orders.month,
+					orders: orders.orders,
+					description: orders.description,
+				}));
+
+				setOrderStats(filteredResponse);
+			})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			})
+			.finally(function () {
+				// always executed
+			});
+	}, []);
+
+	// Get Click Statistics
+	useEffect(() => {
+		getClicksbyId(restaurantId)
+			.then(function (response) {
+				// handle success
+				const filteredResponse = response.data.map((clicks) => ({
+					month: clicks.month,
+					clicks: clicks.clicks,
+					description: clicks.description,
+				}));
+				setClickStats(filteredResponse);
+			})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			})
+			.finally(function () {
+				// always executed
+			});
+	}, []);
+
+	const RevenueChartData = {
+		labels: RevenueStats.map(({ month }) => month),
 		datasets: [
 			{
 				label: "Revenue",
-				data: RevenueStats.map((data) => data.revenue),
-				title: RevenueStats.title,
+				data: RevenueStats.map(({ revenue }) => revenue),
 				backgroundColor: ["#7a2c2c"],
 				borderColor: "black",
 				borderWidth: 2,
 			},
 		],
-	});
-	const [orderChartData, setOrderChartData] = useState({
+	};
+
+	console.log("Revenue Stats:", RevenueStats);
+
+	console.log("Revenue Chart Data:", RevenueChartData);
+
+	const orderChartData = {
 		labels: OrderStats.map((data) => data.month),
 		datasets: [
 			{
 				label: "Orders",
 				data: OrderStats.map((data) => data.orders),
-				title: OrderStats.title,
 				backgroundColor: ["#7a2c2c"],
 				borderColor: "black",
 				borderWidth: 2,
 			},
 		],
-	});
+	};
 
-	const [clickChartData, setClickChartData] = useState({
+	const clickChartData = {
 		labels: ClickStats.map((data) => data.month),
 		datasets: [
 			{
 				label: "Clicks",
 				data: ClickStats.map((data) => data.clicks),
-				title: ClickStats.title,
 				backgroundColor: [
 					"#7a2c2c",
 					"teal",
@@ -135,7 +186,7 @@ const Dashboard = () => {
 				borderWidth: 2,
 			},
 		],
-	});
+	};
 
 	// Here the user variable is just the username of the restaurant owner, currently it is
 	// set to 'owner' before someone signs in!
@@ -176,10 +227,7 @@ const Dashboard = () => {
 					mb: "100px",
 				}}
 			>
-				<Paper
-					elevation={10}
-					sx={{ height: "20vh", mt: "12vh", ml: "7vw" }}
-				>
+				<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", ml: "7vw" }}>
 					<BarChart chartData={RevenueChartData} />{" "}
 				</Paper>
 
@@ -267,3 +315,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
