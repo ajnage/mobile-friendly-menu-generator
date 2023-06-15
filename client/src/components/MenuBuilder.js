@@ -101,7 +101,7 @@ function MenuBuilder() {
       if (newTitle === subCategories.name) {
         console.log("updateSubCategoryForm");
         return {
-          ...subCategory,
+          // ...subCategory,
           name: newTitle,
           desc: newDescription,
           price: newPrice,

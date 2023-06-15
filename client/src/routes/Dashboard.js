@@ -139,7 +139,6 @@ const Dashboard = () => {
 
 	// Here the user variable is just the username of the restaurant owner, currently it is
 	// set to 'owner' before someone signs in!
-	const userOwner = `Owner`;
 	return (
 		<Container
 			sx={{ bgcolor: "primary.grey", width: "100vw", height: "auto" }}
@@ -153,7 +152,7 @@ const Dashboard = () => {
 				fontWeight={"bold"}
 			>
 				{" "}
-				{userOwner}'s Dashboard
+				{user && user.name}'s Dashboard
 			</Typography>
 			<Typography variant="h3" align="center" sx={{ mb: "10vh" }}>
 				General Statistics

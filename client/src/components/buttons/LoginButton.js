@@ -3,12 +3,11 @@ import { login } from "../../axios/API";
 import { useEffect } from "react";
 
 const LoginButton = () => {
-	const { loginWithRedirect, getAccessTokenSilently, isAuthenticated } =
+	const { loginWithRedirect, getAccessTokenSilently } =
 		useAuth0();
 
 	useEffect(() => {
-		isAuthenticated &&
-			getAccessTokenSilently().then((token) => login(token));
+		getAccessTokenSilently().then((token) => login(token));
 	}, [getAccessTokenSilently]);
 
 	const handleLogin = async () => {

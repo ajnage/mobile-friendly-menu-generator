@@ -10,7 +10,7 @@ const API = axios.create({
 });
 
 // REST API
-export const getRestaurants = () => API.get("/restaurants");
+export const getRestaurants = () => API.post("/restaurants");
 export const getRestaurantbyId = (id) => API.get(`/restaurants/${id}`);
 export const getRevenuebyId = (id) => API.get(`/revenue-stats/${id}`);
 export const getOrdersbyId = (id) => API.get(`/order-stats/${id}`);

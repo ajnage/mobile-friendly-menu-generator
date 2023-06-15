@@ -35,6 +35,7 @@ module.exports = {
 			);
 
 			const userProfile = response.data;
+			console.log('Userprofile:', userProfile);
 			const { email } = userProfile;
 
 			const isUser = await User.findOne({ email });

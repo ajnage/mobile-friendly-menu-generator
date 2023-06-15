@@ -18,23 +18,34 @@ const restaurantSchema = new mongoose.Schema({
     required: true,
   },
   category: {
-    type: String,
-    enum: [
-      "starters",
-      "shareables",
-      "vegetarian",
-      "vegan",
-      "halal",
-      "kosher",
-      "seafood",
-      "bbq",
-      "burgers",
-      "drinks",
-      "more",
-      "desserts",
-    ],
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Restaurant",
   },
 });
 
+// type: String,
+// enum: [
+//   "starters",
+//   "shareables",
+//   "vegetarian",
+//   "vegan",
+//   "halal",
+//   "kosher",
+//   "seafood",
+//   "bbq",
+//   "burgers",
+//   "drinks",
+//   "more",
+//   "desserts",
+// ],
+// required: true,
+
+const getCategoryEnum = () => {
+  return restaurantSchema.path("category").enum;
+};
+
 module.exports = mongoose.model("Item", restaurantSchema);
+
+module.exports = {
+  getCategoryEnum
+};

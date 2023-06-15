@@ -7,13 +7,9 @@ import Form from "react-bootstrap/Form";
 function InsertCategory(props) {
 	const [title, setTitle] = useState("");
 
-
-
-
 	const handleTitleChange = (e) => {
 		setTitle(e.target.value);
 	};
-
 
 	const handleSubmit = (e) => {
 		props.onSubmit(title);

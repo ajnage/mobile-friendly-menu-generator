@@ -1,4 +1,4 @@
-const Item = require("../models/item");
+const { Item, getCategoryEnum } = require("../models/item");
 
 module.exports = {
   getItems: async (req, res) => {
@@ -42,10 +42,18 @@ module.exports = {
   getCategories: async (req, res) => {
     try {
       const category = req.params.category
-      const allItemsInCategory = await Item.find({category: category});
+      const allItemsInCategory = await Item.find({ category: category });
       res.status(200).send(allItemsInCategory);
     } catch (err) {
       console.log(err);
     }
   },
+  getAllCategories: async (req, res) => {
+    try {
+      const allCategories = getCategoryEnum();
+      res.status(200).send(allCategories);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };

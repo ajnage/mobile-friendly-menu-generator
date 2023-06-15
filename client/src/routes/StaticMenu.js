@@ -24,13 +24,13 @@ import {
 
 import Row from "react-bootstrap/Row";
 
-// Look into local storage to get updated data otherwise it needs to be fetched from backend
 
 export default function StaticMenuPage() {
 	const url = "http://localhost:3434/api/items/";
 	const [data, setData] = useState([]);
-	const fetchInfo = () => {
-		return axios.get(url).then((response) => setData(response.data));
+	const fetchInfo = async () => {
+		const response = await axios.get(url);
+		return setData(response.data);
 	};
 
 	useEffect(() => {
