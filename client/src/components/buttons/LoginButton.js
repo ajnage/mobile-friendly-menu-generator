@@ -7,8 +7,9 @@ const LoginButton = () => {
 		useAuth0();
 
 	useEffect(() => {
-		isAuthenticated &&
+		if (isAuthenticated) {
 			getAccessTokenSilently().then((token) => login(token));
+		}
 	}, [getAccessTokenSilently]);
 
 	const handleLogin = async () => {
