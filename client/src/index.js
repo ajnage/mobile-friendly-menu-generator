@@ -18,7 +18,7 @@ import Dashboard from "./routes/Dashboard";
 import QRCodePage from "./routes/qr";
 import StaticMenuPage from "./routes/StaticMenu";
 import { Auth0Provider } from "@auth0/auth0-react";
-import { AuthGuard } from "./components";
+import { AuthGuard, Authenticate } from "./components";
 
 const router = createBrowserRouter([
 	{
@@ -79,6 +79,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			scope: "openid profile email",
 		}}
 	>
+		<Authenticate />
 		<RouterProvider router={router} />
 	</Auth0Provider>
 );
