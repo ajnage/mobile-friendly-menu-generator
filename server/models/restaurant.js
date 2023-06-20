@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
 
-const restaurantSchema = new mongoose.Schema(
+const restaurantsSchema = new mongoose.Schema(
 	{
-		restaurantName: {
+		name: {
 			type: String,
 			required: true,
 		},
-		user: {
+		userId: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "user",
 		},
 	},
 	{ timestamps: true }
 );
+restaurantsSchema.set("toJSON", { virtuals: true });
 
-module.exports = mongoose.model("Restaurant", restaurantSchema);
+module.exports = mongoose.model("Restaurants", restaurantsSchema);
