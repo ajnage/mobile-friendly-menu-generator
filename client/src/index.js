@@ -19,6 +19,7 @@ import QRCodePage from "./routes/qr";
 import StaticMenuPage from "./routes/StaticMenu";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { AuthGuard, Authenticate } from "./components";
+import RestaurantPage from "./routes/RestaurantPage";
 
 const router = createBrowserRouter([
 	{
@@ -37,12 +38,12 @@ const router = createBrowserRouter([
 				errorElement: <ErrorPage />,
 			},
 			{
-				path: "/pricing",
+				path: "/Pricing",
 				element: <Pricing />,
 				errorElement: <ErrorPage />,
 			},
 			{
-				path: "/support",
+				path: "/Support",
 				element: <SupportPage />,
 				errorElement: <ErrorPage />,
 			},
@@ -57,8 +58,13 @@ const router = createBrowserRouter([
 				errorElement: <ErrorPage />,
 			},
 			{
-				path: "/qr",
+				path: "/QR",
 				element: <QRCodePage />,
+				errorElement: <ErrorPage />,
+			},
+			{
+				path: "/restaurants",
+				element: <RestaurantPage />,
 				errorElement: <ErrorPage />,
 			},
 		],

@@ -17,6 +17,7 @@ const API = axios.create({
 	withCredentials: true,
 });
 
+
 // Restaurants API
 export const getRestaurants = (token) =>
 	API.get(`/private/restaurants`, { headers: authHeader(token) });
@@ -24,6 +25,7 @@ export const getRestaurantbyId = (id, token) =>
 	API.get(`/api/restaurants/${id}`, {}, { headers: authHeader(token) });
 export const login = (token) =>
 	API.post("/private/auth", {}, { headers: authHeader(token) });
+
 export const getRevenuebyId = (id) => API.get(`/revenue-stats/${id}`);
 export const getOrdersbyId = (id) => API.get(`/order-stats/${id}`);
 export const getClicksbyId = (id) => API.get(`/click-stats/${id}`);

@@ -195,8 +195,6 @@ const Dashboard = () => {
 		],
 	};
 
-	// Here the user variable is just the username of the restaurant owner, currently it is
-	// set to 'owner' before someone signs in!
 	return (
 		<Container
 			sx={{ bgcolor: "primary.grey", width: "100vw", height: "auto" }}
@@ -233,11 +231,11 @@ const Dashboard = () => {
 					mb: "100px",
 				}}
 			>
-				<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", ml: "7vw" }}>
+				<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", ml: "3vw" }}>
 					<BarChart chartData={RevenueChartData} />{" "}
 				</Paper>
 
-				<Paper elevation={10} sx={{ height: "20vh", mt: "12vh" }}>
+				<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", pr: "1vw" }}>
 					<BarChart chartData={orderChartData} />{" "}
 				</Paper>
 
@@ -246,7 +244,7 @@ const Dashboard = () => {
 					sx={{
 						height: "20vh",
 						mt: "12vh",
-						mr: "7vw",
+						mr: "3vw",
 						width: "12vw",
 					}}
 				>
@@ -255,7 +253,7 @@ const Dashboard = () => {
 						align="center"
 						sx={{ m: "10", color: "primary.verydark" }}
 					>
-						Menus left
+						Restaurants left
 					</Typography>
 					<Typography
 						variant="h1"
@@ -272,9 +270,9 @@ const Dashboard = () => {
 							setMenusLeft(menusLeft - 1);
 						}}
 						component={Link}
-						to={"../menu_builder"}
+						to={"../restaurants"}
 					>
-						Make Menu
+						Make Restaurant
 					</Button>
 				</Paper>
 			</Paper>
