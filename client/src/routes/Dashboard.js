@@ -22,57 +22,64 @@ console.log(process.env.REACT_APP_AUTH0_DOMAIN);
 // instead of using the array from dashboardstats.js
 
 const Dashboard = () => {
-	const [menusLeft, setMenusLeft] = useState(50);
+	const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
 
+	const [restaurants, setRestaurants] = useState([]);
+	const [menusLeft, setMenusLeft] = useState(50);
 	const [RevenueStats, setRevenueStats] = useState([]);
 	const [OrderStats, setOrderStats] = useState([]);
 	const [ClickStats, setClickStats] = useState([]);
-	const { user } = useAuth0();
-	const email = user && user.email;
+
+	const getAllRestaurants = async () => {
+		try {
+			const token = await getAccessTokenSilently();
+			const response = await getRestaurants(token);
+			if (response.status === 200) {
+				const data = response.data;
+				setRestaurants(data.restaurants);
+			} else {
+				return;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	const restaurantId = "646eb3a8b30795e61bc2a0de";
 
 	useEffect(() => {
-		getRestaurants({ email })
-			.then(function (response) {
-				// handle success
-				console.log(response.data);
-			})
-			.catch(function (error) {
-				// handle error
-				console.log(error);
-			})
-			.finally(function () {
-				// always executed
-			});
-	});
+		if (isAuthenticated) {
+			getAllRestaurants();
+		}
+	}, [isAuthenticated]);
 
-	useEffect(() => {
-		getRestaurantbyId("644dfe0d152ecd497e954fcf")
-			.then(function (response) {
-				// handle success
-				console.log("2 revenue: ", response.data[2].revenue);
-				console.log("Response data.length: ", response.data.length);
-				const revenues = response.data.map(
-					({ revenue }) => revenue
-				);
-				console.log("Revenues: ", revenues);
-				const upToDateData = response.data.length - 1;
-				setRevenueStats(
-					RevenueStats.concat(
-						response.data[upToDateData].revenue
-					)
-				);
-				console.log("Revenue Stats: ", RevenueStats);
-			})
-			.catch(function (error) {
-				// handle error
-				console.log(error);
-			})
-			.finally(function () {
-				// always executed
-			});
-	});
+	console.log(restaurants);
+	// useEffect(() => {
+	// 	getRestaurantbyId("64911eb04c372743c76f53e2")
+	// 		.then(function (response) {
+	// 			// handle success
+	// 			console.log("2 revenue: ", response.data[2].revenue);
+	// 			console.log("Response data.length: ", response.data.length);
+	// 			const revenues = response.data.map(
+	// 				({ revenue }) => revenue
+	// 			);
+	// 			console.log("Revenues: ", revenues);
+	// 			const upToDateData = response.data.length - 1;
+	// 			setRevenueStats(
+	// 				RevenueStats.concat(
+	// 					response.data[upToDateData].revenue
+	// 				)
+	// 			);
+	// 			console.log("Revenue Stats: ", RevenueStats);
+	// 		})
+	// 		.catch(function (error) {
+	// 			// handle error
+	// 			console.log(error);
+	// 		})
+	// 		.finally(function () {
+	// 			// always executed
+	// 		});
+	// });
 
 	// Get Revenue Statistics
 	useEffect(() => {
@@ -202,8 +209,7 @@ const Dashboard = () => {
 				sx={{ pt: 5, pb: 5 }}
 				fontWeight={"bold"}
 			>
-				{" "}
-				{user && user.name}'s Dashboard
+				{user.name}'s Dashboard
 			</Typography>
 			<Typography variant="h3" align="center" sx={{ mb: "10vh" }}>
 				General Statistics

@@ -6,18 +6,12 @@ import { getRestaurants } from "../../axios/API";
 export const BarChart = ({ chartData }) => {
 	const [dashboardStatistics, setDashboardStatistics] = useState([]);
 
-	useEffect(() => {
-		getRestaurants().then((data) => {
-			setDashboardStatistics(data?.data[0]);
-		});
-	}, []);
-
 	return (
 		<div className="chart-container">
 			{/* <h2 style={{ textAlign: "center" }}> {dashboardStatistics.title}</h2> */}
 			<h2 style={{ textAlign: "center" }}>
 				{" "}
-				{dashboardStatistics.title}
+				{"dashboardStatistics.title"}
 			</h2>
 			<Bar
 				data={chartData}
@@ -25,7 +19,7 @@ export const BarChart = ({ chartData }) => {
 					plugins: {
 						title: {
 							display: true,
-							text: dashboardStatistics.title,
+							text: "dashboardStatistics.title",
 						},
 						legend: {
 							display: true,

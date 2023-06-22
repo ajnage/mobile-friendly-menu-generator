@@ -1,6 +1,8 @@
+const User = require("../models/user");
+const axios = require("axios");
+
 module.exports = {
-<<<<<<< HEAD
-	login: async (req, res) => {
+	getUser: async (req, res, next) => {
 		const options = {
 			method: "POST",
 			url: `${process.env.AUTH_DOMAIN}/oauth/token`,
@@ -33,21 +35,21 @@ module.exports = {
 			);
 
 			const userProfile = response.data;
-			console.log('Userprofile:', userProfile);
 			const { email } = userProfile;
 
-			const isUser = await User.findOne({ email });
+			let user = await User.findOne({ email });
 
-			if (isUser) return res.status(200).send();
+			if (user) {
+				req.user = user;
+				return next();
+			}
 
-			await User.create({ email });
-			res.status(201).send();
+			user = await User.create({ email });
+			req.user = user;
+
+			next();
 		} catch (error) {
-			console.log(error);
+			res.status(500).send(error);
 		}
-=======
-	auth: async (req, res, next) => {
-		res.status(200).send();
->>>>>>> 41fa8afd7901f2c02ef20879999f947349bf010e
 	},
 };
