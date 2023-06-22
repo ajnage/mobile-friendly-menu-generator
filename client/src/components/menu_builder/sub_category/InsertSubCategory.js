@@ -113,7 +113,9 @@ function InsertSubCategory(props) {
 						className=" btn btn-primary"
 						onClick={(e) => {
 							e.preventDefault();
+							props.handleFormClose();
 							props.handleInsertNewSubCategory(title, description, price, ImgURL);
+
 						}}
 					>
 						Update

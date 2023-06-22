@@ -111,10 +111,11 @@ function EditSubCategoryForm(props) {
 						form="editModal"
 						className=" btn btn-primary"
 						onClick={(e) => {
+							props.handleFormClose();
 							e.preventDefault();
 							props.updateSubCategoryForm(props.title, props.description, props.price, props.image);
 							console.log(`Props.id = ${props.id}`);
-							props.handleFormClose();
+
 						}}
 					>
 						Update

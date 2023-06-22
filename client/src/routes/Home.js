@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import "../charcoalbg.jpg";
 import "../App.css";
 import QR from "../QR.svg";
 import { useState } from "react";
@@ -9,7 +8,7 @@ import ResponsiveAppBar from "../components/AppBarHomepage";
 import Button from "@mui/material/Button";
 import StickyFooter from "../components/StickyFooter";
 import HorizontalNonLinearStepper from "../components/Stepper";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const h1style = { color: "white", left: "30px" };
@@ -17,7 +16,7 @@ const h1style = { color: "white", left: "30px" };
 // Add light background, dark text
 
 const Home = () => (
-	<Typography bgcolor={"primary.verydark"} sx={{ pb: "10vh" }}>
+	<Box bgcolor={"primary.verydark"} sx={{ pb: "10vh" }} >
 		<div className="App">
 			<link
 				rel="stylesheet"
@@ -50,10 +49,12 @@ const Home = () => (
 						},
 					}}
 					fontWeight={"bold"}
+					component={"span"}
 				>
 					Welcome to the menu-maker app!
 				</Typography>
 				<Typography
+					component={'span'}
 					variant="h2"
 					sx={{
 						p: 10,
@@ -69,7 +70,7 @@ const Home = () => (
 
 			<HorizontalNonLinearStepper />
 		</div>
-	</Typography>
+	</Box>
 );
 
 export default Home;

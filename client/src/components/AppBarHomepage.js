@@ -103,6 +103,7 @@ function ResponsiveAppBar() {
 									<Typography
 										textAlign="center"
 										sx={{ color: "white" }}
+										component={'span'}
 									>
 										{page}
 									</Typography>
@@ -186,7 +187,9 @@ function ResponsiveAppBar() {
 												className="text-link"
 											>
 												{" "}
-												<Typography textAlign="center">
+												<Typography textAlign="center"
+													component={'span'}>
+
 													{setting}
 												</Typography>
 											</Link>

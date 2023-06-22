@@ -44,8 +44,8 @@ export default function HorizontalNonLinearStepper() {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
+        // find the first step that has been completed
+        steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -79,7 +79,7 @@ export default function HorizontalNonLinearStepper() {
       }}
     >
       {/* <ThemeProvider theme={theme}> */}
-      <Stepper nonLinear activeStep={activeStep} sx={{ mr : 0 }}>
+      <Stepper nonLinear activeStep={activeStep} sx={{ mr: 0 }}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="#FFFFFF" onClick={handleStep(index)}>
@@ -92,7 +92,7 @@ export default function HorizontalNonLinearStepper() {
         {allStepsCompleted() ? (
           <React.Fragment>
             {/* <ThemeProvider theme={theme}> */}
-            <Typography sx={{ mt: 2, mb: 1, color: "secondary.main" }}>
+            <Typography sx={{ mt: 2, mb: 1, color: "secondary.main" }} component={'span'}>
               All steps completed - you&apos;re finished
             </Typography>
             <Box
@@ -124,14 +124,14 @@ export default function HorizontalNonLinearStepper() {
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                sx={{  color: "secondary.main" }}
+                sx={{ color: "secondary.main" }}
               >
                 Back
               </Button>
               <Box sx={{ flex: "1 1 auto" }} />
               <Button
                 onClick={handleNext}
-                sx={{  color: "secondary.main" }}
+                sx={{ color: "secondary.main" }}
               >
                 Next
               </Button>
@@ -140,6 +140,7 @@ export default function HorizontalNonLinearStepper() {
                   <Typography
                     variant="caption"
                     sx={{ display: "inline-block", color: "secondary.main" }}
+                    component={'span'}
                   >
                     Step {activeStep + 1} already completed
                   </Typography>

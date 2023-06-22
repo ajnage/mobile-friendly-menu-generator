@@ -255,8 +255,8 @@ nav a:hover {
   text-decoration: none;
 }
 
-@media ( max-width: 600px ) {
+@media (max-width: 600px) {
   .navMenu {
-    width: 80vw;  
+    width: 80vw;
   }
 }

@@ -261,7 +261,7 @@ const Dashboard = () => {
 					</Typography>
 					<Button
 						variant="contained"
-						sx={{ mt: "2vh", display: "center" }}
+						sx={{ mt: "1vh", display: "center" }}
 						onClick={() => {
 							setMenusLeft(menusLeft - 1);
 						}}

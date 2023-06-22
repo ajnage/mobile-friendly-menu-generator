@@ -18,6 +18,7 @@ import Container from "@mui/material/Container";
 function Copyright(props) {
   return (
     <Typography
+      component={'span'}
       variant="body2"
       color="primary.white"
       align="center"
@@ -98,7 +99,7 @@ function PricingContent() {
       <Container
         sx={{ bgcolor: "primary.grey", width: "auto", height: "auto" }}
       >
-        <Typography bgcolor="primary.grey">
+        <Typography bgcolor="primary.grey" component={'span'}>
           <AppBar
             position="static"
             color="default"
