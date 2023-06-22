@@ -5,13 +5,14 @@ const connectDB = require("./config/database");
 const cors = require("cors");
 const restaurantsRoutes = require("./routes/restaurants");
 const itemsRoutes = require("./routes/items");
-const mainRoutes = require("./routes/main");
 const orderStatsRoutes = require("./routes/orderStats");
 const revenueStatsRoutes = require("./routes/revenueStats");
 const clickStatsRoutes = require("./routes/clickStats");
+const authRoute = require("./routes/authRoute");
 
 const { expressjwt: jwt } = require("express-jwt");
 const jwks = require("jwks-rsa");
+const { getUser } = require("./middleware/getUser");
 
 // Using our .env file
 require("dotenv").config({ path: "./config/.env" });
@@ -47,13 +48,16 @@ const checkJwt = jwt({
 	algorithms: ["RS256"],
 });
 
-// Server routes
-app.use("/api/private/auth", checkJwt, mainRoutes);
-app.use("/api/restaurants/", restaurantsRoutes);
+// Public Routes
 app.use("/api/items/", itemsRoutes);
 app.use("/api/order-stats/", orderStatsRoutes);
 app.use("/api/revenue-stats/", revenueStatsRoutes);
 app.use("/api/click-stats/", clickStatsRoutes);
+
+// Private routes
+app.use("/private", checkJwt, getUser);
+app.use("/private", authRoute);
+app.use("/private", restaurantsRoutes);
 
 // Server
 app.listen(process.env.PORT, () => {
