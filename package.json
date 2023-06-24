@@ -1,0 +1,19 @@
+{
+	"name": "119.mobile-friendly-menu-generator",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npm start --prefix server & npm start --prefix client"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mikhail-zapolskyi/mobile-friendly-menu-generator.git"
+	},
+	"author": "Mykhailo Zapolskyi",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/mikhail-zapolskyi/mobile-friendly-menu-generator/issues"
+	},
+	"homepage": "https://github.com/mikhail-zapolskyi/mobile-friendly-menu-generator#readme"
+}

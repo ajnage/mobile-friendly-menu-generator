@@ -11,7 +11,7 @@ import ResponsiveAppBar from "../components/AppBarHomepage";
 import { Outlet } from "react-router-dom";
 import StickyFooter from "../components/StickyFooter";
 // import { AppBar } from "@mui/material";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
@@ -34,11 +34,11 @@ const theme = createTheme({
 			active: "rgb(200,0,0)",
 			activeOpacity: 1,
 			hover: "rgb(200,0,0)",
-			hoverOpacity: 0.7,
+			hoverOpacity: 0,
 			focus: "rgb(200,0,0)",
 			focusOpacity: 1,
 			selected: "rgb(200,0,0)",
-			selectedOpacity: 1,
+			selectedOpacity: 0,
 		},
 	},
 	breakpoints: {
@@ -127,14 +127,14 @@ export default function Root() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<Typography bgcolor="primary.grey">
+				<Box bgcolor="primary.grey" >
 					{" "}
 					<ResponsiveAppBar />
 					<div id="detail">
 						<Outlet />
 					</div>
 					<StickyFooter />
-				</Typography>
+				</Box>
 			</ThemeProvider>
 		</>
 	);

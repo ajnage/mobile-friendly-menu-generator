@@ -1,67 +1,83 @@
 const Restaurant = require("../models/restaurant");
+const User = require("../models/user");
 
 module.exports = {
-	getRestaurantbyId: async (req, res) => {
+	getAll: async (req, res) => {
+		const { user } = req;
+
 		try {
-			const restaurant = await Restaurant.findById(
-				req.params.restaurantId
+			const restaurants = await User.findOne(
+				{ _id: user.id },
+				{ restaurants: 1 }
+			).populate("restaurants");
+
+			res.status(200).json(restaurants);
+		} catch (error) {
+			res.status(500).send(error);
+		}
+	},
+	getById: async (req, res) => {
+		const { id } = req.params;
+
+		try {
+			const restaurants = await Restaurant.findOne({ _id: id });
+
+			if (!restaurants)
+				return res.status(404).send("Restaurant not found");
+
+			res.status(200).send(restaurants);
+		} catch (error) {
+			res.status(500).send(error);
+		}
+	},
+	create: async (req, res) => {
+		const { user } = req;
+		const { name } = req.body;
+
+		try {
+			const restaurants = await Restaurant.create({
+				name,
+				userId: user.id,
+			});
+
+			await User.findOneAndUpdate(
+				user.id,
+				{ $push: { restaurants: restaurants.id } },
+				{ new: true }
 			);
-
-			if (!restaurant)
-				return res.status(404).send("restaurant not found");
-
-			res.status(200).send(restaurant);
-		} catch (err) {
-			console.log(err);
+			res.status(200).send(restaurants);
+		} catch (error) {
+			res.status(500).send(error);
 		}
 	},
-	getRestaurants: async (req, res) => {
-		try {
-			const allRestaurants = await Restaurant.find();
+	update: async (req, res) => {
+		const { id } = req.params;
+		const { body } = req;
 
-			res.status(200).json(allRestaurants);
-		} catch (err) {
-			console.log(err);
-		}
-	},
-	createRestaurant: async (req, res) => {
 		try {
-			const newRestaurant = await Restaurant.create({
-				restaurantName: req.body.restaurantName,
+			const restaurants = await Restaurant.findOneAndUpdate(id, body, {
+				new: true,
 			});
-			res.status(200).send(newRestaurant);
-		} catch (err) {
-			console.log(err);
+
+			res.status(200).send(restaurants);
+		} catch (error) {
+			res.status(500).send(error);
 		}
 	},
-	updateRestaurant: async (req, res) => {
+	delete: async (req, res) => {
+		const { user } = req;
+		const { id } = req.params;
+
 		try {
-			const updatedRestaurant = await Restaurant.findOneAndUpdate(
-				{ _id: req.params.id },
-				{
-					restaurantName: req.body.restaurantName,
-				}
+			const restaurants = await Restaurant.findByIdAndDelete(id);
+			await User.findOneAndUpdate(
+				user.id,
+				{ $pull: { restaurants: restaurants.id } },
+				{ new: true }
 			);
-			console.log("Restaurant details updated");
-			res.status(200).send({
-				_id: req.params.id,
-				restaurantName: req.body.restaurantName,
-			});
-		} catch (err) {
-			console.log(err);
-		}
-	},
-	deleteRestaurant: async (req, res) => {
-		console.log(req.body.restaurantId);
-		try {
-			const id = req.params.id;
-			const deletedRestaurant = await Restaurant.findByIdAndDelete(id);
-			res.status(200).send({
-				deletedRestaurant,
-			});
-			console.log("Restaurant deleted successfully!");
-		} catch (err) {
-			console.log(err);
+			res.status(200).send(restaurants);
+		} catch (error) {
+			res.status(500).send(error);
 		}
 	},
 };
