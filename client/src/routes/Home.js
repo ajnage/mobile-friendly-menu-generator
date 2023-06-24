@@ -16,61 +16,60 @@ const h1style = { color: "white", left: "30px" };
 // Add light background, dark text
 
 const Home = () => (
-	<Box bgcolor={"primary.verydark"} sx={{ pb: "10vh" }} >
-		<div className="App">
-			<link
-				rel="stylesheet"
-				href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-			/>
-			<link
-				rel="stylesheet"
-				href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			/>
+  <Box bgcolor={"primary.verydark"} sx={{ pb: "10vh", mt: "8vh" }}>
+    <div className="App">
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
 
-			<div className="App-header">
-				<motion.img
-					src={QR}
-					className="App-logo"
-					alt="logo"
-					initial={{ opacity: 0, scale: 0.5 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{
-						duration: 2,
-						delay: 0.5,
-						ease: [0, 0.71, 0.2, 1.01],
-					}}
-				/>
-				<Typography
-					variant="h1"
-					sx={{
-						pb: 10,
-						xs: {
-							variant: "h2",
-						},
-					}}
-					fontWeight={"bold"}
-					component={"span"}
-				>
-					Welcome to the menu-maker app!
-				</Typography>
-				<Typography
-					component={'span'}
-					variant="h2"
-					sx={{
-						p: 10,
-						pb: 20,
-						fontWeight: 500,
-					}}
-				>
-					Our app lets restaurant owners save the hassle of
-					creating menus!
-				</Typography>
-				<AppButton destination={"../menu_builder"} />
-			</div>
+      <div className="App-header">
+        <motion.img
+          src={QR}
+          className="App-logo"
+          alt="logo"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 2,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        />
+        <Typography
+          variant="h1"
+          sx={{
+            pb: 10,
+            xs: {
+              variant: "h2",
+            },
+          }}
+          fontWeight={"bold"}
+          component={"span"}
+        >
+          Welcome to the menu-maker app!
+        </Typography>
+        <Typography
+          component={"span"}
+          variant="h2"
+          sx={{
+            p: 10,
+            pb: 20,
+            fontWeight: 500,
+          }}
+        >
+          Our app lets restaurant owners save the hassle of creating menus!
+        </Typography>
+        <AppButton destination={"../menu_builder"} />
+      </div>
 
-			<HorizontalNonLinearStepper />
-		</div>
-	</Box>
+      <HorizontalNonLinearStepper />
+    </div>
+  </Box>
 );
 
 export default Home;
