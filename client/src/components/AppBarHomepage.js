@@ -113,7 +113,7 @@ function ResponsiveAppBar() {
             {!isAuthenticated ? (
               <LoginButton />
             ) : (
-              <React.Fragment>
+              <div style={{ maxWidth: "100px" }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt={user.name} src={user.picture} />
@@ -157,7 +157,7 @@ function ResponsiveAppBar() {
                     </MenuItem>
                   ))}
                 </Menu>
-              </React.Fragment>
+              </div>
             )}
           </Box>
         </Toolbar>
