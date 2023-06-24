@@ -16,6 +16,11 @@ import {
 	getClicksbyId,
 	getOrdersbyId,
 } from "../axios/API";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import CardImg from "react-bootstrap/esm/CardImg";
+import { InsertCategory } from "../components/menu_builder/category/InsertCategoryForm"
+
 console.log(process.env.REACT_APP_AUTH0_DOMAIN);
 
 // Use axios to fetch the statistics from server;
@@ -54,32 +59,6 @@ const Dashboard = () => {
 	}, [isAuthenticated]);
 
 	console.log(restaurants);
-	// useEffect(() => {
-	// 	getRestaurantbyId("64911eb04c372743c76f53e2")
-	// 		.then(function (response) {
-	// 			// handle success
-	// 			console.log("2 revenue: ", response.data[2].revenue);
-	// 			console.log("Response data.length: ", response.data.length);
-	// 			const revenues = response.data.map(
-	// 				({ revenue }) => revenue
-	// 			);
-	// 			console.log("Revenues: ", revenues);
-	// 			const upToDateData = response.data.length - 1;
-	// 			setRevenueStats(
-	// 				RevenueStats.concat(
-	// 					response.data[upToDateData].revenue
-	// 				)
-	// 			);
-	// 			console.log("Revenue Stats: ", RevenueStats);
-	// 		})
-	// 		.catch(function (error) {
-	// 			// handle error
-	// 			console.log(error);
-	// 		})
-	// 		.finally(function () {
-	// 			// always executed
-	// 		});
-	// });
 
 	// Get Revenue Statistics
 	useEffect(() => {
@@ -195,127 +174,165 @@ const Dashboard = () => {
 		],
 	};
 
-	return (
-		<Container
-			sx={{ bgcolor: "primary.grey", width: "100vw", height: "auto" }}
-		>
-			<Typography
-				variant="h1"
-				align="center"
-				color="primary.white"
-				gutterBottom
-				sx={{ pt: 5, pb: 5 }}
-				fontWeight={"bold"}
-			>
-				{user.name}'s Dashboard
-			</Typography>
-			<Typography variant="h3" align="center" sx={{ mb: "10vh" }}>
-				General Statistics
-			</Typography>
-			<Paper
-				elevation={20}
-				sx={{
-					height: "45vh",
-					width: "auto",
-					display: "flex",
-					flexDirection: "row",
-					flexGrow: "4",
-					flexWrap: "wrap",
-					pl: "1vw",
-					pr: "1vw",
-					ml: "-7.5vw",
-					justifyContent: "space-between",
-					alignSelf: "center",
-					bgcolor: "primary.verydark",
-					overflow: "hidden",
-					mb: "100px",
-				}}
-			>
-				<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", ml: "3vw" }}>
-					<BarChart chartData={RevenueChartData} />{" "}
-				</Paper>
 
-				<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", pr: "1vw" }}>
-					<BarChart chartData={orderChartData} />{" "}
-				</Paper>
+	// TODO: Bring functionality to making restaurants editable
 
-				<Paper
-					elevation={10}
-					sx={{
-						height: "20vh",
-						mt: "12vh",
-						mr: "3vw",
-						width: "12vw",
-					}}
+	const [showForm, setShowForm] = useState(false);
+
+	const handleFormClose = () => setShowForm(false);
+	const handleFormShow = () => setShowForm(true);
+
+	console.log('restaurants:', restaurants)
+	if (restaurants.length >= 2) {
+		return (restaurants.map(restaurant => {
+			<p style={{ margin: '100px' }}> {restaurant.name}</p >
+		}))
+	} else {
+		return (
+			<Container
+				sx={{ bgcolor: "primary.grey", width: "100vw", height: "auto" }}
+			>
+
+				<Typography
+					variant="h1"
+					align="center"
+					color="primary.white"
+					gutterBottom
+					sx={{ pt: '15vh', pb: '5vh' }}
+					fontWeight={"bold"}
 				>
-					<Typography
-						variant="h5"
-						align="center"
-						sx={{ m: "10", color: "primary.verydark" }}
-					>
-						Restaurants left
-					</Typography>
-					<Typography
-						variant="h1"
-						fontWeight={"bold"}
-						align="center"
-						sx={{ m: "10", color: "primary.verydark" }}
-					>
-						{menusLeft}{" "}
-					</Typography>
-					<Button
-						variant="contained"
-						sx={{ mt: "1vh", display: "center" }}
-						onClick={() => {
-							setMenusLeft(menusLeft - 1);
-						}}
-						component={Link}
-						to={"../restaurants"}
-					>
-						Make Restaurant
-					</Button>
-				</Paper>
-			</Paper>
-			<Paper
-				elevation={20}
-				align="center"
-				sx={{
-					height: "30vh",
-					width: "auto",
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignContent: "space-around",
-					flexWrap: "wrap",
-					pl: "1vw",
-					pr: "1vw",
-					ml: "-7.5vw",
-					bgcolor: "primary.verydark",
-					overflow: "hidden",
-					mb: "100px",
-				}}
-			>
-				<Typography variant="h3" sx={{ mt: "-20" }}>
-					{" "}
-					Extra{" "}
+					{user.name}'s Dashboard
 				</Typography>
-				<Paper
+
+				<Paper elevation={20}
 					sx={{
-						my: 10,
-						align: "center",
-						position: "relative",
-						height: "20vh",
-						width: "20vw",
+						height: "45vh",
+						width: "auto",
+						display: "flex",
+						flexDirection: "column",
+						pl: "1vw",
+						pr: "1vw",
+						ml: "-7.5vw",
+						bgcolor: "primary.verydark",
+						mb: "100px",
+						alignItems: 'center',
+					}}>
+					<img
+						style={{ 'margin': '100px', 'height': '500px' }}
+						// height={'50%'}
+						margin={'100px'}
+						src="https://static.vecteezy.com/system/resources/thumbnails/001/500/603/small/add-icon-free-vector.jpg"
+						alt="make restaurant" ></img>
+					<Typography variant="h3" align="center" sx={{ mb: "10vh" }}>ADD RESTAURANT</Typography>
+				</Paper>
+
+				<Paper
+					elevation={20}
+					sx={{
+						height: "45vh",
+						width: "auto",
+						display: "flex",
+						flexDirection: "row",
+						flexGrow: "4",
+						flexWrap: "wrap",
+						pl: "1vw",
+						pr: "1vw",
+						ml: "-7.5vw",
+						justifyContent: "space-between",
+						alignSelf: "center",
+						bgcolor: "primary.verydark",
+						overflow: "hidden",
+						mb: "100px",
 					}}
 				>
-					<LineChart
-						chartData={clickChartData}
-						options={{ maintainAspectRatio: false }}
-					/>
+
+					<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", ml: "3vw" }}>
+						<BarChart chartData={RevenueChartData} />{" "}
+					</Paper>
+
+					<Paper elevation={10} sx={{ height: "20vh", mt: "12vh", pr: "1vw" }}>
+						<BarChart chartData={orderChartData} />{" "}
+					</Paper>
+
+					<Paper
+						elevation={10}
+						sx={{
+							height: "20vh",
+							mt: "12vh",
+							mr: "3vw",
+							width: "12vw",
+						}}
+					>
+						<Typography
+							variant="h5"
+							align="center"
+							sx={{ m: "10", color: "primary.verydark" }}
+						>
+							Restaurants left
+						</Typography>
+						<Typography
+							variant="h1"
+							fontWeight={"bold"}
+							align="center"
+							sx={{ m: "10", color: "primary.verydark" }}
+						>
+							{menusLeft}{" "}
+						</Typography>
+						<Button
+							variant="contained"
+							sx={{ mt: "1vh", display: "center" }}
+							onClick={() => {
+								setMenusLeft(menusLeft - 1);
+							}}
+							component={Link}
+							to={"../restaurants"}
+						>
+							Make Restaurant
+						</Button>
+					</Paper>
 				</Paper>
-			</Paper>
-		</Container>
-	);
+				<Paper
+					elevation={20}
+					align="center"
+					sx={{
+						height: "30vh",
+						width: "auto",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center",
+						alignContent: "space-around",
+						flexWrap: "wrap",
+						pl: "1vw",
+						pr: "1vw",
+						ml: "-7.5vw",
+						bgcolor: "primary.verydark",
+						overflow: "hidden",
+						mb: "100px",
+					}}
+				>
+					<Typography variant="h3" sx={{ mt: "-20" }}>
+						{" "}
+						Extra{" "}
+					</Typography>
+					<Paper
+						sx={{
+							my: 10,
+							align: "center",
+							position: "relative",
+							height: "20vh",
+							width: "20vw",
+						}}
+					>
+						<LineChart
+							chartData={clickChartData}
+							options={{ maintainAspectRatio: false }}
+						/>
+					</Paper>
+				</Paper>
+			</Container >
+		);
+	}
+
 };
 
 export default Dashboard;

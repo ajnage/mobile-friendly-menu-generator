@@ -25,7 +25,7 @@ function InsertCategory(props) {
 				onHide={props.handleFormClose}
 			>
 				<Modal.Header closeButton>
-					<Modal.Title>Add new category</Modal.Title>
+					<Modal.Title>Add new</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
