@@ -19,8 +19,6 @@ import {
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/esm/CardImg";
-import { InsertCategory } from "../components/menu_builder/category/InsertCategoryForm";
-import { EditCategoryForm } from "../components/menu_builder/category/EditCategoryForm";
 
 import { IoIosAddCircleOutline } from "react-icons/io";
 
@@ -183,7 +181,7 @@ const Dashboard = () => {
   const handleFormShow = () => setShowForm(true);
 
   console.log("restaurants:", restaurants);
-  if (restaurants.length >= 2) {
+  if (restaurants.length >= 100) {
     return restaurants.map((restaurant) => {
       <p style={{ margin: "100px" }}> {restaurant.name}</p>;
     });
@@ -220,8 +218,8 @@ const Dashboard = () => {
         >
           <IoIosAddCircleOutline
             style={{ fontSize: "300px", color: "#FFFFFF" }}
-            onClick={EditCategoryForm}
           />
+
           <Typography variant="h3" align="center" sx={{ mb: "10vh" }}>
             ADD RESTAURANT
           </Typography>
