@@ -95,9 +95,8 @@ function ResponsiveAppBar() {
           <Link to={'/'} className="text-link" >
             {" "}
             <img
-              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1, ml: { xs: '-10' } }}
               width={"27%"}
-              height={"auto"}
               src={QR}
               alt={"Menu maker app logo"}
             />
@@ -121,7 +120,8 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center" component={"span"}>
                     {page}
                   </Typography>
-                </Link>              </Button>
+                </Link>
+              </Button>
             ))}
             {!isAuthenticated ? (
               <LoginButton />

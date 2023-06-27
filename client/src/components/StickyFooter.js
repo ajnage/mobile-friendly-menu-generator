@@ -21,8 +21,8 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="text.secondary" component={'span'}>
 			{"Copyright © "}
-			<Link color="inherit" href="https://mui.com/">
-				Check out the app
+			<Link color="inherit" href="https://github.com/ajnage/mobile-friendly-menu-generator">
+				QRMenu
 			</Link>{" "}
 			{new Date().getFullYear()}
 			{"."}
@@ -55,10 +55,7 @@ export default function StickyFooter() {
 					}}
 				>
 					<Container maxWidth="sm">
-						<Typography variant="body1"
-							component={'span'}>
-							Say no to old methods
-						</Typography>
+
 						<Copyright />
 					</Container>
 				</Box>
