@@ -82,19 +82,27 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                  <Link to={`/${page}`}></Link>
+                  <Link to={page} className="text-link">
+                    {" "}
+                    <Typography textAlign="center" component={"span"}>
+                      {page}
+                    </Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <img
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-            width={"7%"}
-            height={"auto"}
-            src={QR}
-            alt={"Menu maker app logo"}
-          />
+          <Link to={'/'} className="text-link" >
+            {" "}
+            <img
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+              width={"27%"}
+              height={"auto"}
+              src={QR}
+              alt={"Menu maker app logo"}
+            />
+          </Link>
+
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -108,8 +116,12 @@ function ResponsiveAppBar() {
                   textAlign: "center",
                 }}
               >
-                {page}
-              </Button>
+                <Link to={page} className="text-link">
+                  {" "}
+                  <Typography textAlign="center" component={"span"}>
+                    {page}
+                  </Typography>
+                </Link>              </Button>
             ))}
             {!isAuthenticated ? (
               <LoginButton />
