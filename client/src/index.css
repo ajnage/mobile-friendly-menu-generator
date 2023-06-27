@@ -19,10 +19,18 @@ body {
 
 }
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
 
 :root {
   --accent: #7a2c2c;
-} 
+}
 
 /* This is to troubleshoot spacing issues */
 /* * {
@@ -43,26 +51,26 @@ code {
 
 /* Menu Builder */
 
-.menue_builder{
+.menue_builder {
   background-color: white;
   height: 1000vh;
 }
 
 
-.retr_background_logo_container{
+.retr_background_logo_container {
   position: relative;
   width: 100%;
   height: 30vh;
 }
 
-.restr_background_container{
+.restr_background_container {
   height: 80%;
   width: 100%;
   background-color: #1300ff;
   z-index: 1;
 }
 
-.retr_logo_container{
+.retr_logo_container {
   border-radius: 50%;
   z-index: 2;
   background-color: yellow;
@@ -72,45 +80,49 @@ code {
 }
 
 /*--------------------------------------- Category -----------------------------------------*/
-.category_container{
+.category_container {
 
   min-height: 20rem;
   margin-bottom: 3rem;
 
-  
+
 }
-.sub_category_title{
+
+.sub_category_title {
   padding-top: 1rem;
   padding-left: 1rem;
 }
 
-.sub_category_container{
+.sub_category_container {
 
   max-height: 60%;
-  width: 90%; 
+  width: 90%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
 }
-.category_title_container{
+
+.category_title_container {
   text-align: center;
 
 
 }
-.category_title{
+
+.category_title {
   font-size: 2.5rem;
   font-weight: bold;
-} 
+}
 
-.scroll-container{
+.scroll-container {
   white-space: nowrap;
   overflow-x: auto;
 }
-.card{
+
+.card {
   margin: 1rem;
 }
 
 
-.subCategory_title{
+.subCategory_title {
   font-size: 1.5rem;
   font-weight: bold;
 }

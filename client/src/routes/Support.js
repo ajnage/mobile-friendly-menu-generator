@@ -12,7 +12,7 @@ import { Box, Button } from "@mui/material";
 
 export default function SupportPage() {
 	return (
-		<Typography bgcolor="primary.grey">
+		<Typography bgcolor="primary.grey" sx={{ pt: '10vh', }}>
 			<Container className="supportBody">
 				<Typography
 					component="h1"

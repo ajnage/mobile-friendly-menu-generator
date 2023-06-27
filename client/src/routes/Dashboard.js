@@ -191,11 +191,11 @@ const Dashboard = () => {
         sx={{ bgcolor: "primary.grey", width: "100vw", height: "auto" }}
       >
         <Typography
-          variant="h1"
+          variant={"h2"}
           align="center"
           color="primary.white"
           gutterBottom
-          sx={{ pt: "15vh", pb: "5vh" }}
+          sx={{ pt: "15vh", pb: "5vh", ml: '-4vw' }}
           fontWeight={"bold"}
         >
           {user.name}'s Dashboard
@@ -230,7 +230,7 @@ const Dashboard = () => {
           sx={{
             height: "45vh",
             width: "auto",
-            display: "flex",
+            display: { xs: "none", md: "flex" },
             flexDirection: "row",
             flexGrow: "4",
             flexWrap: "wrap",
@@ -295,7 +295,7 @@ const Dashboard = () => {
           sx={{
             height: "30vh",
             width: "auto",
-            display: "flex",
+            display: { xs: "none", md: "flex" },
             flexDirection: "column",
             justifyContent: "center",
             alignContent: "space-around",
