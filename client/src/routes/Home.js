@@ -41,26 +41,28 @@ const Home = () => (
           }}
         />
         <Typography
-          variant="h1"
+          variant="h2"
           sx={{
             pb: 10,
             xs: {
-              variant: "h2",
+              variant: "h5",
             },
+            fontWeight: 'bold'
           }}
-          fontWeight={"bold"}
+
           component={"span"}
         >
           Welcome to the menu-maker app!
         </Typography>
         <Typography
           component={"span"}
-          variant="h2"
+          variant="h3"
           sx={{
-            p: 10,
+            p: 5,
             pb: 20,
-            fontWeight: 500,
+            fontWeight: { xs: "light", md: "bold", lg: "bold", xl: "bold" }
           }}
+
         >
           Our app lets restaurant owners save the hassle of creating menus!
         </Typography>

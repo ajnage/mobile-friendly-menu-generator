@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
-export function AppButton( {destination} ) {
+export function AppButton({ destination }) {
   return (
     <motion.div
       className="testButton"
@@ -13,7 +13,7 @@ export function AppButton( {destination} ) {
         variant="contained"
         sx={{
           height: "8vh",
-          width: "10vw",
+          width: { xl: "10vw", lg: "10vw", md: "13vw", xs: "20" },
           borderRadius: "30px",
           fontWeight: "bold",
           fontSize: "20px",
