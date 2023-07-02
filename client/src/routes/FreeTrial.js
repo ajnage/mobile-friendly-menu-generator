@@ -45,12 +45,13 @@ export default function FreeTrialPage() {
       <Container
         sx={{
           bgcolor: "primary.grey",
-          height: "100vh",
-          width: "100",
+          height: "100%",
+          width: "100vw",
         }}
       >
         {" "}
         <Typography
+          sx={{ pt: '10vh' }}
           component="h1"
           variant="h2"
           align="center"
@@ -64,17 +65,20 @@ export default function FreeTrialPage() {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            flexDirection: "row",
+            flexDirection: { xl: "row", xs: "column" },
+            pb: "10vh",
           }}
         >
           {features.map((feature) => (
             <Paper
+              key={feature.title}
               variant="h1"
               elevation={2}
               sx={{
-                p: 3,
+                p: { xs: "10vw", md: "10vw", xl: "2vw" },
                 m: 1,
                 mt: "4vh",
+                pb: { xl: "-10vh" },
                 display: "grid",
                 bgcolor: "primary.background",
                 width: 400,
@@ -99,13 +103,15 @@ export default function FreeTrialPage() {
         elevation={20}
         sx={{
           overflowX: "none !important",
-          mb: 40,
+          mt: { xs: '100vh', md: '100vh', l: "30vh", xl: "30vh" },
+          mb: '40vh',
           height: "100vh",
           ml: "0.3vw",
           background: "linear-gradient(45deg, #7a2c2c 30%, #222 90%)",
           width: "99vw",
           minWidth: "99vw",
-          display: "flex",
+          display: { xl: "flex", xs: "none" },
+
         }}
       >
         <Box
@@ -120,17 +126,6 @@ export default function FreeTrialPage() {
           <Typography variant="h1" sx={{ pb: 10 }}>
             Give our App a Try
           </Typography>
-          {/* <Button
-            variant="contained"
-            sx={{
-              width: "80%",
-              height: "8vh",
-              bgcolor: "primary.grey",
-              color: "secondary.main",
-            }}
-          >
-            Take Me To IT!
-          </Button> */}
           <AppButton variant="outlined" destination={"../menu_builder"}>
             {" "}
           </AppButton>
