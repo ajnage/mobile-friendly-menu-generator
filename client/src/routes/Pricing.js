@@ -15,24 +15,6 @@ import Link from "@mui/material/Link";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
 
-function Copyright(props) {
-  return (
-    <Typography
-      component={'span'}
-      variant="body2"
-      color="primary.white"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link to={`/`} color="inherit">
-        QRMenu
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const tiers = [
   {
@@ -97,7 +79,7 @@ function PricingContent() {
   return (
     <React.Fragment>
       <Container
-        sx={{ pt: '10vh', bgcolor: "primary.grey", width: "auto", height: "100vh" }}
+        sx={{ pt: '10vh', bgcolor: "primary.grey", width: "auto", height: { xs: "100%", xl: '100vh' } }}
       >
         <Typography bgcolor="primary.grey" component={'span'}>
           <AppBar
@@ -242,7 +224,6 @@ function PricingContent() {
                 </Grid>
               ))}
             </Grid>
-            <Copyright sx={{ mt: 5 }} />
           </Container>
           {/* End footer */}
         </Typography>
