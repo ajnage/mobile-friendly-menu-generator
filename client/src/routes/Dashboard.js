@@ -20,7 +20,9 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/esm/CardImg";
 
+
 import { IoIosAddCircleOutline } from "react-icons/io";
+import ViewRestaurants from "../components/dashboardRestaurants/RestaurantsView";
 
 // Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
@@ -33,6 +35,13 @@ const Dashboard = () => {
   const [RevenueStats, setRevenueStats] = useState([]);
   const [OrderStats, setOrderStats] = useState([]);
   const [ClickStats, setClickStats] = useState([]);
+
+
+  // For adding restaurants
+  const [showAddForm, setShowAddForm] = useState(false);
+
+  const handleFormShow = () => setShowAddForm(true);
+  const handleFormClose = () => setShowAddForm(false);
 
   const getAllRestaurants = async () => {
     try {
@@ -175,11 +184,6 @@ const Dashboard = () => {
 
   // TODO: Bring functionality to making restaurants editable
 
-  const [showForm, setShowForm] = useState(false);
-
-  const handleFormClose = () => setShowForm(false);
-  const handleFormShow = () => setShowForm(true);
-
   console.log("restaurants:", restaurants);
   if (restaurants.length >= 100) {
     return restaurants.map((restaurant) => {
@@ -218,7 +222,9 @@ const Dashboard = () => {
         >
           <IoIosAddCircleOutline
             style={{ fontSize: "300px", color: "#FFFFFF" }}
-          />
+          >
+          </IoIosAddCircleOutline>
+          <ViewRestaurants></ViewRestaurants>
 
           <Typography variant="h3" align="center" sx={{ mb: "10vh" }}>
             ADD RESTAURANT
