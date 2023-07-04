@@ -79,7 +79,7 @@ function ViewRestaurants() {
                                 key={restaurant.id}
                                 id={restaurant.id}
                                 title={restaurant.name}
-                                updateCategoryForm={updateRestaurantForm}
+                                updateRestaurantForm={updateRestaurantForm}
                                 handleDelete={handleDelete}
                             />
                         );
