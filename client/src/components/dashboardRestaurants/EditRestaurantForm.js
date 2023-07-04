@@ -56,7 +56,7 @@ function EditRestaurantForm(props) {
                         onClick={(e) => {
                             props.handleClose();
                             e.preventDefault();
-                            props.updateCategoryForm(props.id, title);
+                            props.updateRestaurantForm(props.id, title);
                         }}
                     >
                         Update

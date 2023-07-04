@@ -37,36 +37,30 @@ const Dashboard = () => {
   const [ClickStats, setClickStats] = useState([]);
 
 
-  // For adding restaurants
-  const [showAddForm, setShowAddForm] = useState(false);
-
-  const handleFormShow = () => setShowAddForm(true);
-  const handleFormClose = () => setShowAddForm(false);
-
-  const getAllRestaurants = async () => {
-    try {
-      const token = await getAccessTokenSilently();
-      const response = await getRestaurants(token);
-      if (response.status === 200) {
-        const data = response.data;
-        setRestaurants(data.restaurants);
-      } else {
-        return;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getAllRestaurants = async () => {
+  //   try {
+  //     const token = await getAccessTokenSilently();
+  //     const response = await getRestaurants(token);
+  //     if (response.status === 200) {
+  //       const data = response.data;
+  //       setRestaurants(data.restaurants);
+  //     } else {
+  //       return;
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const restaurantId = "646eb3a8b30795e61bc2a0de";
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      getAllRestaurants();
-    }
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     getAllRestaurants();
+  //   }
+  // }, [isAuthenticated]);
 
-  console.log(restaurants);
+  // console.log(restaurants);
 
   // Get Revenue Statistics
   useEffect(() => {

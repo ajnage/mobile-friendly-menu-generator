@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import AddRestaurantCard from "./AddRestaurant";
 import RestaurantCards from "./RestaurantCards";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 import { getRestaurants } from "../../axios/API";
 
@@ -9,23 +11,31 @@ import Row from "react-bootstrap/Row";
 
 
 function ViewRestaurants() {
-    const [restaurants, setRestaurants] = useState();
+    const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
+    const [restaurants, setRestaurants] = useState([]);
+
+    const getAllRestaurants = async () => {
+        try {
+            const token = await getAccessTokenSilently();
+            const response = await getRestaurants(token);
+            if (response.status === 200) {
+                const data = response.data;
+                setRestaurants(data.restaurants);
+            } else {
+                return;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
-        getRestaurants()
-            .then(function (response) {
-                // handle success
-                console.log('Here is the response data', response.data);
-                setRestaurants(response.data)
-                // console.log('data state.price: ', data[1].price)
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            });
-    }, [])
+        if (isAuthenticated) {
+            getAllRestaurants();
+        }
+    }, [isAuthenticated]);
+
+    console.log("restaurants:", restaurants);
 
     const updateRestaurantForm = (id, newTitle) => {
         const updatedRestaurants = restaurants.map((restaurant) => {
@@ -68,7 +78,7 @@ function ViewRestaurants() {
                             <RestaurantCards
                                 key={restaurant.id}
                                 id={restaurant.id}
-                                title={restaurant.title}
+                                title={restaurant.name}
                                 updateCategoryForm={updateRestaurantForm}
                                 handleDelete={handleDelete}
                             />
