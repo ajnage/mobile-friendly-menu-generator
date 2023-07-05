@@ -23,6 +23,7 @@ import CardImg from "react-bootstrap/esm/CardImg";
 
 import { IoIosAddCircleOutline } from "react-icons/io";
 import ViewRestaurants from "../components/dashboardRestaurants/RestaurantsView";
+import AddRestaurantCard from "../components/dashboardRestaurants/AddRestaurant";
 
 // Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
@@ -37,32 +38,9 @@ const Dashboard = () => {
   const [ClickStats, setClickStats] = useState([]);
 
 
-  // const getAllRestaurants = async () => {
-  //   try {
-  //     const token = await getAccessTokenSilently();
-  //     const response = await getRestaurants(token);
-  //     if (response.status === 200) {
-  //       const data = response.data;
-  //       setRestaurants(data.restaurants);
-  //     } else {
-  //       return;
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const restaurantId = "646eb3a8b30795e61bc2a0de";
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     getAllRestaurants();
-  //   }
-  // }, [isAuthenticated]);
-
-  // console.log(restaurants);
-
-  // Get Revenue Statistics
   useEffect(() => {
     getRevenuebyId(restaurantId)
       .then(function (response) {
@@ -214,10 +192,7 @@ const Dashboard = () => {
             alignItems: "center",
           }}
         >
-          <IoIosAddCircleOutline
-            style={{ fontSize: "300px", color: "#FFFFFF" }}
-          >
-          </IoIosAddCircleOutline>
+
           <ViewRestaurants></ViewRestaurants>
 
           <Typography variant="h3" align="center" sx={{ mb: "10vh" }}>

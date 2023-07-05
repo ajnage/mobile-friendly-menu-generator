@@ -10,11 +10,7 @@ function AddRestaurantCard(props) {
     const handleFormClose = () => setShowAddForm(false);
 
     return <>
-        <IoIosAddCircleOutline
-            style={{ fontSize: "300px", color: "#FFFFFF" }}
-        >
-            <InsertRestaurant handleFormClose={handleFormClose} showForm={showAddForm} handleInsertNewRestaurant={props.handleInsertNewRestaurant} />
-        </IoIosAddCircleOutline>
+        <InsertRestaurant handleFormClose={handleFormClose} showForm={showAddForm} handleInsertNewRestaurant={props.handleInsertNewRestaurant} />
     </>
 }
 

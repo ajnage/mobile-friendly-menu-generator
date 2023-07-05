@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import AddRestaurantCard from "./AddRestaurant";
 import RestaurantCards from "./RestaurantCards";
 import { useAuth0 } from "@auth0/auth0-react";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 
 import { getRestaurants } from "../../axios/API";
@@ -84,7 +85,13 @@ function ViewRestaurants() {
                             />
                         );
                     })}
-                    <AddRestaurantCard handleInsertNewRestaurant={handleInsertNewRestaurant} />
+                    <IoIosAddCircleOutline
+                        style={{ fontSize: "300px", color: "#FFFFFF" }}
+                        onClick={console.log('clicked 1')}
+                    >
+                        <AddRestaurantCard handleInsertNewRestaurant={handleInsertNewRestaurant} />
+                        {console.log('clicked 2 ')}
+                    </IoIosAddCircleOutline>
                 </div>
 
             </div>
