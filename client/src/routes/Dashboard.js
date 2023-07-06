@@ -21,7 +21,6 @@ import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/esm/CardImg";
 
 
-import { IoIosAddCircleOutline } from "react-icons/io";
 import ViewRestaurants from "../components/dashboardRestaurants/RestaurantsView";
 import AddRestaurantCard from "../components/dashboardRestaurants/AddRestaurant";
 

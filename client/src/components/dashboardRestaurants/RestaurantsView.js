@@ -85,17 +85,19 @@ function ViewRestaurants() {
                             />
                         );
                     })}
-                    <IoIosAddCircleOutline
-                        style={{ fontSize: "300px", color: "#FFFFFF" }}
-                        onClick={console.log('clicked 1')}
-                    >
-                        <AddRestaurantCard handleInsertNewRestaurant={handleInsertNewRestaurant} />
-                        {console.log('clicked 2 ')}
-                    </IoIosAddCircleOutline>
+
+                    <AddRestaurantCard handleInsertNewRestaurant={handleInsertNewRestaurant}>
+                        <IoIosAddCircleOutline
+                            style={{ fontSize: "300px", color: "#FFFFFF" }}
+                            onClick={console.log('clicked 1')}
+                        />
+                    </AddRestaurantCard>
+                    {console.log('clicked 2 ')}
+
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 }
 

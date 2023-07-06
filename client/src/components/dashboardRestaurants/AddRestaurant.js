@@ -9,9 +9,12 @@ function AddRestaurantCard(props) {
     const handleFormShow = () => setShowAddForm(true);
     const handleFormClose = () => setShowAddForm(false);
 
-    return <>
-        <InsertRestaurant handleFormClose={handleFormClose} showForm={showAddForm} handleInsertNewRestaurant={props.handleInsertNewRestaurant} />
-    </>
+    return (
+        <InsertRestaurant handleFormClose={handleFormClose} showForm={showAddForm} handleInsertNewRestaurant={props.handleInsertNewRestaurant} >
+            {props.children}
+        </InsertRestaurant>
+    )
+
 }
 
 export default AddRestaurantCard;
