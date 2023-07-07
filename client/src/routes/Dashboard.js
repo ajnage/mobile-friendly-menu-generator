@@ -19,10 +19,12 @@ import {
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import CardImg from "react-bootstrap/esm/CardImg";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 
 import ViewRestaurants from "../components/dashboardRestaurants/RestaurantsView";
 import AddRestaurantCard from "../components/dashboardRestaurants/AddRestaurant";
+import { Box } from "@mui/material";
 
 // Use axios to fetch the statistics from server;
 // instead of using the array from dashboardstats.js
@@ -36,9 +38,8 @@ const Dashboard = () => {
   const [OrderStats, setOrderStats] = useState([]);
   const [ClickStats, setClickStats] = useState([]);
 
-
-
   const restaurantId = "646eb3a8b30795e61bc2a0de";
+
 
   useEffect(() => {
     getRevenuebyId(restaurantId)
@@ -191,8 +192,7 @@ const Dashboard = () => {
             alignItems: "center",
           }}
         >
-
-          <ViewRestaurants></ViewRestaurants>
+          <ViewRestaurants />
 
           <Typography variant="h3" align="center" sx={{ mb: "10vh" }}>
             ADD RESTAURANT
@@ -301,7 +301,7 @@ const Dashboard = () => {
             />
           </Paper>
         </Paper>
-      </Container>
+      </Container >
     );
   }
 };
